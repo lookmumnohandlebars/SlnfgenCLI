@@ -1,0 +1,11 @@
+solutionFile: TestSolutionLegacy.sln
+FilterDefinitions:
+  - name: FilterOne
+    Entrypoints:
+      - ProjA/ProjA.csproj
+      - ProjG/ProjG.csproj
+
+  - name: FilterTwo
+    entrypoints:
+      - Projb/Projb.csproj
+      - ProjD/ProjD.csproj

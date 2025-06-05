@@ -1,0 +1,17 @@
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net8.0/Slnfgen.CLI
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net8.0/Slnfgen.CLI.deps.json
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net8.0/Slnfgen.CLI.runtimeconfig.json
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net8.0/Slnfgen.CLI.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net8.0/Slnfgen.CLI.pdb
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net8.0/Slnfgen.CLI.xml
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.AssemblyInfoInputs.cache
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.AssemblyInfo.cs
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.csproj.CoreCompileInputs.cache
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.sourcelink.json
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/refint/Slnfgen.CLI.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.xml
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.pdb
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/Slnfgen.CLI.genruntimeconfig.cache
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net8.0/ref/Slnfgen.CLI.dll

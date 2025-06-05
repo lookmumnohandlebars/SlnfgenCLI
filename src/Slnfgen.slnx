@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/app/">
+    <Project Path="app\Slnfgen.CLI\Slnfgen.CLI.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test\Slnfgen.CLI.IntegrationTests\Slnfgen.CLI.IntegrationTests.csproj" Type="Classic C#" />
+    <Project Path="test\Slnfgen.CLI.UnitTests\Slnfgen.CLI.UnitTests.csproj" Type="Classic C#" />
+  </Folder>
+</Solution>
