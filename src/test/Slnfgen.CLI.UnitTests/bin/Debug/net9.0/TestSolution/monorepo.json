@@ -3,17 +3,11 @@
   "filterDefinitions": [
     {
       "Name": "FilterOne",
-      "entrypoints": [
-        "ProjA/ProjA.csproj",
-        "ProjG/ProjG.csproj"
-      ]
+      "entrypoints": ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]
     },
     {
       "name": "FilterTwo",
-      "Entrypoints": [
-        "Projb/Projb.csproj",
-        "ProjD/ProjD.csproj"
-      ]
+      "Entrypoints": ["Projb/Projb.csproj", "ProjD/ProjD.csproj"]
     }
   ]
 }

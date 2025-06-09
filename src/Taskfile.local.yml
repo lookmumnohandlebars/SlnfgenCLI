@@ -1,0 +1,27 @@
+# To use this taskfile, please install from https://taskfile.dev/installation/
+# List all available commands with `task --list-all`
+version: "3"
+
+tasks:
+  build:
+    desc: Build the source code (.NET) with packages cached
+    cmds:
+      - dotnet restore src/Slnfgen.slnx
+      - dotnet build src/Slnfgen.slnx --no-restore
+
+  test:
+    desc: Run all tests associated with the source code
+    cmds:
+      - dotnet test src/Slnfgen.slnx --no-restore
+
+  rebuild:
+    desc: Rebuild the source code
+    cmds:
+      - dotnet clean src/Slnfgen.slnx
+      - task: build
+
+  pack:
+    desc: Pack the source code into a NuGet package
+    cmds:
+      - for: ["Slnfgen.CLI"]
+        cmd: dotnet pack src/lib/{{ .ITEM }}

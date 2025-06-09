@@ -1,0 +1,21 @@
+{
+  "prettier.documentSelectors": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/*.vue",
+    "**/*.json",
+    "**/*.yml",
+    "*.yml",
+    "**/*.yaml"
+  ],
+  "prettier.configPath": ".config/prettierrc.json",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "files.autoSave": "onFocusChange",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
+}

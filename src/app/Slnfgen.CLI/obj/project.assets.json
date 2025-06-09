@@ -53,6 +53,19 @@
           }
         }
       },
+      "JetBrains.Annotations/2024.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
       "Microsoft.Build/17.13.9": {
         "type": "package",
         "dependencies": {
@@ -874,6 +887,29 @@
         "lib/netstandard2.1/ja-JP/Cocona.Core.resources.dll",
         "lib/netstandard2.1/ko-KR/Cocona.Core.resources.dll",
         "lib/netstandard2.1/zh-CN/Cocona.Core.resources.dll"
+      ]
+    },
+    "JetBrains.Annotations/2024.3.0": {
+      "sha512": "ox5pkeLQXjvJdyAB4b2sBYAlqZGLh3PjSnP1bQNVx72ONuTJ9+34/+Rq91Fc0dG29XG9RgZur9+NcP4riihTug==",
+      "type": "package",
+      "path": "jetbrains.annotations/2024.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "jetbrains.annotations.2024.3.0.nupkg.sha512",
+        "jetbrains.annotations.nuspec",
+        "lib/net20/JetBrains.Annotations.dll",
+        "lib/net20/JetBrains.Annotations.xml",
+        "lib/netstandard1.0/JetBrains.Annotations.deps.json",
+        "lib/netstandard1.0/JetBrains.Annotations.dll",
+        "lib/netstandard1.0/JetBrains.Annotations.xml",
+        "lib/netstandard2.0/JetBrains.Annotations.deps.json",
+        "lib/netstandard2.0/JetBrains.Annotations.dll",
+        "lib/netstandard2.0/JetBrains.Annotations.xml",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.dll",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.xml",
+        "readme.md"
       ]
     },
     "Microsoft.Build/17.13.9": {
@@ -1892,6 +1928,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Cocona >= 2.2.0",
+      "JetBrains.Annotations >= 2024.3.0",
       "Microsoft.Build >= 17.13.9",
       "YamlDotNet >= 16.3.0"
     ]
@@ -1910,12 +1947,8 @@
       "projectStyle": "PackageReference",
       "centralPackageVersionsManagementEnabled": true,
       "CentralPackageTransitivePinningEnabled": true,
-      "configFilePaths": [
-        "/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"
-      ],
-      "originalTargetFrameworks": [
-        "net9.0"
-      ],
+      "configFilePaths": ["/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"],
+      "originalTargetFrameworks": ["net9.0"],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -1927,9 +1960,7 @@
       },
       "warningProperties": {
         "allWarningsAsErrors": true,
-        "warnAsError": [
-          "NU1605"
-        ]
+        "warnAsError": ["NU1605"]
       },
       "restoreAuditProperties": {
         "enableAudit": "true",
@@ -1947,6 +1978,11 @@
             "version": "[2.2.0, )",
             "versionCentrallyManaged": true
           },
+          "JetBrains.Annotations": {
+            "target": "Package",
+            "version": "[2024.3.0, )",
+            "versionCentrallyManaged": true
+          },
           "Microsoft.Build": {
             "target": "Package",
             "version": "[17.13.9, )",
@@ -1962,6 +1998,7 @@
           "Cocona": "2.2.0",
           "coverlet.collector": "6.0.0",
           "FluentAssertions": "7.0.0",
+          "JetBrains.Annotations": "2024.3.0",
           "Microsoft.Build": "17.13.9",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.NET.Test.Sdk": "17.8.0",

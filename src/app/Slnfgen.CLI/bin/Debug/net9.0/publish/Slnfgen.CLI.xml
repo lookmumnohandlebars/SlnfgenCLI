@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Slnfgen.CLI</name>
+    </assembly>
+    <members>
+        <member name="T:Slnfgen.CLI.IRequestHandler`2">
+             <summary>
+            
+             </summary>
+             <typeparam name="TRequest">Type of the request object</typeparam>
+             <typeparam name="TResponse">Type of the returned response object</typeparam>
+        </member>
+        <member name="M:Slnfgen.CLI.IRequestHandler`2.Handle(`0)">
+             <summary>
+            
+             </summary>
+             <param name="request"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Slnfgen.CLI.IRequestHandler`1">
+             <summary>
+            
+             </summary>
+             <typeparam name="TRequest"></typeparam>
+        </member>
+        <member name="M:Slnfgen.CLI.IRequestHandler`1.Handle(`0)">
+             <summary>
+            
+             </summary>
+             <param name="request"></param>
+        </member>
+        <member name="T:Slnfgen.CLI.IAsyncRequestHandler`2">
+             <summary>
+            
+             </summary>
+             <typeparam name="TRequest"></typeparam>
+             <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="M:Slnfgen.CLI.IAsyncRequestHandler`2.HandleAsync(`0,System.Threading.CancellationToken)">
+             <summary>
+            
+             </summary>
+             <param name="request"></param>
+             <param name="cancellationToken"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Slnfgen.CLI.IAsyncRequestHandler`1">
+             <summary>
+            
+             </summary>
+             <typeparam name="TRequest"></typeparam>
+        </member>
+        <member name="M:Slnfgen.CLI.IAsyncRequestHandler`1.HandleAsync(`0,System.Threading.CancellationToken)">
+             <summary>
+            
+             </summary>
+             <param name="request"></param>
+             <param name="cancellationToken"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Slnfgen.CLI.Application.Services.SolutionFilter.SolutionFilterFileGenerationHandler">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Application.Services.SolutionFilter.SolutionFilterFileGenerationHandler.#ctor(Slnfgen.Application.Features.SolutionFilterGeneration.SolutionFilterGenerator,Slnfgen.Application.Features.SolutionFilterGeneration.ISolutionFilterWriter,Slnfgen.Application.Domain.Filters.ISolutionFiltersManifestLoader,Slnfgen.CLI.Domain.Solution.File.Loader.ISolutionLoader,Microsoft.Extensions.Logging.ILogger{Slnfgen.CLI.Application.Services.SolutionFilter.SolutionFilterFileGenerationHandler})">
+            <inheritdoc cref="T:Slnfgen.CLI.Application.Services.SolutionFilter.SolutionFilterFileGenerationHandler" />
+        </member>
+        <member name="M:Slnfgen.CLI.Application.Services.SolutionFilter.SolutionFilterFileGenerationHandler.Handle(Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest)">
+             <summary>
+            
+             </summary>
+             <param name="request"></param>
+        </member>
+        <member name="T:Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest.#ctor(System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="filtersConfigFilePath"></param>
+             <param name="outputDirectory"></param>
+        </member>
+        <member name="P:Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest.FiltersConfigFilePath">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest.OutputDirectory">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest.Equals(Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest)">
+            <inheritdoc />
+        </member>
+        <member name="M:Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Slnfgen.CLI.Domain.Solution.File.Loader.ISolutionLoader">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Domain.Solution.File.Loader.ISolutionLoader.Load(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="location"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Slnfgen.CLI.Domain.Solution.File.Loader.SolutionFileLoader">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Domain.Solution.File.Loader.SolutionFileLoader.Load(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="location"></param>
+             <returns></returns>
+             <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:Slnfgen.CLI.Domain.Solution.DependencyInjection">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Domain.Solution.DependencyInjection.AddDomainSolutionDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+             <summary>
+            
+             </summary>
+             <param name="services"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Slnfgen.CLI.Domain.Solution.Project.ProjectFile">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Domain.Solution.Project.ProjectFile.#ctor(Microsoft.Build.Construction.ProjectRootElement)">
+            <inheritdoc cref="T:Slnfgen.CLI.Domain.Solution.Project.ProjectFile"/>
+        </member>
+        <member name="P:Slnfgen.CLI.Domain.Solution.Project.ProjectFile.FullPath">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Slnfgen.CLI.Domain.Solution.Project.ProjectFile.ProjectDependencies">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Domain.Solution.Project.ProjectFile.LoadFromFile(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="projectFilePath"></param>
+             <returns></returns>
+             <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:Slnfgen.CLI.Commands.GenerateSolutionFiltersCommand">
+            <summary>
+                The command class to generate solution filters from a filters manifest file
+            </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Commands.GenerateSolutionFiltersCommand.#ctor(Slnfgen.CLI.IRequestHandler{Slnfgen.CLI.Application.Features.SolutionFilter.Requests.GenerateSolutionFiltersRequest},Microsoft.Extensions.Logging.ILogger{Slnfgen.CLI.Commands.GenerateSolutionFiltersCommand})">
+            <summary>
+                Cre
+            </summary>
+            <param name="handler">The request Handler</param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Slnfgen.CLI.Commands.GenerateSolutionFiltersCommand.Execute(System.String,System.String)">
+            <summary>
+                Generates solution filters based on the provided filters file
+            </summary>
+            <param name="filtersFile"></param>
+            <param name="outDirectory"></param>
+        </member>
+        <member name="T:Slnfgen.CLI.Presentation.StartUp.ServiceCollectionExtensions">
+            <summary>
+                Extensions for adding dependencies directly to the Services in the application builder
+                of the program
+            </summary>
+        </member>
+        <member name="M:Slnfgen.CLI.Presentation.StartUp.ServiceCollectionExtensions.AddAllDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Add all dependencies to a service collection
+            </summary>
+            <param name="services">Service Collection coming from the application builder</param>
+            <returns>The same service collection with dependencies added</returns>
+        </member>
+        <member name="T:Slnfgen.Application.Domain.Filters.ISolutionFiltersManifestLoader">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Filters.ISolutionFiltersManifestLoader.Load(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="location"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Slnfgen.Application.Domain.Filters.SolutionFiltersManifestFileLoader">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Filters.SolutionFiltersManifestFileLoader.Load(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="filterFilePath"></param>
+             <returns></returns>
+             <exception cref="T:System.Exception"></exception>
+             <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="T:Slnfgen.Application.Domain.Filters.SolutionFiltersManifest">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Filters.SolutionFiltersManifest.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Filters.SolutionFiltersManifest.#ctor(System.String,System.Collections.Generic.List{Slnfgen.Application.Domain.Filters.SolutionFiltersManifestFilterDefinition})">
+             <summary>
+            
+             </summary>
+             <param name="solutionFile"></param>
+             <param name="filterDefinitions"></param>
+        </member>
+        <member name="P:Slnfgen.Application.Domain.Filters.SolutionFiltersManifest.SolutionFile">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Slnfgen.Application.Domain.Filters.SolutionFiltersManifest.FilterDefinitions">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Slnfgen.Application.Domain.Filters.SolutionFiltersManifestFilterDefinition">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Filters.SolutionFiltersManifestFilterDefinition.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Filters.SolutionFiltersManifestFilterDefinition.#ctor(System.String,System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="name"></param>
+             <param name="entrypoints"></param>
+        </member>
+        <member name="P:Slnfgen.Application.Domain.Filters.SolutionFiltersManifestFilterDefinition.Name">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Slnfgen.Application.Domain.Filters.SolutionFiltersManifestFilterDefinition.Entrypoints">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Slnfgen.Application.Domain.Project.SolutionProject">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Project.SolutionProject.#ctor(Microsoft.Build.Construction.ProjectInSolution)">
+             <summary>
+            
+             </summary>
+             <param name="projectInSolution"></param>
+        </member>
+        <member name="P:Slnfgen.Application.Domain.Project.SolutionProject.Name">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Slnfgen.Application.Domain.Project.SolutionProject.Path">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Project.SolutionProject.Equals(Slnfgen.Application.Domain.Project.SolutionProject)">
+            <inheritdoc />
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Project.SolutionProject.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Slnfgen.Application.Domain.Project.SolutionProject.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Slnfgen.Application.Features.SolutionFilterGeneration.ISolutionFilterWriter">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Features.SolutionFilterGeneration.ISolutionFilterWriter.Write(Slnfgen.Application.Features.SolutionFilter.SolutionFilter,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="solutionFilter"></param>
+             <param name="outDirectory"></param>
+        </member>
+        <member name="M:Slnfgen.Application.Features.SolutionFilterGeneration.ISolutionFilterWriter.WriteMany(System.Collections.Generic.IEnumerable{Slnfgen.Application.Features.SolutionFilter.SolutionFilter},System.String)">
+             <summary>
+            
+             </summary>
+             <param name="solutionFilters"></param>
+             <param name="outDirectory"></param>
+        </member>
+        <member name="T:Slnfgen.Application.Features.SolutionFilterGeneration.SolutionFilterFileWriter">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Features.SolutionFilterGeneration.SolutionFilterFileWriter.Write(Slnfgen.Application.Features.SolutionFilter.SolutionFilter,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="solutionFilter"></param>
+             <param name="outDirectory"></param>
+        </member>
+        <member name="M:Slnfgen.Application.Features.SolutionFilterGeneration.SolutionFilterFileWriter.WriteMany(System.Collections.Generic.IEnumerable{Slnfgen.Application.Features.SolutionFilter.SolutionFilter},System.String)">
+             <summary>
+            
+             </summary>
+             <param name="solutionFilters"></param>
+             <param name="outDirectory"></param>
+        </member>
+        <member name="T:Slnfgen.Application.Features.SolutionFilterGeneration.SolutionFilterGenerator">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Features.SolutionFilterGeneration.SolutionFilterGenerator.GenerateMany(Slnfgen.Application.Features.Solution.RootSolutionFile,Slnfgen.Application.Domain.Filters.SolutionFiltersManifest)">
+             <summary>
+            
+             </summary>
+             <param name="solutionFile"></param>
+             <param name="filters"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Slnfgen.Application.Features.SolutionFilter.SolutionFiltersManifestSolutionDefinition">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Features.SolutionFilter.SolutionFiltersManifestSolutionDefinition.#ctor(System.String,System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="path"></param>
+             <param name="projects"></param>
+        </member>
+        <member name="P:Slnfgen.Application.Features.SolutionFilter.SolutionFiltersManifestSolutionDefinition.Path">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Slnfgen.Application.Features.SolutionFilter.SolutionFiltersManifestSolutionDefinition.Projects">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Slnfgen.Application.Features.SolutionFilter.SolutionFilter">
+            <summary>
+                The `.slnf` file as required by .NET
+                NO
+            </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Features.SolutionFilter.SolutionFilter.#ctor(System.String,Slnfgen.Application.Features.SolutionFilter.SolutionFiltersManifestSolutionDefinition)">
+            <inheritdoc cref="T:Slnfgen.Application.Features.SolutionFilter.SolutionFilter"/>
+            <param name="name"></param>
+            <param name="solution"></param>
+        </member>
+        <member name="P:Slnfgen.Application.Features.SolutionFilter.SolutionFilter.Name">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Slnfgen.Application.Features.SolutionFilter.SolutionFilter.Solution">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Slnfgen.Application.Features.Solution.RootSolutionFile">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Slnfgen.Application.Features.Solution.RootSolutionFile.#ctor(Microsoft.Build.Construction.SolutionFile,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="solutionFile"></param>
+             <param name="path"></param>
+        </member>
+        <member name="P:Slnfgen.Application.Features.Solution.RootSolutionFile.Path">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Slnfgen.Application.Features.Solution.RootSolutionFile.ProjectsInSolution">
+             <summary>
+            
+             </summary>
+        </member>
+    </members>
+</doc>

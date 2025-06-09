@@ -1,0 +1,75 @@
+{
+  "$schema": "https://alirezanet.github.io/Husky.Net/schema.json",
+  "tasks": [
+    {
+      "name": "Commit | Message Lint",
+      "command": "dotnet",
+      "args": [
+        "husky",
+        "exec",
+        ".husky/custom-scripts/commit-lint.csx",
+        "--args",
+        "${args}"
+      ],
+      "group": "commit-msg"
+    },
+    {
+      "name": "Task | Build",
+      "command": "task",
+      "args": ["build"],
+      "group": "pre-commit",
+      "include": ["src/**"]
+    },
+    {
+      "name": "Task | Refactor C#",
+      "command": "task",
+      "args": ["fmt:refactor", "FILES=${staged}"],
+      "include": ["**/*.cs", "**/*.csx"],
+      "group": "pre-commit"
+    },
+    {
+      "name": "Task | Format w/ Prettier",
+      "command": "task",
+      "args": ["fmt:prettier", "--", "${staged}"],
+      "include": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.yml",
+        "**/*.yaml",
+        "**/*.json",
+        ".*rc"
+      ],
+      "group": "pre-commit"
+    },
+    {
+      "name": "Task | Format C#",
+      "command": "task",
+      "args": ["fmt:csharp", "FILES=${staged}"],
+      "include": ["**/*.cs", "**/*.csx"],
+      "group": "pre-commit"
+    },
+    {
+      "name": "Task | Tests",
+      "command": "task",
+      "args": ["test"],
+      "group": "pre-commit",
+      "include": ["src/**"]
+    },
+    {
+      "name": "Task | Verify Pack",
+      "command": "task",
+      "args": ["pack"],
+      "group": "pre-commit",
+      "include": ["src/**"]
+    },
+    {
+      "name": "Task | Clean",
+      "command": "task",
+      "args": ["clean"],
+      "group": "post-checkout",
+      "include": ["src/**"]
+    }
+  ]
+}

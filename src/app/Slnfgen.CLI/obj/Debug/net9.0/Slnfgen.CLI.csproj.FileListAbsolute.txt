@@ -58,3 +58,6 @@
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen.CLI.pdb
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen.CLI.genruntimeconfig.cache
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/ref/Slnfgen.CLI.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/JetBrains.Annotations.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen.CLI.xml
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Slnfgen.CLI.xml

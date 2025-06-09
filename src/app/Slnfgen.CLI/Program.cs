@@ -1,13 +1,13 @@
 ﻿using Cocona;
 using Microsoft.Extensions.Logging;
-using Slnfgen.Application.Module;
-using Slnfgen.CLI.Commands;
+using Slnfgen.CLI.Presentation.StartUp;
 
 var builder = CoconaApp.CreateBuilder();
 builder.Logging.AddConsole();
-builder.Services.AddApplication();
+builder.Services.AddAllDependencies();
 var app = builder.Build();
 
-app.AddCommands<GenerateSolutionFiltersCommand>();
+app.AddAllMiddleware();
+app.AddAllCommands();
 
 app.Run();

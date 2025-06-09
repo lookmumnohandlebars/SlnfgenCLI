@@ -146,7 +146,6 @@
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/obj/Debug/net9.0/Slnfgen.CLI.UnitTests.genruntimeconfig.cache
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/obj/Debug/net9.0/ref/Slnfgen.CLI.UnitTests.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/ProjA/ProjA.csproj
-/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/Projb/ProjB.csproj
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/ProjC/ProjC.csproj
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/ProjD/ProjD.csproj
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/ProjE/ProjE.csproj
@@ -157,3 +156,8 @@
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/monorepo.json
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/monorepo.yml
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/monorepoLegacy.yml
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/JetBrains.Annotations.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/TestSolution/Projb/Nested/ProjB.csproj
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/Slnfgen.CLI.TestImplementations.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/Slnfgen.CLI.TestImplementations.pdb
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.UnitTests/bin/Debug/net9.0/Slnfgen.CLI.xml

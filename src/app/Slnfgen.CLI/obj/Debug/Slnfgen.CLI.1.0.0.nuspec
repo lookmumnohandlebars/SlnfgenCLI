@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Slnfgen.CLI</id>
+    <version>1.0.0</version>
+    <authors>Slnfgen.CLI</authors>
+    <description>Package Description</description>
+    <packageTypes>
+      <packageType name="DotnetTool" />
+    </packageTypes>
+    <repository type="git" url="https://github.com/lookmumnohandlebars/slnfgencli" commit="1c3f1d12f1ee887e711a18df0e54bedbafe5d960" />
+  </metadata>
+  <files>
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/DotnetToolSettings.xml" target="tools/net9.0/any/DotnetToolSettings.xml" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.dll" target="tools/net9.0/any/Slnfgen.CLI.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.deps.json" target="tools/net9.0/any/Slnfgen.CLI.deps.json" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.runtimeconfig.json" target="tools/net9.0/any/Slnfgen.CLI.runtimeconfig.json" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.pdb" target="tools/net9.0/any/Slnfgen.CLI.pdb" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Cocona.dll" target="tools/net9.0/any/Cocona.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Cocona.Core.dll" target="tools/net9.0/any/Cocona.Core.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/JetBrains.Annotations.dll" target="tools/net9.0/any/JetBrains.Annotations.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Build.dll" target="tools/net9.0/any/Microsoft.Build.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Build.Framework.dll" target="tools/net9.0/any/Microsoft.Build.Framework.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.dll" target="tools/net9.0/any/Microsoft.Extensions.Configuration.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.Abstractions.dll" target="tools/net9.0/any/Microsoft.Extensions.Configuration.Abstractions.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.Binder.dll" target="tools/net9.0/any/Microsoft.Extensions.Configuration.Binder.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.CommandLine.dll" target="tools/net9.0/any/Microsoft.Extensions.Configuration.CommandLine.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.EnvironmentVariables.dll" target="tools/net9.0/any/Microsoft.Extensions.Configuration.EnvironmentVariables.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.FileExtensions.dll" target="tools/net9.0/any/Microsoft.Extensions.Configuration.FileExtensions.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.Json.dll" target="tools/net9.0/any/Microsoft.Extensions.Configuration.Json.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.UserSecrets.dll" target="tools/net9.0/any/Microsoft.Extensions.Configuration.UserSecrets.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.DependencyInjection.dll" target="tools/net9.0/any/Microsoft.Extensions.DependencyInjection.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.DependencyInjection.Abstractions.dll" target="tools/net9.0/any/Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.FileProviders.Abstractions.dll" target="tools/net9.0/any/Microsoft.Extensions.FileProviders.Abstractions.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.FileProviders.Physical.dll" target="tools/net9.0/any/Microsoft.Extensions.FileProviders.Physical.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.FileSystemGlobbing.dll" target="tools/net9.0/any/Microsoft.Extensions.FileSystemGlobbing.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Hosting.dll" target="tools/net9.0/any/Microsoft.Extensions.Hosting.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Hosting.Abstractions.dll" target="tools/net9.0/any/Microsoft.Extensions.Hosting.Abstractions.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Logging.dll" target="tools/net9.0/any/Microsoft.Extensions.Logging.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Logging.Abstractions.dll" target="tools/net9.0/any/Microsoft.Extensions.Logging.Abstractions.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Logging.Configuration.dll" target="tools/net9.0/any/Microsoft.Extensions.Logging.Configuration.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Logging.Console.dll" target="tools/net9.0/any/Microsoft.Extensions.Logging.Console.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Logging.Debug.dll" target="tools/net9.0/any/Microsoft.Extensions.Logging.Debug.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Logging.EventLog.dll" target="tools/net9.0/any/Microsoft.Extensions.Logging.EventLog.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Logging.EventSource.dll" target="tools/net9.0/any/Microsoft.Extensions.Logging.EventSource.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Options.dll" target="tools/net9.0/any/Microsoft.Extensions.Options.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Options.ConfigurationExtensions.dll" target="tools/net9.0/any/Microsoft.Extensions.Options.ConfigurationExtensions.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Primitives.dll" target="tools/net9.0/any/Microsoft.Extensions.Primitives.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.NET.StringTools.dll" target="tools/net9.0/any/Microsoft.NET.StringTools.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.VisualStudio.SolutionPersistence.dll" target="tools/net9.0/any/Microsoft.VisualStudio.SolutionPersistence.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/System.Configuration.ConfigurationManager.dll" target="tools/net9.0/any/System.Configuration.ConfigurationManager.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/System.Diagnostics.EventLog.dll" target="tools/net9.0/any/System.Diagnostics.EventLog.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/System.Reflection.MetadataLoadContext.dll" target="tools/net9.0/any/System.Reflection.MetadataLoadContext.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/System.Security.Cryptography.ProtectedData.dll" target="tools/net9.0/any/System.Security.Cryptography.ProtectedData.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/YamlDotNet.dll" target="tools/net9.0/any/YamlDotNet.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.xml" target="tools/net9.0/any/Slnfgen.CLI.xml" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/ja-JP/Cocona.resources.dll" target="tools/net9.0/any/ja-JP/Cocona.resources.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/ja-JP/Cocona.Core.resources.dll" target="tools/net9.0/any/ja-JP/Cocona.Core.resources.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/ko-KR/Cocona.resources.dll" target="tools/net9.0/any/ko-KR/Cocona.resources.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/ko-KR/Cocona.Core.resources.dll" target="tools/net9.0/any/ko-KR/Cocona.Core.resources.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/zh-CN/Cocona.Core.resources.dll" target="tools/net9.0/any/zh-CN/Cocona.Core.resources.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll" target="tools/net9.0/any/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll" />
+    <file src="/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll" target="tools/net9.0/any/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll" />
+  </files>
+</package>

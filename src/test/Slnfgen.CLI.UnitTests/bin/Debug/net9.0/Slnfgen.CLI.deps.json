@@ -9,6 +9,7 @@
       "Slnfgen.CLI/1.0.0": {
         "dependencies": {
           "Cocona": "2.2.0",
+          "JetBrains.Annotations": "2024.3.0",
           "Microsoft.Build": "17.13.9",
           "YamlDotNet": "16.3.0"
         },
@@ -54,6 +55,14 @@
           },
           "lib/net6.0/zh-CN/Cocona.Core.resources.dll": {
             "locale": "zh-CN"
+          }
+        }
+      },
+      "JetBrains.Annotations/2024.3.0": {
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "assemblyVersion": "4242.42.42.42",
+            "fileVersion": "2024.3.0.0"
           }
         }
       },
@@ -542,6 +551,13 @@
       "sha512": "sha512-WvkfA2XCHrlgggiIG7PCxX4RSbNAHSmIHl4BcxcphOTwX5ZuQmiGm13ooeD6ZwGet4Bq+xzk+jfz0bmgjaXfUQ==",
       "path": "cocona.core/2.2.0",
       "hashPath": "cocona.core.2.2.0.nupkg.sha512"
+    },
+    "JetBrains.Annotations/2024.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ox5pkeLQXjvJdyAB4b2sBYAlqZGLh3PjSnP1bQNVx72ONuTJ9+34/+Rq91Fc0dG29XG9RgZur9+NcP4riihTug==",
+      "path": "jetbrains.annotations/2024.3.0",
+      "hashPath": "jetbrains.annotations.2024.3.0.nupkg.sha512"
     },
     "Microsoft.Build/17.13.9": {
       "type": "package",

@@ -3,35 +3,33 @@ using Slnfgen.Application.Domain.Project;
 
 namespace Slnfgen.Application.Features.Solution;
 
+/// <summary>
+///
+/// </summary>
 public class RootSolutionFile
 {
     private string _path;
     private SolutionFile _solutionFile;
-    
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="solutionFile"></param>
+    /// <param name="path"></param>
     public RootSolutionFile(SolutionFile solutionFile, string path)
     {
         _solutionFile = solutionFile;
         _path = path;
     }
 
+    /// <summary>
+    ///
+    /// </summary>
     public string Path => _path;
-    public IEnumerable<SolutionProject> ProjectsInSolution => 
-        _solutionFile
-            .ProjectsInOrder
-            .Select(proj => 
-                new SolutionProject(
-                    _solutionFile,
-                    proj
-                )
-            );
 
-    public static RootSolutionFile FromSolutionFilePath(string solutionFilePath)
-    {
-        if (solutionFilePath.EndsWith(".sln", StringComparison.CurrentCultureIgnoreCase) || solutionFilePath.EndsWith(".slnx", StringComparison.CurrentCultureIgnoreCase))
-        {
-            var normalizedPath = System.IO.Path.GetFullPath(solutionFilePath);
-            return new(SolutionFile.Parse(normalizedPath), normalizedPath);
-        }
-        throw new ArgumentException($"Invalid solution file path: {solutionFilePath}. Must end with .sln or slnx");
-    }
+    /// <summary>
+    ///
+    /// </summary>
+    public IEnumerable<SolutionProject> ProjectsInSolution =>
+        _solutionFile.ProjectsInOrder.Select(proj => new SolutionProject(proj));
 }

@@ -75,6 +75,19 @@
           }
         }
       },
+      "JetBrains.Annotations/2024.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
       "Microsoft.Build/17.13.9": {
         "type": "package",
         "dependencies": {
@@ -1248,6 +1261,7 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "Cocona": "2.2.0",
+          "JetBrains.Annotations": "2024.3.0",
           "Microsoft.Build": "17.13.9",
           "YamlDotNet": "16.3.0"
         },
@@ -1256,6 +1270,19 @@
         },
         "runtime": {
           "bin/placeholder/Slnfgen.CLI.dll": {}
+        }
+      },
+      "Slnfgen.CLI.TestImplementations/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Slnfgen.CLI": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Slnfgen.CLI.TestImplementations.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Slnfgen.CLI.TestImplementations.dll": {}
         }
       }
     }
@@ -1389,6 +1416,29 @@
         "lib/netstandard2.1/FluentAssertions.dll",
         "lib/netstandard2.1/FluentAssertions.pdb",
         "lib/netstandard2.1/FluentAssertions.xml"
+      ]
+    },
+    "JetBrains.Annotations/2024.3.0": {
+      "sha512": "ox5pkeLQXjvJdyAB4b2sBYAlqZGLh3PjSnP1bQNVx72ONuTJ9+34/+Rq91Fc0dG29XG9RgZur9+NcP4riihTug==",
+      "type": "package",
+      "path": "jetbrains.annotations/2024.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "jetbrains.annotations.2024.3.0.nupkg.sha512",
+        "jetbrains.annotations.nuspec",
+        "lib/net20/JetBrains.Annotations.dll",
+        "lib/net20/JetBrains.Annotations.xml",
+        "lib/netstandard1.0/JetBrains.Annotations.deps.json",
+        "lib/netstandard1.0/JetBrains.Annotations.dll",
+        "lib/netstandard1.0/JetBrains.Annotations.xml",
+        "lib/netstandard2.0/JetBrains.Annotations.deps.json",
+        "lib/netstandard2.0/JetBrains.Annotations.dll",
+        "lib/netstandard2.0/JetBrains.Annotations.xml",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.dll",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.xml",
+        "readme.md"
       ]
     },
     "Microsoft.Build/17.13.9": {
@@ -2848,6 +2898,11 @@
       "type": "project",
       "path": "../../app/Slnfgen.CLI/Slnfgen.CLI.csproj",
       "msbuildProject": "../../app/Slnfgen.CLI/Slnfgen.CLI.csproj"
+    },
+    "Slnfgen.CLI.TestImplementations/1.0.0": {
+      "type": "project",
+      "path": "../Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj",
+      "msbuildProject": "../Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2855,6 +2910,7 @@
       "FluentAssertions >= 7.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "Slnfgen.CLI >= 1.0.0",
+      "Slnfgen.CLI.TestImplementations >= 1.0.0",
       "coverlet.collector >= 6.0.0",
       "xunit >= 2.9.3",
       "xunit.runner.visualstudio >= 3.0.1"
@@ -2874,12 +2930,8 @@
       "projectStyle": "PackageReference",
       "centralPackageVersionsManagementEnabled": true,
       "CentralPackageTransitivePinningEnabled": true,
-      "configFilePaths": [
-        "/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"
-      ],
-      "originalTargetFrameworks": [
-        "net9.0"
-      ],
+      "configFilePaths": ["/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"],
+      "originalTargetFrameworks": ["net9.0"],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -2889,15 +2941,16 @@
           "projectReferences": {
             "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/Slnfgen.CLI.csproj": {
               "projectPath": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/Slnfgen.CLI.csproj"
+            },
+            "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj": {
+              "projectPath": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj"
             }
           }
         }
       },
       "warningProperties": {
         "allWarningsAsErrors": true,
-        "warnAsError": [
-          "NU1605"
-        ]
+        "warnAsError": ["NU1605"]
       },
       "restoreAuditProperties": {
         "enableAudit": "true",
@@ -2940,6 +2993,7 @@
           "Cocona": "2.2.0",
           "coverlet.collector": "6.0.0",
           "FluentAssertions": "7.0.0",
+          "JetBrains.Annotations": "2024.3.0",
           "Microsoft.Build": "17.13.9",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Microsoft.NET.Test.Sdk": "17.8.0",
@@ -2972,6 +3026,10 @@
       "Cocona": {
         "include": "Runtime, Compile, Native, BuildTransitive",
         "version": "[2.2.0, )"
+      },
+      "JetBrains.Annotations": {
+        "include": "Runtime, Compile, Native, BuildTransitive",
+        "version": "[2024.3.0, )"
       },
       "Microsoft.Build": {
         "include": "Runtime, Compile, Native, BuildTransitive",

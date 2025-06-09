@@ -4,8 +4,8 @@ filterDefinitions:
     entrypoints:
       - ProjA/ProjA.csproj
       - ProjG/ProjG.csproj
-  
+
   - name: FilterTwo
     entrypoints:
-      - Projb/Projb.csproj
+      - Projb/Nested/ProjB.csproj
       - ProjD/ProjD.csproj

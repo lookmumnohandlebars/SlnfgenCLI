@@ -15,12 +15,8 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "CentralPackageTransitivePinningEnabled": true,
-        "configFilePaths": [
-          "/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net9.0"
-        ],
+        "configFilePaths": ["/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"],
+        "originalTargetFrameworks": ["net9.0"],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -32,9 +28,7 @@
         },
         "warningProperties": {
           "allWarningsAsErrors": true,
-          "warnAsError": [
-            "NU1605"
-          ]
+          "warnAsError": ["NU1605"]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
@@ -52,6 +46,11 @@
               "version": "[2.2.0, )",
               "versionCentrallyManaged": true
             },
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2024.3.0, )",
+              "versionCentrallyManaged": true
+            },
             "Microsoft.Build": {
               "target": "Package",
               "version": "[17.13.9, )",
@@ -67,6 +66,79 @@
             "Cocona": "2.2.0",
             "coverlet.collector": "6.0.0",
             "FluentAssertions": "7.0.0",
+            "JetBrains.Annotations": "2024.3.0",
+            "Microsoft.Build": "17.13.9",
+            "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+            "Microsoft.NET.Test.Sdk": "17.8.0",
+            "xunit": "2.9.3",
+            "xunit.runner.visualstudio": "3.0.1",
+            "YamlDotNet": "16.3.0"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj",
+        "projectName": "Slnfgen.CLI.TestImplementations",
+        "projectPath": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj",
+        "packagesPath": "/Users/alexanderjshall/.nuget/packages/",
+        "outputPath": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.TestImplementations/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "CentralPackageTransitivePinningEnabled": true,
+        "configFilePaths": ["/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"],
+        "originalTargetFrameworks": ["net9.0"],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/Slnfgen.CLI.csproj": {
+                "projectPath": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/Slnfgen.CLI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": ["NU1605"]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "centralPackageVersions": {
+            "Cocona": "2.2.0",
+            "coverlet.collector": "6.0.0",
+            "FluentAssertions": "7.0.0",
+            "JetBrains.Annotations": "2024.3.0",
             "Microsoft.Build": "17.13.9",
             "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
             "Microsoft.NET.Test.Sdk": "17.8.0",
@@ -105,12 +177,8 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "CentralPackageTransitivePinningEnabled": true,
-        "configFilePaths": [
-          "/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net9.0"
-        ],
+        "configFilePaths": ["/Users/alexanderjshall/.nuget/NuGet/NuGet.Config"],
+        "originalTargetFrameworks": ["net9.0"],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -120,15 +188,16 @@
             "projectReferences": {
               "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/Slnfgen.CLI.csproj": {
                 "projectPath": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/Slnfgen.CLI.csproj"
+              },
+              "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj": {
+                "projectPath": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/test/Slnfgen.CLI.TestImplementations/Slnfgen.CLI.TestImplementations.csproj"
               }
             }
           }
         },
         "warningProperties": {
           "allWarningsAsErrors": true,
-          "warnAsError": [
-            "NU1605"
-          ]
+          "warnAsError": ["NU1605"]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
@@ -171,6 +240,7 @@
             "Cocona": "2.2.0",
             "coverlet.collector": "6.0.0",
             "FluentAssertions": "7.0.0",
+            "JetBrains.Annotations": "2024.3.0",
             "Microsoft.Build": "17.13.9",
             "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
             "Microsoft.NET.Test.Sdk": "17.8.0",

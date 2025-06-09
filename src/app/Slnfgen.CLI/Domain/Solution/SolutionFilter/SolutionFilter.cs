@@ -9,15 +9,24 @@ namespace Slnfgen.Application.Features.SolutionFilter;
 [Serializable]
 public class SolutionFilter
 {
-    public SolutionFilter(string name, SolutionFilterSolutionDefinition solution)
+    /// <inheritdoc cref="SolutionFilter"/>
+    /// <param name="name"></param>
+    /// <param name="solution"></param>
+    public SolutionFilter(string name, SolutionFiltersManifestSolutionDefinition solution)
     {
         Name = name;
         Solution = solution;
     }
-    
+
+    /// <summary>
+    ///
+    /// </summary>
     [JsonIgnore]
     public string Name { get; set; }
 
+    /// <summary>
+    ///
+    /// </summary>
     [JsonPropertyName("solution")]
-    public SolutionFilterSolutionDefinition Solution { get; }
+    public SolutionFiltersManifestSolutionDefinition Solution { get; }
 }

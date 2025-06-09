@@ -1,0 +1,40 @@
+# To use this taskfile, please install from https://taskfile.dev/installation/
+# List all available commands with `task --list-all`
+version: "3"
+
+tasks:
+  build:
+    desc: Build the source code (.NET) with packages cached
+    vars:
+      CONFIGURATION: "Release" # Debug or Release
+    cmds:
+      - dotnet restore src/Slnfgen.slnx --locked-mode
+      - dotnet build src/Slnfgen.slnx --no-restore -c {{ .CONFIGURATION }}
+
+  test:
+    desc: Run all tests associated with the source code using the TRX logger and coverage collection
+    vars:
+      CONFIGURATION: "Release" # Debug or Release
+    cmds:
+      - dotnet test src/Slnfgen.slnx --no-restore --verbosity normal -c {{ .CONFIGURATION }} --logger "trx;LogFileName=test-results.trx" --collect:"XPlat Code Coverage"
+
+  pack:
+    desc: Pack the source code into a NuGet package
+    vars:
+      CONFIGURATION: "Release" # Debug or Release
+    deps:
+      - build
+    cmds:
+      - for: ["Slnfgen.CLI"]
+        cmd: dotnet pack src/lib/{{ .ITEM }} -c {{ .CONFIGURATION }} -o ./artifacts
+    generates:
+      - ./artifacts/Slnfgen.nupkg
+
+  publish:
+    desc: Publish the NuGet package to the NuGet repository
+    deps:
+      - pack
+    vars:
+      API_KEY: "Please provide your API key (API_KEY=abcd)"
+    cmds:
+      - dotnet nuget push ./artifacts/*.nupkg --api-key {{ .API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

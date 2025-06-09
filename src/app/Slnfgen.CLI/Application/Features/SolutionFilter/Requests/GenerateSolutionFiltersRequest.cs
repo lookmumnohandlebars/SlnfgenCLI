@@ -1,15 +1,49 @@
 namespace Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
 
-public class GenerateSolutionFiltersRequest
+/// <summary>
+///
+/// </summary>
+public class GenerateSolutionFiltersRequest : IEquatable<GenerateSolutionFiltersRequest>
 {
-    public GenerateSolutionFiltersRequest(string solutionFilePath, string filtersConfigFilePath, string outputDirectory)
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="filtersConfigFilePath"></param>
+    /// <param name="outputDirectory"></param>
+    public GenerateSolutionFiltersRequest(string filtersConfigFilePath, string outputDirectory)
     {
-        SolutionFilePath = solutionFilePath;
         FiltersConfigFilePath = filtersConfigFilePath;
         OutputDirectory = outputDirectory;
     }
 
-    public string SolutionFilePath { get; set; }
+    /// <summary>
+    ///
+    /// </summary>
     public string FiltersConfigFilePath { get; set; }
+
+    /// <summary>
+    ///
+    /// </summary>
     public string OutputDirectory { get; set; }
+
+    /// <inheritdoc />
+    public bool Equals(GenerateSolutionFiltersRequest? other)
+    {
+        if (other is null)
+            return false;
+        return FiltersConfigFilePath == other.FiltersConfigFilePath && OutputDirectory == other.OutputDirectory;
+    }
+
+    /// <inheritdoc />
+    public override bool Equals(object? obj)
+    {
+        if (obj is null)
+            return false;
+        if (obj.GetType() != GetType())
+            return false;
+        return Equals((GenerateSolutionFiltersRequest)obj);
+    }
+
+    /// <inheritdoc />
+    public override int GetHashCode() => HashCode.Combine(FiltersConfigFilePath, OutputDirectory);
 }

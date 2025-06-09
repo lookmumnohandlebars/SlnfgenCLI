@@ -7,5 +7,5 @@ FilterDefinitions:
 
   - name: FilterTwo
     entrypoints:
-      - Projb/Projb.csproj
+      - Projb/Nested/ProjB.csproj
       - ProjD/ProjD.csproj

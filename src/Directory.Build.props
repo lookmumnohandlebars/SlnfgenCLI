@@ -6,7 +6,7 @@
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/lookmumnohandlebars/slnfgencli</RepositoryUrl>
     </PropertyGroup>

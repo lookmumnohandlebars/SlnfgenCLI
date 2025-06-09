@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "JWeCYOSXGLA=",
+  "dgSpecHash": "1c4ysCT3fvc=",
   "success": true,
   "projectFilePath": "/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/Slnfgen.CLI.csproj",
   "expectedPackageFiles": [
     "/Users/alexanderjshall/.nuget/packages/cocona/2.2.0/cocona.2.2.0.nupkg.sha512",
     "/Users/alexanderjshall/.nuget/packages/cocona.core/2.2.0/cocona.core.2.2.0.nupkg.sha512",
+    "/Users/alexanderjshall/.nuget/packages/jetbrains.annotations/2024.3.0/jetbrains.annotations.2024.3.0.nupkg.sha512",
     "/Users/alexanderjshall/.nuget/packages/microsoft.build/17.13.9/microsoft.build.17.13.9.nupkg.sha512",
     "/Users/alexanderjshall/.nuget/packages/microsoft.build.framework/17.13.9/microsoft.build.framework.17.13.9.nupkg.sha512",
     "/Users/alexanderjshall/.nuget/packages/microsoft.extensions.configuration/6.0.0/microsoft.extensions.configuration.6.0.0.nupkg.sha512",
