@@ -25,9 +25,14 @@ mono_crash.*
 
 # Build results
 [Dd]ebug/
+**/[Dd]ebug/
 [Dd]ebugPublic/
+**/[Dd]ebugPublic/
 [Rr]elease/
+**/[Rr]elease/
 [Rr]eleases/
+[Nn]upkg/
+**/[Nn]upkg/
 x64/
 x86/
 [Ww][Ii][Nn]32/
@@ -407,8 +412,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-.idea
+.idea/
+**/.idea/
 !**/CSharpierPlugin.xml
+rider.project.model.nuget.info
 
 ##
 ## Visual studio for Mac
