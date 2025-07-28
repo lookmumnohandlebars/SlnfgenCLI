@@ -1,10 +1,8 @@
-name: 🏗️ Setup Required Dependencies
-
 env:
   HUSKY: 0
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -14,10 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout
+        uses: actions/checkout@v2
 
       - name: Set Up Dependencies
         uses: ./.github/actions/setup-dependencies
 
       - name: Build, Test and Pack
-        uses: ./.github/actions/setup-dependencies
+        uses: ./.github/actions/build-test-pack
+
+      - name: Publish
+        uses: ./.github/actions/publish
+        with:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

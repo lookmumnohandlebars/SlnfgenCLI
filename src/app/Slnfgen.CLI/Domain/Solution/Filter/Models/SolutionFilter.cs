@@ -38,6 +38,8 @@ public class SolutionFilter
     /// </summary>
     public string GetFileName()
     {
+        if (string.IsNullOrEmpty(Name))
+            throw new InvalidOperationException("Name must not be empty");
         return $"{Name}.{FileExtension}";
     }
 }

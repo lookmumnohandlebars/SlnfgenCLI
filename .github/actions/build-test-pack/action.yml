@@ -1,0 +1,16 @@
+name: Build, Test & Pack
+description: "A composite action to set up .NET and run build and test tasks."
+runs:
+  using: "composite"
+  steps:
+    - name: Build
+      shell: bash
+      run: task ci:build
+
+    - name: Test
+      shell: bash
+      run: task ci:test
+
+    - name: Pack
+      shell: bash
+      run: task ci:pack

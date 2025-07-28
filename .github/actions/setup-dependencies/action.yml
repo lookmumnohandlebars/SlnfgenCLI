@@ -1,0 +1,27 @@
+name: 🏗️ Set Up Dependencies
+description: "Composite action to set up all base dependencies for the repo."
+inputs:
+  GITHUB_TOKEN:
+    description: "The GitHub PAT token passed from the parent workflow"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet
+      with:
+        dotnet-version: "9.0.x"
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+
+    - name: Install Task
+      uses: arduino/setup-task@v2
+      with:
+        version: 3.x
+        repo-token: ${{ inputs.GITHUB_TOKEN }}
+
+    - name: Check Compatibility
+      shell: bash
+      run: |
+        task compatible

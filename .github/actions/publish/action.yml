@@ -1,0 +1,27 @@
+name: Publish To NuGet Feeds
+description: "A composite action to publish .NET packages to NuGet feeds."
+inputs:
+  NUGET_API_KEY:
+    description: "The NuGet API key for publishing packages"
+    required: true
+  GITHUB_TOKEN:
+    description: "The GitHub PAT token passed from the parent workflow"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Release
+      id: release
+      uses: google-github-actions/release-please-action@v4
+      with:
+        version-file: ".config/.release-please-manifest.json"
+        config-file: ".config/release-please-config.json"
+
+    - name: Re-pack with Version
+      shell: bash
+      run: task ci:pack
+
+    - name: Publish
+      shell: bash
+      run: |
+        task ci:publish --vars API_KEY=${{ inputs.NUGET_API_KEY }} GITHUB_TOKEN=${{ inputs.GITHUB_TOKEN }}

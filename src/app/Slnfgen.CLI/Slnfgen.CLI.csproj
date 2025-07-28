@@ -6,6 +6,7 @@
         <ToolCommandName>slnfgen</ToolCommandName>
         <PackageOutputPath>./nupkg</PackageOutputPath>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>0.0.1</Version>
 
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -23,7 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="nupkg\Slnfgen.CLI.1.0.0.nupkg" />
         <None Remove="nupkg\**" />
     </ItemGroup>
 

@@ -1,0 +1,19 @@
+{
+  "packages": {
+    ".": {
+      "package-name": "slnfgen",
+      "release-type": "simple",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "README.md"
+        },
+        {
+          "type": "xml",
+          "path": "src/app/Slnfgen.CLI/Slnfgen.CLI.csproj",
+          "xpath": "//Project/PropertyGroup/Version"
+        }
+      ]
+    }
+  }
+}
