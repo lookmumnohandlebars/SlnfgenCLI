@@ -1,4 +1,4 @@
-name: Pull Request Workflow
+name: ⛙ Merge To Main
 
 on:
   pull_request:
@@ -7,21 +7,11 @@ on:
 
 jobs:
   test:
-    name:
+    name: "🧪 Build & Test"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet
-        with:
-          dotnet-version: "9.0.x"
-
-      - name: Install Task
-        uses: arduino/setup-task@v2
-        with:
-          version: 3.x
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build
+      - name: Build and Test
+        uses: ./.github/actions/hello-world-composite-action

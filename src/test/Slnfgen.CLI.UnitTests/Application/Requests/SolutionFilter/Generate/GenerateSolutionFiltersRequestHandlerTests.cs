@@ -12,7 +12,7 @@ namespace Slnfgen.CLI.UnitTests.Application.Requests.SolutionFilter.Generate;
 public class GenerateSolutionFiltersRequestHandlerTests
 {
     private GenerateSolutionFiltersRequestHandler _sut;
-    private FakeSolutionFilterWriter _fakeSolutionFilterWriter = new FakeSolutionFilterWriter();
+    private FakeSolutionFilterWriter _fakeSolutionFilterWriter = new();
 
     public GenerateSolutionFiltersRequestHandlerTests()
     {
@@ -48,6 +48,31 @@ public class GenerateSolutionFiltersRequestHandlerTests
                 @"ProjE\\ProjE.csproj",
                 @"ProjF\\ProjF.csproj",
                 @"ProjG\\ProjG.csproj"
+            );
+    }
+
+    [Fact]
+    public void Handle_ShouldGenerateSolutionFilters_ForLegacySolutionFormat()
+    {
+        // Arrange
+        var request = new GenerateSolutionFiltersRequest(Path.Combine("TestSolution", "monorepoLegacy.yml"), ".");
+
+        // Act
+        var response = _sut.Handle(request);
+
+        // Assert
+        response.Should().NotBeNull();
+        response.GeneratedFilters.Should().HaveCount(2);
+        var filterOne = _fakeSolutionFilterWriter.Store["./FilterOne"];
+        filterOne.Should().NotBeNull();
+        filterOne.Solution.Path.Should().Be(@"TestSolution\\TestSolutionLegacy.sln");
+        filterOne
+            .Solution.Projects.Should()
+            .BeEquivalentTo(
+                @"ProjA\\ProjA.csproj",
+                @"ProjC\\ProjC.csproj",
+                @"ProjE\\ProjE.csproj",
+                @"ProjF\\ProjF.csproj"
             );
     }
 }

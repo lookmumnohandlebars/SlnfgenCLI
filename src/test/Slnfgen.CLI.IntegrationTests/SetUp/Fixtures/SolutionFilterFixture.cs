@@ -43,7 +43,7 @@ public class SolutionFilterFixture : IDisposable
 
     private void WriteManifestFile(string directoryOfWork)
     {
-        var manifestWriter = new ConfigurationFileWriter(directoryOfWork);
+        var manifestWriter = new ManifestFileWriter(directoryOfWork);
         var filters = new SolutionFiltersManifest(
             "TestSolution.sln",
             [

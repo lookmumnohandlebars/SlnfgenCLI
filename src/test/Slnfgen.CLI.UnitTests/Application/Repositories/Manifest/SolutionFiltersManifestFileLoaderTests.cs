@@ -1,4 +1,5 @@
 using Slnfgen.Application.Domain.Filters;
+using Slnfgen.Application.Module.Common.Files.Exceptions;
 
 namespace Slnfgen.CLI.UnitTests.Domain.Filters;
 
@@ -67,8 +68,6 @@ public class SolutionFiltersManifestFileLoaderTests
     public void FromFile_should_throw_file_not_found_exception_if_valid_extension_with_no_file()
     {
         var filterFilePath = "invalidFile.yml";
-        File.Delete(filterFilePath);
-
         var act = () => _sut.Load(filterFilePath);
         act.Should().Throw<FileNotFoundException>();
     }
@@ -77,9 +76,15 @@ public class SolutionFiltersManifestFileLoaderTests
     public void FromFile_should_throw_file_not_found_exception_if_invalid_extension()
     {
         var filterFilePath = "monorepo.yiml";
-        File.Delete(filterFilePath);
-
         var act = () => _sut.Load(filterFilePath);
         act.Should().Throw<NotSupportedException>();
+    }
+
+    [Fact]
+    public void FromFile_should_throw_file_not_found_exception_if_invalid()
+    {
+        var filterFilePath = "invalidMonorepo.yml";
+        var act = () => _sut.Load(Path.Combine("TestSolution", filterFilePath));
+        act.Should().Throw<InvalidFileException>();
     }
 }

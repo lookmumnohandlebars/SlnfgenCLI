@@ -18,6 +18,7 @@
         <PackageReference Include="Microsoft.Build" />
         <PackageReference Include="Scrutor" />
         <PackageReference Include="Spectre.Console" />
+        <PackageReference Include="Throw" />
         <PackageReference Include="YamlDotNet" />
     </ItemGroup>
 

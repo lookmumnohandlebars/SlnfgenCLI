@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing" />
+        <PackageReference Include="Throw" />
         <PackageReference Include="xunit" />
         <PackageReference Include="FluentAssertions" />
         <PackageReference Include="coverlet.collector" />
@@ -31,6 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Content Include="TestSolution\InvalidSolution.sln" />
         <Content Include="TestSolution\ProjA\ProjA.csproj">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
@@ -71,5 +73,8 @@
         <Content Include="TestSolution\monorepoLegacy.yml">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+        <None Update="TestSolution\invalidMonorepo.yml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 </Project>

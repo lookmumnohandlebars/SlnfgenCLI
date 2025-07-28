@@ -1,4 +1,6 @@
 using System.Text.Json;
+using FluentValidation;
+using Slnfgen.Application.Module.Common.Files.Exceptions;
 using YamlDotNet.Serialization;
 
 namespace Slnfgen.Application.Domain.Filters;
@@ -38,9 +40,18 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
             .WithEnforceRequiredMembers()
             .Build();
 
-        return deserializer.Deserialize<SolutionFiltersManifest>(File.ReadAllText(filterFilePath))
-            ?? throw new Exception(
-                $"Failed to deserialize {filterFilePath}. Please check the formatting and path of the file"
+        try
+        {
+            return deserializer.Deserialize<SolutionFiltersManifest>(File.ReadAllText(filterFilePath))
+                ?? throw new Exception(
+                    $"Failed to deserialize {filterFilePath}. Please check the formatting and path of the file"
+                );
+        }
+        catch (YamlDotNet.Core.YamlException e)
+        {
+            throw new InvalidFileException(
+                $"Failed to deserialize {filterFilePath} due to YAML parsing error: {e.Message}"
             );
+        }
     }
 }

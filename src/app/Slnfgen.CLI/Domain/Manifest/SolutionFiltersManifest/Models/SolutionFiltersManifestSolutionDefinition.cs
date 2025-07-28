@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Throw;
 
 namespace Slnfgen.Application.Features.SolutionFilter;
 
@@ -12,8 +13,8 @@ public class SolutionFiltersManifestSolutionDefinition
     /// <param name="projects"></param>
     public SolutionFiltersManifestSolutionDefinition(string path, string[] projects)
     {
-        Path = FormatPathForJson(path);
-        Projects = projects.Select(FormatPathForJson).ToArray();
+        Path = FormatPathForJson(path.Throw().IfEmpty());
+        Projects = projects.Throw().IfContains(string.Empty).Value.Select(FormatPathForJson).ToArray();
     }
 
     /// <summary>

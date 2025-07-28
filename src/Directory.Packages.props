@@ -14,6 +14,7 @@
         <PackageVersion Include="Microsoft.Extensions.Diagnostics.Testing" Version="8.0.0" />
         <PackageVersion Include="Scrutor" Version="6.1.0" />
         <PackageVersion Include="Spectre.Console" Version="0.50.0" />
+        <PackageVersion Include="Throw" Version="1.4.0" />
         <PackageVersion Include="xunit" Version="2.9.3" />
         <PackageVersion Include="FluentAssertions" Version="7.0.0" />
         <PackageVersion Include="coverlet.collector" Version="6.0.0" />

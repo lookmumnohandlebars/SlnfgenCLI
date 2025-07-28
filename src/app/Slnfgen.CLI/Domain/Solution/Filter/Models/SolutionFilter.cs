@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Throw;
 
 namespace Slnfgen.Application.Features.SolutionFilter;
 
@@ -16,9 +17,9 @@ public class SolutionFilter
     /// <inheritdoc cref="SolutionFilter" />
     /// <param name="name"></param>
     /// <param name="solution"></param>
-    public SolutionFilter(string name, SolutionFiltersManifestSolutionDefinition solution)
+    public SolutionFilter(string? name, SolutionFiltersManifestSolutionDefinition solution)
     {
-        Name = name;
+        Name = name?.Throw("Name must not be empty").IfEmpty();
         Solution = solution;
     }
 

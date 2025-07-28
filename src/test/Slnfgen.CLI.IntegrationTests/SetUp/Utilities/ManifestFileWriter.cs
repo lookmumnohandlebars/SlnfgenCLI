@@ -4,7 +4,7 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace Slnfgen.CLI.IntegrationTests.Utilities;
 
-public class ConfigurationFileWriter
+public class ManifestFileWriter
 {
     private static readonly ISerializer Serializer = new SerializerBuilder()
         .WithNamingConvention(CamelCaseNamingConvention.Instance)
@@ -12,7 +12,7 @@ public class ConfigurationFileWriter
 
     private readonly string _directoryPath;
 
-    public ConfigurationFileWriter(string directoryPath)
+    public ManifestFileWriter(string directoryPath)
     {
         _directoryPath = directoryPath;
     }
