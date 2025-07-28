@@ -3,11 +3,11 @@ using Slnfgen.Application.Domain.Filters;
 namespace Slnfgen.CLI.IntegrationTests.Utilities.Fixtures;
 
 /// <summary>
-///     Fixture for setting up a test solution with multiple projects and dependencies required for solution filtering tests
+///     Fixture for setting up a test solution with multiple projects and dependencies required for solution filtering
+///     tests
 /// </summary>
 public class SolutionFilterFixture : IDisposable
 {
-    public string DirectoryOfWork { get; }
     private readonly DotnetCommandRunner _dotnetRunner;
 
     public SolutionFilterFixture()
@@ -18,7 +18,27 @@ public class SolutionFilterFixture : IDisposable
 
         var projectNames = CreateTestSolutionWithProjects().ToList();
         AddProjectDependencies(projectNames);
-        WriteManifestFile(directoryOfWork: DirectoryOfWork);
+        WriteManifestFile(DirectoryOfWork);
+    }
+
+    public string DirectoryOfWork { get; }
+
+    /// <summary>
+    ///     Cleans up the fixture by deleting the temporary directory and its contents.
+    /// </summary>
+    public void Dispose()
+    {
+        try
+        {
+            if (Directory.Exists(DirectoryOfWork))
+                // Delete all files and subdirectories
+                Directory.Delete(Path.Combine(DirectoryOfWork, ".."), true);
+        }
+        catch (Exception ex)
+        {
+            // Log or handle any cleanup errors
+            Console.WriteLine($"Error during cleanup: {ex.Message}");
+        }
     }
 
     private void WriteManifestFile(string directoryOfWork)
@@ -27,8 +47,11 @@ public class SolutionFilterFixture : IDisposable
         var filters = new SolutionFiltersManifest(
             "TestSolution.sln",
             [
-                new("FilterOne", ["Project1/Project1.csproj", "Project2/Project4.csproj"]),
-                new("FilterTwo", ["Project3/Project7.csproj"]),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterOne",
+                    ["Project1/Project1.csproj", "Project4/Project4.csproj"]
+                ),
+                new SolutionFiltersManifestFilterDefinition("FilterTwo", ["Project7/Project7.csproj"]),
             ]
         );
         manifestWriter.Write("monorepo.yml", filters);
@@ -66,31 +89,11 @@ public class SolutionFilterFixture : IDisposable
         _dotnetRunner.CreateNewSolution("TestSolution");
 
         // Create 10 projects and add them to the solution
-        for (int i = 1; i <= 10; i++)
+        for (var i = 1; i <= 10; i++)
         {
             var projectName = $"Project{i}";
             _dotnetRunner.CreateProjectAndAddToSolution(projectName);
             yield return projectName;
-        }
-    }
-
-    /// <summary>
-    ///     Cleans up the fixture by deleting the temporary directory and its contents.
-    /// </summary>
-    public void Dispose()
-    {
-        try
-        {
-            if (Directory.Exists(DirectoryOfWork))
-            {
-                // Delete all files and subdirectories
-                Directory.Delete(Path.Combine(DirectoryOfWork, ".."), recursive: true);
-            }
-        }
-        catch (Exception ex)
-        {
-            // Log or handle any cleanup errors
-            Console.WriteLine($"Error during cleanup: {ex.Message}");
         }
     }
 }

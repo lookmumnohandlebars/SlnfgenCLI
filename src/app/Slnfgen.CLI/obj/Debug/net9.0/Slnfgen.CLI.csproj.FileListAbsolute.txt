@@ -3,8 +3,10 @@
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Slnfgen.CLI.runtimeconfig.json
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Slnfgen.CLI.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Slnfgen.CLI.pdb
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Slnfgen.CLI.xml
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Cocona.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Cocona.Core.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/JetBrains.Annotations.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Microsoft.Build.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Microsoft.Build.Framework.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Microsoft.Extensions.Configuration.dll
@@ -55,9 +57,12 @@
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen..3660B910.Up2Date
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen.CLI.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/refint/Slnfgen.CLI.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen.CLI.xml
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen.CLI.pdb
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen.CLI.genruntimeconfig.cache
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/ref/Slnfgen.CLI.dll
-/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/JetBrains.Annotations.dll
-/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/obj/Debug/net9.0/Slnfgen.CLI.xml
-/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Slnfgen.CLI.xml
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/FluentValidation.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Scrutor.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/Spectre.Console.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/README.md

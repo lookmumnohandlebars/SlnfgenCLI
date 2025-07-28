@@ -24,9 +24,7 @@ public class DotnetCommandRunner
         RunCommand("new", "classlib", "-o", projectName);
 
         if (!Directory.Exists(projectPath))
-        {
             throw new DirectoryNotFoundException($"Project directory was not created at: {projectPath}");
-        }
 
         // Add it to the solution
         RunCommand("sln", "add", projectName);
@@ -64,10 +62,8 @@ public class DotnetCommandRunner
         Console.WriteLine($"Output: {output}");
 
         if (process.ExitCode != 0)
-        {
             throw new Exception(
                 $"dotnet command '{commandLine}' failed with exit code {process.ExitCode}.\nError: {error}\nOutput: {output}"
             );
-        }
     }
 }

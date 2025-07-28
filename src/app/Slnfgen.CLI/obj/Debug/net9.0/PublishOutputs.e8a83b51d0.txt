@@ -1,10 +1,12 @@
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/README.md
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.deps.json
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.runtimeconfig.json
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Slnfgen.CLI.pdb
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Cocona.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Cocona.Core.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/FluentValidation.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/JetBrains.Annotations.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Build.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Build.Framework.dll
@@ -18,6 +20,7 @@
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Configuration.UserSecrets.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.DependencyInjection.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.DependencyModel.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.FileProviders.Abstractions.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.FileProviders.Physical.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.FileSystemGlobbing.dll
@@ -35,6 +38,8 @@
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.Extensions.Primitives.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.NET.StringTools.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Microsoft.VisualStudio.SolutionPersistence.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Scrutor.dll
+/Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/Spectre.Console.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/System.Configuration.ConfigurationManager.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/System.Diagnostics.EventLog.dll
 /Users/alexanderjshall/repos/LMNH/dotnet/open-source/SlnfgenCLI/src/app/Slnfgen.CLI/bin/Debug/net9.0/publish/System.Reflection.MetadataLoadContext.dll

@@ -24,4 +24,6 @@ tasks:
     desc: Pack the source code into a NuGet package
     cmds:
       - for: ["Slnfgen.CLI"]
-        cmd: dotnet pack src/lib/{{ .ITEM }}
+        cmd: dotnet pack src/app/{{ .ITEM }}/{{ .ITEM }}.csproj -c Debug -o ./artifacts
+    generates:
+      - ./artifacts/Slnfgen.CLI.nupkg

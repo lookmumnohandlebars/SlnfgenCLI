@@ -1,0 +1,31 @@
+name: Build & Test
+description: "A composite action to set up .NET and run build and test tasks."
+inputs:
+  dotnet-version:
+    description: "The version of .NET to install"
+    required: true
+    default: "6.0.x"
+  taskfile-path:
+    description: "Path to the Taskfile"
+    required: true
+    default: "./Taskfile.yml"
+runs:
+  using: "composite"
+  steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ inputs.dotnet-version }}
+
+    - name: Install Task
+      shell: bash
+      run: |
+        curl -sSL https://taskfile.dev/install.sh | sh
+
+    - name: Run Build
+      shell: bash
+      run: task -f ${{ inputs.taskfile-path }} build
+
+    - name: Run Tests
+      shell: bash
+      run: task -f ${{ inputs.taskfile-path }} test

@@ -6,11 +6,11 @@ namespace Slnfgen.CLI.IntegrationTests.Utilities;
 
 public class ConfigurationFileWriter
 {
-    private readonly string _directoryPath;
-
     private static readonly ISerializer Serializer = new SerializerBuilder()
         .WithNamingConvention(CamelCaseNamingConvention.Instance)
         .Build();
+
+    private readonly string _directoryPath;
 
     public ConfigurationFileWriter(string directoryPath)
     {

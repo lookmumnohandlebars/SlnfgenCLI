@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Slnfgen.CLI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c3f1d12f1ee887e711a18df0e54bedbafe5d960")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d326b2d1c9333a484359f8f800c17fca6c0d267c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Slnfgen.CLI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Slnfgen.CLI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,8 +4,8 @@ namespace Slnfgen.CLI.IntegrationTests;
 
 public class CliRunner
 {
-    private readonly string _workingDirectory;
     private readonly string _cliPath;
+    private readonly string _workingDirectory;
 
     public CliRunner(string workingDirectory, string cliPath)
     {
@@ -41,9 +41,7 @@ public class CliRunner
         var error = process.StandardError.ReadToEnd();
 
         if (!string.IsNullOrEmpty(error))
-        {
             throw new Exception(error);
-        }
 
         return output;
     }

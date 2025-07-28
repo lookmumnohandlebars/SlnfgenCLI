@@ -4,5 +4,5 @@
 dotnet husky run --group commit-msg --args "$1"
 
 echo
-echo Great work! 🥂
+echo "Great work! 🥂"
 echo
