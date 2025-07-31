@@ -16,7 +16,7 @@ public class SolutionFiltersManifestFileLoaderTests
                 new SolutionFiltersManifestFilterDefinition("FilterOne", ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]),
                 new SolutionFiltersManifestFilterDefinition(
                     "FilterTwo",
-                    ["Projb/Nested/ProjB.csproj", "ProjD/ProjD.csproj"]
+                    ["Projb/Nested/Projb.csproj", "ProjD/ProjD.csproj"]
                 ),
             ]
         );
@@ -53,7 +53,7 @@ public class SolutionFiltersManifestFileLoaderTests
                 new SolutionFiltersManifestFilterDefinition("FilterOne", ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]),
                 new SolutionFiltersManifestFilterDefinition(
                     "FilterTwo",
-                    ["Projb/Nested/ProjB.csproj", "ProjD/ProjD.csproj"]
+                    ["Projb/Nested/Projb.csproj", "ProjD/ProjD.csproj"]
                 ),
             ]
         );

@@ -45,7 +45,7 @@ public partial class SolutionFilterGeneratorTests
         filterTwo
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                @"Projb\\Nested\\ProjB.csproj",
+                @"Projb\\Nested\\Projb.csproj",
                 @"ProjD\\ProjD.csproj",
                 @"ProjF\\ProjF.csproj",
                 @"ProjG\\ProjG.csproj"
@@ -76,7 +76,7 @@ public partial class SolutionFilterGeneratorTests
         filterTwo
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                "Projb\\\\Nested\\\\ProjB.csproj",
+                "Projb\\\\Nested\\\\Projb.csproj",
                 "ProjD\\\\ProjD.csproj",
                 "ProjF\\\\ProjF.csproj",
                 "ProjG\\\\ProjG.csproj"

@@ -5,5 +5,5 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjA", "ProjA\ProjA.csproj", "{C2E0178A-3E4A-4C76-A2B7-B109B1A2E6BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projb", "Projb\Nested\ProjB.csproj", "{21D1E84C-D741-4F8D-950D-AC0FE6D656E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projb", "Projb\Nested\Projb.csproj", "{21D1E84C-D741-4F8D-950D-AC0FE6D656E8}"
 EndGlobal

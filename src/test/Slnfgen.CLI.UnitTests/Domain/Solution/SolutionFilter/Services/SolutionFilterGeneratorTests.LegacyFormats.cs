@@ -35,7 +35,7 @@ public partial class SolutionFilterGeneratorTests
             .SelectMany(filter => filter.Solution.Projects)
             .Should()
             .BeEquivalentTo(
-                @"Projb\\Nested\\ProjB.csproj",
+                @"Projb\\Nested\\Projb.csproj",
                 @"ProjD\\ProjD.csproj",
                 @"ProjF\\ProjF.csproj"
             // ProjG not in Legacy manifest, so not included
