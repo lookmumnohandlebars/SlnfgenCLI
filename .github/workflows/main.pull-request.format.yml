@@ -18,7 +18,9 @@ jobs:
         uses: ./.github/actions/setup-dependencies
 
       - name: Format
-        uses: ./.github/actions/format
+        uses: ./.github/actions/auto-format
 
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: "chore: auto-format"

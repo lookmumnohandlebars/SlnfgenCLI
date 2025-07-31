@@ -8,7 +8,7 @@ runs:
   using: "composite"
   steps:
     - name: Setup .NET
-      uses: actions/setup-dotnet
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: "9.0.x"
 
