@@ -12,9 +12,9 @@ runs:
   steps:
     - name: Release
       id: release
-      uses: google-github-actions/release-please-action@v4
+      uses: googleapis/release-please-action@v4
       with:
-        version-file: ".config/.release-please-manifest.json"
+        manifest-file: ".config/.release-please-manifest.json"
         config-file: ".config/release-please-config.json"
 
     - name: Re-pack with Version

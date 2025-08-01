@@ -26,7 +26,7 @@ tasks:
       - build
     cmds:
       - for: ["Slnfgen.CLI"]
-        cmd: dotnet pack src/app/{{ .ITEM }}/{{ .ITEM }}.csproj -c {{ .CONFIGURATION }} -o ./artifacts
+        cmd: dotnet pack src/app/{{ .ITEM }}/{{ .ITEM }}.csproj -c {{ .CONFIGURATION }} -o ./artifacts --no-build
     generates:
       - ./artifacts/Slnfgen.nupkg
 
