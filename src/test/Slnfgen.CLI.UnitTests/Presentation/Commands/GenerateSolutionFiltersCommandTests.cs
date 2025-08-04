@@ -6,6 +6,7 @@ using Slnfgen.CLI.TestImplementations.Application.Common;
 
 namespace Slnfgen.CLI.UnitTests.Presentation.Commands;
 
+[Collection(nameof(CommandCollection))]
 public class GenerateSolutionFiltersCommandTests
 {
     private readonly StubRequestHandler<
@@ -13,14 +14,14 @@ public class GenerateSolutionFiltersCommandTests
         GenerateSolutionFiltersResponse
     > _stubRequestHandler;
 
-    private readonly GenerateSolutionFiltersCommand _sut;
+    private readonly GenerateAllSolutionFiltersCommand _sut;
 
     public GenerateSolutionFiltersCommandTests()
     {
         _stubRequestHandler = new StubRequestHandler<GenerateSolutionFiltersRequest, GenerateSolutionFiltersResponse>();
-        _sut = new GenerateSolutionFiltersCommand(
+        _sut = new GenerateAllSolutionFiltersCommand(
             _stubRequestHandler,
-            new NullLogger<GenerateSolutionFiltersCommand>()
+            new NullLogger<GenerateAllSolutionFiltersCommand>()
         );
     }
 

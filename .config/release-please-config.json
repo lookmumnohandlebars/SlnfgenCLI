@@ -3,6 +3,7 @@
     ".": {
       "package-name": "slnfgen",
       "release-type": "simple",
+      "changelog-file": "docs/CHANGELOG.md",
       "extra-files": [
         {
           "type": "generic",

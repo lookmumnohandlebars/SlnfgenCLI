@@ -16,6 +16,7 @@ internal static class AppExtensions
 
     public static void AddAllCommands(this ICoconaCommandsBuilder app)
     {
-        app.AddCommands<GenerateSolutionFiltersCommand>();
+        app.AddCommands<GenerateAllSolutionFiltersCommand>();
+        app.AddCommands<GenerateOneSolutionFilterCommand>();
     }
 }

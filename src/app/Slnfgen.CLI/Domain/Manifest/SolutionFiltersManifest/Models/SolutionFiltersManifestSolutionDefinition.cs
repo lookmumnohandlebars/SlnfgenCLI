@@ -20,12 +20,13 @@ public class SolutionFiltersManifestSolutionDefinition
     /// <summary>
     /// </summary>
     [Required]
-    public string Path { get; set; }
+    public string Path { get; }
 
     /// <summary>
     /// </summary>
     [Required]
-    public string[] Projects { get; set; }
+    public string[] Projects { get; }
 
-    private string FormatPathForJson(string path) => path.Replace("/", "\\").Replace("\\", "\\\\");
+    private string FormatPathForJson(string path) => path.Replace("/", "\\\\");
+    // .Replace("\\", "\\\\");
 }

@@ -9,18 +9,18 @@ namespace Slnfgen.CLI.Presentation.Commands;
 /// <summary>
 ///     The command to generate solution filters from a filters manifest file
 /// </summary>
-public class GenerateSolutionFiltersCommand
+public class GenerateAllSolutionFiltersCommand
 {
     private readonly IRequestHandler<GenerateSolutionFiltersRequest, GenerateSolutionFiltersResponse> _handler;
 
-    private readonly ILogger<GenerateSolutionFiltersCommand> _logger;
+    private readonly ILogger<GenerateAllSolutionFiltersCommand> _logger;
 
-    /// <inheritdoc cref="GenerateSolutionFiltersCommand" />
+    /// <inheritdoc cref="GenerateAllSolutionFiltersCommand" />
     /// <param name="handler">The request Handler</param>
     /// <param name="logger">Logger for </param>
-    public GenerateSolutionFiltersCommand(
+    public GenerateAllSolutionFiltersCommand(
         IRequestHandler<GenerateSolutionFiltersRequest, GenerateSolutionFiltersResponse> handler,
-        ILogger<GenerateSolutionFiltersCommand> logger
+        ILogger<GenerateAllSolutionFiltersCommand> logger
     )
     {
         _handler = handler;
@@ -33,16 +33,20 @@ public class GenerateSolutionFiltersCommand
     /// <param name="filtersFile"></param>
     /// <param name="outDirectory"></param>
     /// <param name="dryRun"></param>
-    [Command("gen", Description = "Generates .NET solution filters (.slnf) based on the provided manifest file")]
+    [Command("all", Description = "Generates .NET solution filters (.slnf) based on the provided manifest file")]
     public void Execute(
-        [Option('f', Description = "Relative path to Filters file which defines the desired filters")]
+        [Argument("manifest file", Description = "Relative path to Filters file which defines the desired filters")]
             string filtersFile,
-        [Option('o', Description = "The output directory for the generated solution filters. Defaults to '.'")]
+        [Option(
+            "output",
+            ['o'],
+            Description = "The output directory for the generated solution filters. Defaults to '.'"
+        )]
             string outDirectory = ".",
         [Option("dryrun", Description = "Enable verbose output")] bool dryRun = false
     )
     {
-        var res = AnsiConsole
+        AnsiConsole
             .Status()
             .Start(
                 "Generating solution filters...",

@@ -5,12 +5,12 @@ using Slnfgen.CLI.IntegrationTests.Utilities.Fixtures;
 
 namespace Slnfgen.CLI.IntegrationTests.Presentation.Commands;
 
-public class GenerateSolutionFiltersCommandTests : IClassFixture<SolutionFilterFixture>
+public class GenerateAllSolutionFiltersCommandTests : IClassFixture<SolutionFilterFixture>
 {
     private readonly CliRunner _cliRunner;
     private readonly SolutionFilterFixture _solutionFilterFixture;
 
-    public GenerateSolutionFiltersCommandTests(SolutionFilterFixture fixture)
+    public GenerateAllSolutionFiltersCommandTests(SolutionFilterFixture fixture)
     {
         _cliRunner = new CliRunner();
         _solutionFilterFixture = fixture;
@@ -20,15 +20,14 @@ public class GenerateSolutionFiltersCommandTests : IClassFixture<SolutionFilterF
     {
         var monrepoFilePath = Path.Combine(_solutionFilterFixture.DirectoryOfWork, "monorepo.yml");
         return _cliRunner.Run(
-            "gen",
-            "-f",
+            "all",
             monrepoFilePath,
             "-o",
             Path.Combine(_solutionFilterFixture.DirectoryOfWork, outputDirectory)
         );
     }
 
-    [Fact(Skip = "still getting to work")]
+    [Fact]
     public void GenCommand_ShouldGenerateMultipleSolutionFilterFiles()
     {
         ExecuteCommand();
@@ -59,7 +58,7 @@ public class GenerateSolutionFiltersCommandTests : IClassFixture<SolutionFilterF
             );
     }
 
-    [Fact(Skip = "still getting to work")]
+    [Fact]
     public void GenCommand_ShouldGenerateMultipleSolutionFilterFilesWithinSubdirectory()
     {
         ExecuteCommand("SubService");
@@ -67,17 +66,17 @@ public class GenerateSolutionFiltersCommandTests : IClassFixture<SolutionFilterF
             Path.Combine(_solutionFilterFixture.DirectoryOfWork, "SubService", "FilterOne.slnf")
         );
 
-        slnFilterOne.Solution.Path.Should().Be("..\\\\TestSolution.sln");
+        slnFilterOne.Solution.Path.Should().Be(@"..\\TestSolution.sln");
         slnFilterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(
                 [
-                    "Project1\\\\Project1.csproj",
-                    "Project2\\\\Project2.csproj",
-                    "Project3\\\\Project3.csproj",
-                    "Project4\\\\Project4.csproj",
-                    "Project5\\\\Project5.csproj",
-                    "Project6\\\\Project6.csproj",
+                    @"Project1\\Project1.csproj", // because it's relative to the solution
+                    @"Project2\\Project2.csproj",
+                    @"Project3\\Project3.csproj",
+                    @"Project4\\Project4.csproj",
+                    @"Project5\\Project5.csproj",
+                    @"Project6\\Project6.csproj",
                 ],
                 "Solution filter should contain the correct projects"
             );
