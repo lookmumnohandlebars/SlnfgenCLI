@@ -34,9 +34,7 @@ public class GenerateTargetSolutionFiltersCommandTests : IClassFixture<SolutionF
     public void GenCommand_ShouldGenerateMultipleSolutionFilterFiles()
     {
         ExecuteCommand();
-        var slnFilterOne = LoadSolutionFilter(
-            Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterOne.slnf")
-        );
+        var slnFilterOne = LoadSolutionFilter(Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterOne.slnf"));
 
         slnFilterOne.Solution.Path.Should().Be("TestSolution.sln");
         slnFilterOne
