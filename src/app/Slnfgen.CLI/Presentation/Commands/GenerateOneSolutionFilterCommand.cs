@@ -10,10 +10,7 @@ namespace Slnfgen.CLI.Presentation.Commands;
 /// </summary>
 public class GenerateOneSolutionFilterCommand
 {
-    private readonly IRequestHandler<
-        GenerateSolutionFilterRequest,
-        GenerateSolutionFilterResponse
-    > _handler;
+    private readonly IRequestHandler<GenerateSolutionFilterRequest, GenerateSolutionFilterResponse> _handler;
 
     /// <inheritdoc cref="GenerateAllSolutionFiltersCommand" />
     /// <param name="handler">The request Handler</param>
@@ -31,15 +28,9 @@ public class GenerateOneSolutionFilterCommand
     /// <param name="targetFilterName"></param>
     /// <param name="outDirectory"></param>
     /// <param name="dryRun"></param>
-    [Command(
-        "target",
-        Description = "Generates .NET solution filters (.slnf) based on the provided manifest file"
-    )]
+    [Command("target", Description = "Generates .NET solution filters (.slnf) based on the provided manifest file")]
     public void Execute(
-        [Argument(
-            "manifest file",
-            Description = "Relative path to Filters file which defines the desired filters"
-        )]
+        [Argument("manifest file", Description = "Relative path to Filters file which defines the desired filters")]
             string filtersFile,
         [Option(
             "target",
@@ -69,12 +60,7 @@ public class GenerateOneSolutionFilterCommand
                     ctx.SpinnerStyle(Style.Parse("blue"));
 
                     return _handler.Handle(
-                        new GenerateSolutionFilterRequest(
-                            filtersFile,
-                            targetFilterName,
-                            outDirectory,
-                            dryRun
-                        )
+                        new GenerateSolutionFilterRequest(filtersFile, targetFilterName, outDirectory, dryRun)
                     );
                 }
             );
