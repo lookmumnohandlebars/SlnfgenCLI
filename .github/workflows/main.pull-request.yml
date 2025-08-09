@@ -1,11 +1,11 @@
-name: 🏗️ Setup Required Dependencies
+name: 🧪 Build and Test PR
 
 env:
   HUSKY: 0
 
 on:
-  pull_request:
-    branches:
+  push:
+    branches-ignore:
       - main
 
 jobs:
