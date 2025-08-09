@@ -47,11 +47,7 @@ public class SolutionFiltersManifestFileLoaderTests
             ]
         );
 
-        var filterFilePath = Path.Combine(
-            Directory.GetCurrentDirectory(),
-            "TestSolution",
-            "monorepo.json"
-        );
+        var filterFilePath = Path.Combine(Directory.GetCurrentDirectory(), "TestSolution", "monorepo.json");
         var filtersDefinition = _sut.Load(filterFilePath);
 
         filtersDefinition.Should().BeEquivalentTo(expected);

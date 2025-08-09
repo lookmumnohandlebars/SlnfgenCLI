@@ -26,22 +26,13 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
 
         if (filterFilePath.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase))
         {
-            var opts = new JsonSerializerOptions(JsonSerializerOptions.Default)
-            {
-                PropertyNameCaseInsensitive = true,
-            };
+            var opts = new JsonSerializerOptions(JsonSerializerOptions.Default) { PropertyNameCaseInsensitive = true };
             var manifestFromJson =
-                JsonSerializer.Deserialize<SolutionFiltersManifest>(
-                    File.ReadAllBytes(normalizedPath),
-                    opts
-                )
+                JsonSerializer.Deserialize<SolutionFiltersManifest>(File.ReadAllBytes(normalizedPath), opts)
                 ?? throw new Exception(
                     $"Failed to deserialize {filterFilePath}. Please check the formatting and path of the file"
                 );
-            return new SolutionFiltersManifest(
-                manifestFromJson.SolutionFile,
-                manifestFromJson.FilterDefinitions
-            );
+            return new SolutionFiltersManifest(manifestFromJson.SolutionFile, manifestFromJson.FilterDefinitions);
         }
 
         if (
@@ -66,10 +57,7 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
                     $"Failed to deserialize {filterFilePath}. Please check the formatting and path of the file"
                 );
             // Hack to ensure the constructor is called with the correct parameters
-            return new SolutionFiltersManifest(
-                manifestFromYaml.SolutionFile,
-                manifestFromYaml.FilterDefinitions
-            );
+            return new SolutionFiltersManifest(manifestFromYaml.SolutionFile, manifestFromYaml.FilterDefinitions);
         }
         catch (YamlDotNet.Core.YamlException e)
         {
