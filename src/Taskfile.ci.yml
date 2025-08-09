@@ -21,7 +21,7 @@ tasks:
     vars:
       CONFIGURATION: "Release" # Debug or Release
     cmds:
-      - dotnet test src/Slnfgen.slnx --no-restore --verbosity quiet -c {{ .CONFIGURATION }} --logger "trx;LogFileName=test-results.trx" --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+      - dotnet test src/Slnfgen.slnx --no-restore --verbosity normal -c {{ .CONFIGURATION }} --logger "trx;LogFileName=test-results.trx" --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
 
   pack:
     desc: Pack the source code into a NuGet package

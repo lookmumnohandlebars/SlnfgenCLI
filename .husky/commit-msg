@@ -3,6 +3,6 @@
 
 dotnet husky run --group commit-msg --args "$1"
 
-echo
+echo ================
 echo "Great work! 🥂"
-echo
+echo ================
