@@ -21,8 +21,8 @@ public class SolutionFiltersManifestFilterDefinition
     /// <param name="entrypoints"></param>
     public SolutionFiltersManifestFilterDefinition(string name, string[] entrypoints)
     {
-        Name = name;
-        Entrypoints = entrypoints;
+        Name = NormalizePath(name);
+        Entrypoints = entrypoints.Select(NormalizePath).ToArray();
     }
 
     /// <summary>
@@ -36,4 +36,9 @@ public class SolutionFiltersManifestFilterDefinition
     [Required]
     [MinLength(1)]
     public string[] Entrypoints { get; set; }
+
+    private string NormalizePath(string entrypoint)
+    {
+        return Path.Combine(entrypoint);
+    }
 }
