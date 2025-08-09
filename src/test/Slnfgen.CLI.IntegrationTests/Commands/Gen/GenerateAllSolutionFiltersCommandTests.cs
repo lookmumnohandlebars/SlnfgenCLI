@@ -2,9 +2,11 @@ using System.Text.Json;
 using FluentAssertions;
 using Slnfgen.Application.Features.SolutionFilter;
 using Slnfgen.CLI.IntegrationTests.Utilities.Fixtures;
+using Slnfgen.CLI.Presentation.Commands;
 
 namespace Slnfgen.CLI.IntegrationTests.Presentation.Commands;
 
+[Collection(nameof(GenerateAllSolutionFiltersCommand))]
 public class GenerateAllSolutionFiltersCommandTests : IClassFixture<SolutionFilterFixture>
 {
     private readonly CliRunner _cliRunner;
@@ -31,7 +33,9 @@ public class GenerateAllSolutionFiltersCommandTests : IClassFixture<SolutionFilt
     public void GenCommand_ShouldGenerateMultipleSolutionFilterFiles()
     {
         ExecuteCommand();
-        var slnFilterOne = LoadSolutionFilter(Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterOne.slnf"));
+        var slnFilterOne = LoadSolutionFilter(
+            Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterOne.slnf")
+        );
 
         slnFilterOne.Solution.Path.Should().Be("TestSolution.sln");
         slnFilterOne
@@ -48,12 +52,18 @@ public class GenerateAllSolutionFiltersCommandTests : IClassFixture<SolutionFilt
                 "Solution filter should contain the correct projects"
             );
 
-        var slnFilterTwo = LoadSolutionFilter(Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterTwo.slnf"));
+        var slnFilterTwo = LoadSolutionFilter(
+            Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterTwo.slnf")
+        );
         slnFilterTwo.Solution.Path.Should().Be("TestSolution.sln");
         slnFilterTwo
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                [@"Project7\\Project7.csproj", @"Project8\\Project8.csproj", @"Project9\\Project9.csproj"],
+                [
+                    @"Project7\\Project7.csproj",
+                    @"Project8\\Project8.csproj",
+                    @"Project9\\Project9.csproj",
+                ],
                 "Solution filter should contain the correct projects"
             );
     }
@@ -88,7 +98,11 @@ public class GenerateAllSolutionFiltersCommandTests : IClassFixture<SolutionFilt
         slnFilterTwo
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                ["Project7\\\\Project7.csproj", "Project8\\\\Project8.csproj", "Project9\\\\Project9.csproj"],
+                [
+                    "Project7\\\\Project7.csproj",
+                    "Project8\\\\Project8.csproj",
+                    "Project9\\\\Project9.csproj",
+                ],
                 "Solution filter should contain the correct projects"
             );
     }

@@ -23,7 +23,7 @@ public class SolutionProject : IEquatable<SolutionProject>
 
     /// <summary>
     /// </summary>
-    public string Path => _projectInSolution.RelativePath;
+    public string Path => NormalizedPath(_projectInSolution.RelativePath);
 
     /// <inheritdoc />
     public bool Equals(SolutionProject? other)
@@ -48,5 +48,10 @@ public class SolutionProject : IEquatable<SolutionProject>
     public override int GetHashCode()
     {
         return HashCode.Combine(_projectInSolution.AbsolutePath);
+    }
+
+    private string NormalizedPath(string path)
+    {
+        return path.Replace('/', '\\');
     }
 }
