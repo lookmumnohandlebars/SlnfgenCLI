@@ -80,7 +80,7 @@ public class SolutionFilterGenerator
 
         return new SolutionFilter.SolutionFilter(
             filterDefinition.Name,
-            new SolutionFiltersManifestSolutionDefinition(
+            new SolutionFiltersSolutionDefinition(
                 relativePathToSolutionFile,
                 entryPointProjectsWithDependencies.ToArray()
             )
