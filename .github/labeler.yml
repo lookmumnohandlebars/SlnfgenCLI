@@ -1,0 +1,38 @@
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.yml"
+          - docs/**
+
+src:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/**
+          - src/**
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/test/**
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .config/**
+          - .husky/**
+          - .vscode/**
+          - "**/*.yml"
+
+pipeline:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**
+
+release:
+  - base-branch: "^release"
+
+bug:
+  - "bug"
+
+feature:
+  - "feature"

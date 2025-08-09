@@ -2,8 +2,8 @@ env:
   HUSKY: 0
 
 on:
-  pull_request:
-    branches:
+  push:
+    branches-ignore:
       - main
 
 jobs:
@@ -16,6 +16,9 @@ jobs:
 
       - name: Set Up Dependencies
         uses: ./.github/actions/setup-dependencies
+
+      - name: Restore Tools
+        run: task ci:restore-tools
 
       - name: Format
         uses: ./.github/actions/auto-format

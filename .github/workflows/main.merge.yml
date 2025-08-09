@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  test:
+  build-and-test:
     name: "🧪 Build & Test"
     runs-on: ubuntu-latest
     permissions:
@@ -23,9 +23,28 @@ jobs:
 
       - name: Build, Test and Pack
         uses: ./.github/actions/build-test-pack
+        with:
+          PUBLISH_COVERAGE: "true"
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Publish
         uses: ./.github/actions/publish
         with:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  security-checks:
+    name: "🔒 Security Checks"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Security Checks
+        uses: ./.github/actions/security
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

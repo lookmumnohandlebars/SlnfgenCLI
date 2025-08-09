@@ -12,7 +12,7 @@ public class SolutionFilterFileWriter : ISolutionFilterWriter
     /// <param name="outDirectory"></param>
     public string Write(SolutionFilter.SolutionFilter solutionFilter, string outDirectory)
     {
-        var json = JsonSerializer.Serialize(solutionFilter);
+        var json = JsonSerializer.Serialize(solutionFilter, new JsonSerializerOptions());
         // Todo: Assert string paths don't have forward slashes or single backslashes
         var filePath = Path.Combine(outDirectory, solutionFilter.GetFileName());
         if (!Directory.Exists(outDirectory))

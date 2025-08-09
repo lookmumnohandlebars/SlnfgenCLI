@@ -17,7 +17,7 @@ public class SolutionFilter
     /// <inheritdoc cref="SolutionFilter" />
     /// <param name="name"></param>
     /// <param name="solution"></param>
-    public SolutionFilter(string? name, SolutionFiltersManifestSolutionDefinition solution)
+    public SolutionFilter(string? name, SolutionFiltersSolutionDefinition solution)
     {
         Name = name?.Throw("Name must not be empty").IfEmpty();
         Solution = solution;
@@ -31,7 +31,7 @@ public class SolutionFilter
     /// <summary>
     /// </summary>
     [JsonPropertyName("solution")]
-    public SolutionFiltersManifestSolutionDefinition Solution { get; }
+    public SolutionFiltersSolutionDefinition Solution { get; }
 
     /// <summary>
     ///     The name of the solution filter file, which is the name of the filter with the `.slnf` extension

@@ -17,7 +17,7 @@ tasks:
     vars:
       FILES: "."
     cmds:
-      - dotnet csharpier {{.FILES}} --config-path .config/csharpierrc.json
+      - dotnet csharpier format {{.FILES}} --config-path "./.config/csharpierrc.json"
 
   # task fmt:prettier
   # task fmt:prettier FILES=${staged}

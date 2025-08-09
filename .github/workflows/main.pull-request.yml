@@ -1,23 +1,26 @@
-name: 🏗️ Setup Required Dependencies
+name: 🧪 Build and Test PR
 
 env:
   HUSKY: 0
 
 on:
-  pull_request:
-    branches:
+  push:
+    branches-ignore:
       - main
 
 jobs:
   test:
     name: "🧪 Build & Test"
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
-        uses: actions/checkout
+        uses: actions/checkout@v4
 
       - name: Set Up Dependencies
         uses: ./.github/actions/setup-dependencies
 
       - name: Build, Test and Pack
-        uses: ./.github/actions/setup-dependencies
+        uses: ./.github/actions/build-test-pack

@@ -1,5 +1,16 @@
 name: Build, Test & Pack
 description: "A composite action to set up .NET and run build and test tasks."
+
+inputs:
+  PUBLISH_COVERAGE:
+    description: "Publish coverage reports. Set to 'true' to enable."
+    required: false
+    default: "false"
+  CODECOV_TOKEN:
+    description: "Codecov token for publishing coverage reports. Define if PUBLISH_COVERAGE is true."
+    required: false
+    default: ""
+
 runs:
   using: "composite"
   steps:
@@ -14,3 +25,11 @@ runs:
     - name: Pack
       shell: bash
       run: task ci:pack
+
+    - name: Publish coverage report
+      if: ${{ inputs.PUBLISH_COVERAGE == 'true' }}
+      uses: codecov/codecov-action@v5
+      with:
+        files: ./**/coverage.cobertura.xml
+        fail_ci_if_error: false
+        token: ${{ inputs.CODECOV_TOKEN }}

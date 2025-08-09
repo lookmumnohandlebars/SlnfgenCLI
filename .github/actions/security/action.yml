@@ -1,0 +1,17 @@
+name: Security Checks
+description: "A composite action to run security checks on the repository."
+
+inputs:
+  SNYK_TOKEN:
+    description: "The Snyk API token for security checks"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run Snyk to check for vulnerabilities
+      uses: snyk/actions/dotnet@master
+      env:
+        SNYK_TOKEN: ${{ inputs.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high

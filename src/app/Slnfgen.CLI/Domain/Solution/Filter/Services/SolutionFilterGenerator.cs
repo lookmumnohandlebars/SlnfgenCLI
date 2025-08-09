@@ -2,6 +2,7 @@ using Slnfgen.Application.Domain.Filters;
 using Slnfgen.Application.Domain.Project;
 using Slnfgen.Application.Features.Solution;
 using Slnfgen.Application.Features.SolutionFilter;
+using Slnfgen.CLI;
 using Slnfgen.CLI.Domain.Solution.Project.Repositories;
 
 namespace Slnfgen.Application.Features.SolutionFilterGeneration;
@@ -33,6 +34,33 @@ public class SolutionFilterGenerator
             GenerateFromFilterDefinition(solutionFile, filterDefinition, targetDirectory)
         );
 
+    /// <summary>
+    ///     Generates a solution filter for a specific target defined in the manifest file.
+    /// </summary>
+    /// <param name="targetSolutionFilterName"></param>
+    /// <param name="solutionFile"></param>
+    /// <param name="filters"></param>
+    /// <param name="targetDirectory"></param>
+    /// <returns></returns>
+    /// <exception cref="BadRequestException"></exception>
+    public SolutionFilter.SolutionFilter GenerateForTarget(
+        string targetSolutionFilterName,
+        RootSolutionFile solutionFile,
+        SolutionFiltersManifest filters,
+        string targetDirectory
+    )
+    {
+        var targetFilter = filters.FilterDefinitions.SingleOrDefault(filterDefinition =>
+            filterDefinition.Name.Equals(targetSolutionFilterName, StringComparison.OrdinalIgnoreCase)
+        );
+        if (targetFilter == null)
+        {
+            throw new BadRequestException("Filter definition in manifest file: " + targetSolutionFilterName);
+        }
+
+        return GenerateFromFilterDefinition(solutionFile, targetFilter, targetDirectory);
+    }
+
     #region Internal
 
     private SolutionFilter.SolutionFilter GenerateFromFilterDefinition(
@@ -52,7 +80,7 @@ public class SolutionFilterGenerator
 
         return new SolutionFilter.SolutionFilter(
             filterDefinition.Name,
-            new SolutionFiltersManifestSolutionDefinition(
+            new SolutionFiltersSolutionDefinition(
                 relativePathToSolutionFile,
                 entryPointProjectsWithDependencies.ToArray()
             )

@@ -5,30 +5,32 @@ using Slnfgen.CLI.IntegrationTests.Utilities.Fixtures;
 
 namespace Slnfgen.CLI.IntegrationTests.Presentation.Commands;
 
-public class GenerateSolutionFiltersCommandTests : IClassFixture<SolutionFilterFixture>
+[Collection(nameof(GenerateSolutionFiltersTestCollection))]
+public class GenerateTargetSolutionFiltersCommandTests : IClassFixture<SolutionFilterFixture>
 {
     private readonly CliRunner _cliRunner;
     private readonly SolutionFilterFixture _solutionFilterFixture;
 
-    public GenerateSolutionFiltersCommandTests(SolutionFilterFixture fixture)
+    public GenerateTargetSolutionFiltersCommandTests(SolutionFilterFixture fixture)
     {
         _cliRunner = new CliRunner();
         _solutionFilterFixture = fixture;
     }
 
-    private string ExecuteCommand(string outputDirectory = "")
+    private string ExecuteCommand(string outputDirectory = "", string target = "FilterOne")
     {
         var monrepoFilePath = Path.Combine(_solutionFilterFixture.DirectoryOfWork, "monorepo.yml");
         return _cliRunner.Run(
-            "gen",
-            "-f",
+            "target",
             monrepoFilePath,
+            "-t",
+            target,
             "-o",
             Path.Combine(_solutionFilterFixture.DirectoryOfWork, outputDirectory)
         );
     }
 
-    [Fact(Skip = "still getting to work")]
+    [Fact]
     public void GenCommand_ShouldGenerateMultipleSolutionFilterFiles()
     {
         ExecuteCommand();
@@ -48,18 +50,9 @@ public class GenerateSolutionFiltersCommandTests : IClassFixture<SolutionFilterF
                 ],
                 "Solution filter should contain the correct projects"
             );
-
-        var slnFilterTwo = LoadSolutionFilter(Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterTwo.slnf"));
-        slnFilterTwo.Solution.Path.Should().Be("TestSolution.sln");
-        slnFilterTwo
-            .Solution.Projects.Should()
-            .BeEquivalentTo(
-                [@"Project7\\Project7.csproj", @"Project8\\Project8.csproj", @"Project9\\Project9.csproj"],
-                "Solution filter should contain the correct projects"
-            );
     }
 
-    [Fact(Skip = "still getting to work")]
+    [Fact]
     public void GenCommand_ShouldGenerateMultipleSolutionFilterFilesWithinSubdirectory()
     {
         ExecuteCommand("SubService");
@@ -67,29 +60,18 @@ public class GenerateSolutionFiltersCommandTests : IClassFixture<SolutionFilterF
             Path.Combine(_solutionFilterFixture.DirectoryOfWork, "SubService", "FilterOne.slnf")
         );
 
-        slnFilterOne.Solution.Path.Should().Be("..\\\\TestSolution.sln");
+        slnFilterOne.Solution.Path.Should().Be(@"..\\TestSolution.sln");
         slnFilterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(
                 [
-                    "Project1\\\\Project1.csproj",
-                    "Project2\\\\Project2.csproj",
-                    "Project3\\\\Project3.csproj",
-                    "Project4\\\\Project4.csproj",
-                    "Project5\\\\Project5.csproj",
-                    "Project6\\\\Project6.csproj",
+                    @"Project1\\Project1.csproj", // because it's relative to the solution
+                    @"Project2\\Project2.csproj",
+                    @"Project3\\Project3.csproj",
+                    @"Project4\\Project4.csproj",
+                    @"Project5\\Project5.csproj",
+                    @"Project6\\Project6.csproj",
                 ],
-                "Solution filter should contain the correct projects"
-            );
-
-        var slnFilterTwo = LoadSolutionFilter(
-            Path.Combine(_solutionFilterFixture.DirectoryOfWork, "SubService", "FilterTwo.slnf")
-        );
-        slnFilterTwo.Solution.Path.Should().Be("..\\\\TestSolution.sln");
-        slnFilterTwo
-            .Solution.Projects.Should()
-            .BeEquivalentTo(
-                ["Project7\\\\Project7.csproj", "Project8\\\\Project8.csproj", "Project9\\\\Project9.csproj"],
                 "Solution filter should contain the correct projects"
             );
     }

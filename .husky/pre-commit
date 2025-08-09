@@ -3,3 +3,7 @@
 
 dotnet husky run --group pre-commit
 git add .
+
+echo ===========================
+echo "Everything Looks Good! 🥂"
+echo ===========================

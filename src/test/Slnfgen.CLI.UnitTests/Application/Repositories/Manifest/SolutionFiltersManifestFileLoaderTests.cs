@@ -13,10 +13,13 @@ public class SolutionFiltersManifestFileLoaderTests
         var expected = new SolutionFiltersManifest(
             "TestSolution.slnx",
             [
-                new SolutionFiltersManifestFilterDefinition("FilterOne", ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterOne",
+                    [@"ProjA\ProjA.csproj", @"ProjG\ProjG.csproj"]
+                ),
                 new SolutionFiltersManifestFilterDefinition(
                     "FilterTwo",
-                    ["Projb/Nested/Projb.csproj", "ProjD/ProjD.csproj"]
+                    [@"Projb\Nested\Projb.csproj", @"ProjD\ProjD.csproj"]
                 ),
             ]
         );
@@ -33,8 +36,14 @@ public class SolutionFiltersManifestFileLoaderTests
         var expected = new SolutionFiltersManifest(
             "TestSolution.slnx",
             [
-                new SolutionFiltersManifestFilterDefinition("FilterOne", ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]),
-                new SolutionFiltersManifestFilterDefinition("FilterTwo", ["Projb/Projb.csproj", "ProjD/ProjD.csproj"]),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterOne",
+                    [@"ProjA/ProjA.csproj", @"ProjG/ProjG.csproj"]
+                ),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterTwo",
+                    [@"Projb/Projb.csproj", @"ProjD/ProjD.csproj"]
+                ),
             ]
         );
 
@@ -50,10 +59,13 @@ public class SolutionFiltersManifestFileLoaderTests
         var expected = new SolutionFiltersManifest(
             "TestSolutionLegacy.sln",
             [
-                new SolutionFiltersManifestFilterDefinition("FilterOne", ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterOne",
+                    [@"ProjA/ProjA.csproj", @"ProjG/ProjG.csproj"]
+                ),
                 new SolutionFiltersManifestFilterDefinition(
                     "FilterTwo",
-                    ["Projb/Nested/Projb.csproj", "ProjD/ProjD.csproj"]
+                    [@"Projb/Nested/Projb.csproj", @"ProjD/ProjD.csproj"]
                 ),
             ]
         );
@@ -69,7 +81,7 @@ public class SolutionFiltersManifestFileLoaderTests
     {
         var filterFilePath = "invalidFile.yml";
         var act = () => _sut.Load(filterFilePath);
-        act.Should().Throw<FileNotFoundException>();
+        act.Should().Throw<BadRequestException>();
     }
 
     [Fact]
@@ -77,7 +89,7 @@ public class SolutionFiltersManifestFileLoaderTests
     {
         var filterFilePath = "monorepo.yiml";
         var act = () => _sut.Load(filterFilePath);
-        act.Should().Throw<NotSupportedException>();
+        act.Should().Throw<BadRequestException>();
     }
 
     [Fact]

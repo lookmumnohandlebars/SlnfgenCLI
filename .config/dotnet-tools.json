@@ -5,16 +5,16 @@
     "husky": {
       "version": "0.7.2",
       "commands": ["husky"],
-      "rollForward": false
+      "rollForward": true
     },
     "jetbrains.resharper.globaltools": {
       "version": "2024.3.3",
       "commands": ["jb"],
-      "rollForward": false
+      "rollForward": true
     },
-    "docfx": {
-      "version": "2.78.2",
-      "commands": ["docfx"],
+    "csharpier": {
+      "version": "1.1.1",
+      "commands": ["csharpier"],
       "rollForward": false
     }
   }

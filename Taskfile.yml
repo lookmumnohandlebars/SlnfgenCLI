@@ -11,7 +11,7 @@ includes:
 
 tasks:
   compatible:
-    desc: gives a quick check to see if the machine is compatible with the project
+    desc: Gives a quick check to see if the machine is compatible with the project
     silent: true
     cmds:
       - echo "❓ Will this machine work? Let's find out... ❓"

@@ -15,7 +15,7 @@ public class SolutionFilterFileWriterTests : IDisposable
         // Arrange
         var solutionFilter = new SolutionFilter(
             "TestFilter",
-            new SolutionFiltersManifestSolutionDefinition("MySolution.sln", new string[] { "Myproj.csproj" })
+            new SolutionFiltersSolutionDefinition("MySolution.sln", new string[] { "Myproj.csproj" })
         );
 
         // Act
@@ -32,7 +32,7 @@ public class SolutionFilterFileWriterTests : IDisposable
         // Arrange
         var solutionFilter = new SolutionFilter(
             "TestFilter",
-            new SolutionFiltersManifestSolutionDefinition("MySolution.sln", new string[] { "Myproj.csproj" })
+            new SolutionFiltersSolutionDefinition("MySolution.sln", new string[] { "Myproj.csproj" })
         );
 
         // Act

@@ -18,10 +18,13 @@ runs:
         config-file: ".config/release-please-config.json"
 
     - name: Re-pack with Version
+      if: steps.release.outputs.releases_created == 'true'
+      id: repack
       shell: bash
       run: task ci:pack
 
     - name: Publish
+      if: steps.release.outputs.releases_created == 'true'
       shell: bash
       run: |
-        task ci:publish --vars API_KEY=${{ inputs.NUGET_API_KEY }} GITHUB_TOKEN=${{ inputs.GITHUB_TOKEN }}
+        task ci:publish API_KEY=${{ inputs.NUGET_API_KEY }} GITHUB_TOKEN=${{ inputs.GITHUB_TOKEN }}

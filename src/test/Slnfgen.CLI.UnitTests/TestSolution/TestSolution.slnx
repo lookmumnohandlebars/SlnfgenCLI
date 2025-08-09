@@ -1,9 +1,9 @@
 <Solution>
-    <Project Path="ProjA/ProjA.csproj"/>
-    <Project Path="Projb/Nested/Projb.csproj"/>
-    <Project Path="ProjC/ProjC.csproj"/>
-    <Project Path="ProjD/ProjD.csproj"/>
-    <Project Path="ProjE/ProjE.csproj"/>
-    <Project Path="ProjF/ProjF.csproj"/>
-    <Project Path="ProjG/ProjG.csproj"/>
+  <Project Path="ProjA/ProjA.csproj" />
+  <Project Path="Projb/Nested/Projb.csproj" />
+  <Project Path="ProjC/ProjC.csproj" />
+  <Project Path="ProjD/ProjD.csproj" />
+  <Project Path="ProjE/ProjE.csproj" />
+  <Project Path="ProjF/ProjF.csproj" />
+  <Project Path="ProjG/ProjG.csproj" />
 </Solution>
