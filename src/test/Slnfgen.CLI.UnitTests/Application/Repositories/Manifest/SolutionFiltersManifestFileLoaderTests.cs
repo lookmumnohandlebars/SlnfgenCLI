@@ -69,7 +69,7 @@ public class SolutionFiltersManifestFileLoaderTests
     {
         var filterFilePath = "invalidFile.yml";
         var act = () => _sut.Load(filterFilePath);
-        act.Should().Throw<FileNotFoundException>();
+        act.Should().Throw<BadRequestException>();
     }
 
     [Fact]
@@ -77,7 +77,7 @@ public class SolutionFiltersManifestFileLoaderTests
     {
         var filterFilePath = "monorepo.yiml";
         var act = () => _sut.Load(filterFilePath);
-        act.Should().Throw<NotSupportedException>();
+        act.Should().Throw<BadRequestException>();
     }
 
     [Fact]

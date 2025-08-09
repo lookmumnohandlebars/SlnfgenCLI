@@ -38,7 +38,7 @@ public class GenerateSolutionFiltersRequestHandlerTests
         response.Should().NotBeNull();
         response.GeneratedFilters.Should().HaveCount(2);
 
-        var filterOne = _fakeSolutionFilterWriter.Store["./FilterOne"];
+        var filterOne = _fakeSolutionFilterWriter.Store[Path.Combine(".", "FilterOne")];
         filterOne.Should().NotBeNull();
         filterOne.Solution.Path.Should().Be(@"TestSolution\\TestSolution.slnx");
         filterOne
@@ -51,7 +51,7 @@ public class GenerateSolutionFiltersRequestHandlerTests
                 @"ProjG\\ProjG.csproj"
             );
 
-        var filterTwo = _fakeSolutionFilterWriter.Store["./FilterTwo"];
+        var filterTwo = _fakeSolutionFilterWriter.Store[Path.Combine(".", "FilterTwo")];
         filterOne.Should().NotBeNull();
         filterOne.Solution.Path.Should().Be(@"TestSolution\\TestSolution.slnx");
         filterOne
@@ -77,7 +77,7 @@ public class GenerateSolutionFiltersRequestHandlerTests
         // Assert
         response.Should().NotBeNull();
         response.GeneratedFilters.Should().HaveCount(2);
-        var filterOne = _fakeSolutionFilterWriter.Store["./FilterOne"];
+        var filterOne = _fakeSolutionFilterWriter.Store[Path.Combine(".", "FilterOne")];
         filterOne.Should().NotBeNull();
         filterOne.Solution.Path.Should().Be(@"TestSolution\\TestSolutionLegacy.sln");
         filterOne
