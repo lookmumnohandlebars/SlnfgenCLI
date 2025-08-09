@@ -26,11 +26,22 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
 
         if (filterFilePath.EndsWith(".json", StringComparison.CurrentCultureIgnoreCase))
         {
-            var opts = new JsonSerializerOptions(JsonSerializerOptions.Default) { PropertyNameCaseInsensitive = true };
-            return JsonSerializer.Deserialize<SolutionFiltersManifest>(File.ReadAllBytes(normalizedPath), opts)
+            var opts = new JsonSerializerOptions(JsonSerializerOptions.Default)
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+            var manifestFromJson =
+                JsonSerializer.Deserialize<SolutionFiltersManifest>(
+                    File.ReadAllBytes(normalizedPath),
+                    opts
+                )
                 ?? throw new Exception(
                     $"Failed to deserialize {filterFilePath}. Please check the formatting and path of the file"
                 );
+            return new SolutionFiltersManifest(
+                manifestFromJson.SolutionFile,
+                manifestFromJson.FilterDefinitions
+            );
         }
 
         if (
@@ -49,15 +60,22 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
 
         try
         {
-            return deserializer.Deserialize<SolutionFiltersManifest>(File.ReadAllText(filterFilePath))
+            var manifestFromYaml =
+                deserializer.Deserialize<SolutionFiltersManifest>(File.ReadAllText(filterFilePath))
                 ?? throw new Exception(
                     $"Failed to deserialize {filterFilePath}. Please check the formatting and path of the file"
                 );
+            // Hack to ensure the constructor is called with the correct parameters
+            return new SolutionFiltersManifest(
+                manifestFromYaml.SolutionFile,
+                manifestFromYaml.FilterDefinitions
+            );
         }
         catch (YamlDotNet.Core.YamlException e)
         {
             throw new InvalidFileException(
-                $"Failed to deserialize {filterFilePath} due to YAML parsing error: {e.Message}"
+                $"Failed to deserialize {filterFilePath} due to YAML parsing error: {e.Message}",
+                e
             );
         }
     }

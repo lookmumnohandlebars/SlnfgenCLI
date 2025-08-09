@@ -16,7 +16,10 @@ public class SolutionFiltersManifest
     }
 
     /// <inheritdoc cref="SolutionFiltersManifest" />
-    public SolutionFiltersManifest(string solutionFile, List<SolutionFiltersManifestFilterDefinition> filterDefinitions)
+    public SolutionFiltersManifest(
+        string solutionFile,
+        List<SolutionFiltersManifestFilterDefinition> filterDefinitions
+    )
     {
         SolutionFile = solutionFile;
         FilterDefinitions = filterDefinitions;

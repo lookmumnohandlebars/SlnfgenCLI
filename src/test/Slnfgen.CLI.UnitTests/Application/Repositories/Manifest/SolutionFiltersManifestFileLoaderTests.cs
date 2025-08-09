@@ -13,10 +13,13 @@ public class SolutionFiltersManifestFileLoaderTests
         var expected = new SolutionFiltersManifest(
             "TestSolution.slnx",
             [
-                new SolutionFiltersManifestFilterDefinition("FilterOne", ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterOne",
+                    [@"ProjA\ProjA.csproj", @"ProjG\ProjG.csproj"]
+                ),
                 new SolutionFiltersManifestFilterDefinition(
                     "FilterTwo",
-                    ["Projb/Nested/Projb.csproj", "ProjD/ProjD.csproj"]
+                    [@"Projb\Nested\Projb.csproj", @"ProjD\ProjD.csproj"]
                 ),
             ]
         );
@@ -33,12 +36,22 @@ public class SolutionFiltersManifestFileLoaderTests
         var expected = new SolutionFiltersManifest(
             "TestSolution.slnx",
             [
-                new SolutionFiltersManifestFilterDefinition("FilterOne", ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]),
-                new SolutionFiltersManifestFilterDefinition("FilterTwo", ["Projb/Projb.csproj", "ProjD/ProjD.csproj"]),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterOne",
+                    [@"ProjA/ProjA.csproj", @"ProjG/ProjG.csproj"]
+                ),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterTwo",
+                    [@"Projb/Projb.csproj", @"ProjD/ProjD.csproj"]
+                ),
             ]
         );
 
-        var filterFilePath = Path.Combine(Directory.GetCurrentDirectory(), "TestSolution", "monorepo.json");
+        var filterFilePath = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "TestSolution",
+            "monorepo.json"
+        );
         var filtersDefinition = _sut.Load(filterFilePath);
 
         filtersDefinition.Should().BeEquivalentTo(expected);
@@ -50,10 +63,13 @@ public class SolutionFiltersManifestFileLoaderTests
         var expected = new SolutionFiltersManifest(
             "TestSolutionLegacy.sln",
             [
-                new SolutionFiltersManifestFilterDefinition("FilterOne", ["ProjA/ProjA.csproj", "ProjG/ProjG.csproj"]),
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterOne",
+                    [@"ProjA/ProjA.csproj", @"ProjG/ProjG.csproj"]
+                ),
                 new SolutionFiltersManifestFilterDefinition(
                     "FilterTwo",
-                    ["Projb/Nested/Projb.csproj", "ProjD/ProjD.csproj"]
+                    [@"Projb/Nested/Projb.csproj", @"ProjD/ProjD.csproj"]
                 ),
             ]
         );
