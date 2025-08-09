@@ -16,16 +16,16 @@ runs:
       shell: bash
       env:
         CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
-      run: task fmt:refactor --vars FILES={{ env.CHANGED_FILES }}
+      run: task fmt:refactor FILES={{ env.CHANGED_FILES }}
 
     - name: Format (Prettier)
       shell: bash
       env:
         CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
-      run: task fmt:prettier --vars FILES={{ env.CHANGED_FILES }}
+      run: task fmt:prettier FILES={{ env.CHANGED_FILES }}
 
     - name: Format (CSharpier)
       shell: bash
       env:
         CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
-      run: task fmt:csharp --vars FILES={{ env.CHANGED_FILES }}
+      run: task fmt:csharp FILES={{ env.CHANGED_FILES }}
