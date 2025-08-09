@@ -5,6 +5,7 @@ using Slnfgen.CLI.IntegrationTests.Utilities.Fixtures;
 
 namespace Slnfgen.CLI.IntegrationTests.Presentation.Commands;
 
+[Collection(nameof(GenerateSolutionFiltersTestCollection))]
 public class GenerateTargetSolutionFiltersCommandTests : IClassFixture<SolutionFilterFixture>
 {
     private readonly CliRunner _cliRunner;
@@ -33,7 +34,9 @@ public class GenerateTargetSolutionFiltersCommandTests : IClassFixture<SolutionF
     public void GenCommand_ShouldGenerateMultipleSolutionFilterFiles()
     {
         ExecuteCommand();
-        var slnFilterOne = LoadSolutionFilter(Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterOne.slnf"));
+        var slnFilterOne = LoadSolutionFilter(
+            Path.Combine(_solutionFilterFixture.DirectoryOfWork, "FilterOne.slnf")
+        );
 
         slnFilterOne.Solution.Path.Should().Be("TestSolution.sln");
         slnFilterOne

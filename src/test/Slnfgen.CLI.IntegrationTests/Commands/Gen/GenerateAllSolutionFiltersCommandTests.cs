@@ -6,7 +6,7 @@ using Slnfgen.CLI.Presentation.Commands;
 
 namespace Slnfgen.CLI.IntegrationTests.Presentation.Commands;
 
-[Collection(nameof(GenerateAllSolutionFiltersCommand))]
+[Collection(nameof(GenerateSolutionFiltersTestCollection))]
 public class GenerateAllSolutionFiltersCommandTests : IClassFixture<SolutionFilterFixture>
 {
     private readonly CliRunner _cliRunner;
