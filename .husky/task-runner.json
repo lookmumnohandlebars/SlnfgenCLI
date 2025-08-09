@@ -65,9 +65,9 @@
       "include": ["src/**"]
     },
     {
-      "name": "Task | Clean",
+      "name": "Task | rebuild",
       "command": "task",
-      "args": ["clean"],
+      "args": ["rebuild"],
       "group": "post-checkout",
       "include": ["src/**"]
     }
