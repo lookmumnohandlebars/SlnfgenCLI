@@ -11,6 +11,11 @@ tasks:
       - dotnet restore src/Slnfgen.slnx --locked-mode
       - dotnet build src/Slnfgen.slnx --no-restore -c {{ .CONFIGURATION }}
 
+  restore-tools:
+    desc: Restore the .NET tools required for the project
+    cmds:
+      - dotnet tool restore --tool-manifest .config/dotnet-tools.json
+
   test:
     desc: Run all tests associated with the source code using the TRX logger and coverage collection
     vars:
