@@ -6,10 +6,11 @@
         <ToolCommandName>slnfgen</ToolCommandName>
         <PackageOutputPath>./nupkg</PackageOutputPath>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>0.0.1</Version>
+        <Version>0.0.2</Version>
 
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>slnfgen-icon.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -40,6 +41,12 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Include="..\..\..\docs\assets\slnfgen-icon.png" Pack="true" Visible="false" PackagePath="" />
+        <Content Include="..\..\..\docs\assets\slnfgen-logo.png" Pack="true" PackagePath="\">
+            <Link>docs/assets/slnfgen-logo.png</Link>
+            <Pack>true</Pack>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
         <Content Include="..\..\..\README.md" Pack="true" PackagePath="\">
             <Link>README.md</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/manifest.schema.json",
+  "title": "Manifest",
+  "description": "A manifest file for generating solution filters",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["solutionFile", "filterDefinitions"],
+  "properties": {
+    "solutionFile": {
+      "type": "string",
+      "description": "The version of the manifest schema"
+    },
+    "filterDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "entrypoints": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["name", "entrypoints"]
+      }
+    }
+  }
+}
