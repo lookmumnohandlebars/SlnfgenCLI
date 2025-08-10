@@ -4,7 +4,8 @@
 
 [![NuGet](https://img.shields.io/nuget/v/Slnfgen.CLI.svg)](https://www.nuget.org/packages/Slnfgen.CLI) [![NuGet Downloads](https://img.shields.io/nuget/dt/slnfgen.cli)](https://www.nuget.org/packages/Slnfgen.CLI)
 [![Build](https://github.com/lookmumnohandlebars/slnfgencli/actions/workflows/main.merge.yml/badge.svg)](https://github.com/lookmumnohandlebars/slnfgencli/actions/workflows/main.merge.yml)
-[![GitHub Stars](https://img.shields.io/github/stars/lookmumnohandlebars/slnfgencli.svg)](https://github.com/lookmumnohandlebars/slnfgencli/stargazers) [![GitHub license](https://img.shields.io/github/license/lookmumnohandlebars/slnfgencli)](https://github.com/amantinband/throw/blob/main/LICENSE) ![Dependabot](https://img.shields.io/badge/dependabot-enabled-025E8C?logo=dependabot&logoColor=white) ![CodeQL](https://github.com/lookmumnohandlebars/slnfgencli/actions/workflows/github-code-scanning/codeql/badge.svg)
+[![GitHub Stars](https://img.shields.io/github/stars/lookmumnohandlebars/slnfgencli.svg)](https://github.com/lookmumnohandlebars/slnfgencli/stargazers) [![GitHub license](https://img.shields.io/github/license/lookmumnohandlebars/slnfgencli)](https://img.shields.io/github/license/lookmumnohandlebars/slnfgencli
+) ![Dependabot](https://img.shields.io/badge/dependabot-enabled-025E8C?logo=dependabot&logoColor=white) ![CodeQL](https://github.com/lookmumnohandlebars/slnfgencli/actions/workflows/github-code-scanning/codeql/badge.svg)
 
 ### 🎉 A tool for managing monorepos with automated solution filter generation 🎉
 
