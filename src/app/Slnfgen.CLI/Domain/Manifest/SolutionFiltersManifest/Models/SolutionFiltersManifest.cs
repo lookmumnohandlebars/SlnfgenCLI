@@ -1,6 +1,6 @@
 using Microsoft.Build.Framework;
 
-namespace Slnfgen.Application.Domain.Filters;
+namespace Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
 
 /// <summary>
 ///     The manifest definition for declaring solution filters belonging to a solution

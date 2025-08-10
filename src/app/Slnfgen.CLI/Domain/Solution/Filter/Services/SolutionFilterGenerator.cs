@@ -1,13 +1,14 @@
-using Slnfgen.Application.Domain.Filters;
-using Slnfgen.Application.Domain.Project;
-using Slnfgen.Application.Features.Solution;
-using Slnfgen.Application.Features.SolutionFilter;
-using Slnfgen.CLI;
+using Slnfgen.CLI.Application.Common.Requests.Validation;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
+using Slnfgen.CLI.Domain.Solution.File.Models;
+using Slnfgen.CLI.Domain.Solution.Filter.Models;
+using Slnfgen.CLI.Domain.Solution.Project.Models;
 using Slnfgen.CLI.Domain.Solution.Project.Repositories;
 
-namespace Slnfgen.Application.Features.SolutionFilterGeneration;
+namespace Slnfgen.CLI.Domain.Solution.Filter.Services;
 
 /// <summary>
+///
 /// </summary>
 public class SolutionFilterGenerator
 {
@@ -25,7 +26,7 @@ public class SolutionFilterGenerator
     /// <param name="filters"></param>
     /// <param name="targetDirectory"></param>
     /// <returns></returns>
-    public IEnumerable<SolutionFilter.SolutionFilter> GenerateMany(
+    public IEnumerable<SolutionFilter> GenerateMany(
         RootSolutionFile solutionFile,
         SolutionFiltersManifest filters,
         string targetDirectory
@@ -43,7 +44,7 @@ public class SolutionFilterGenerator
     /// <param name="targetDirectory"></param>
     /// <returns></returns>
     /// <exception cref="BadRequestException"></exception>
-    public SolutionFilter.SolutionFilter GenerateForTarget(
+    public SolutionFilter GenerateForTarget(
         string targetSolutionFilterName,
         RootSolutionFile solutionFile,
         SolutionFiltersManifest filters,
@@ -63,7 +64,7 @@ public class SolutionFilterGenerator
 
     #region Internal
 
-    private SolutionFilter.SolutionFilter GenerateFromFilterDefinition(
+    private SolutionFilter GenerateFromFilterDefinition(
         RootSolutionFile solutionFile,
         SolutionFiltersManifestFilterDefinition filterDefinition,
         string targetDirectory
@@ -78,7 +79,7 @@ public class SolutionFilterGenerator
             solutionFile.AbsolutePath
         );
 
-        return new SolutionFilter.SolutionFilter(
+        return new SolutionFilter(
             filterDefinition.Name,
             new SolutionFiltersSolutionDefinition(
                 relativePathToSolutionFile,

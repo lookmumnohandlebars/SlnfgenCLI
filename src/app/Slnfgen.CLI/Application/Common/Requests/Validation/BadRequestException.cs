@@ -1,4 +1,4 @@
-namespace Slnfgen.CLI;
+namespace Slnfgen.CLI.Application.Common.Requests.Validation;
 
 /// <summary>
 ///

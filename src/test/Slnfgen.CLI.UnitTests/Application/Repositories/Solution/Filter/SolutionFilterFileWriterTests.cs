@@ -1,5 +1,5 @@
-using Slnfgen.Application.Features.SolutionFilter;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
+using Slnfgen.CLI.Application.Repositories.Solution.Filter;
+using Slnfgen.CLI.Domain.Solution.Filter.Models;
 
 namespace Slnfgen.CLI.UnitTests.Application.Repositories.Solution.Filter;
 
@@ -52,7 +52,7 @@ public class SolutionFilterFileWriterTests : IDisposable
         {
             try
             {
-                File.Delete(file);
+                System.IO.File.Delete(file);
             }
             catch (Exception ex)
             {

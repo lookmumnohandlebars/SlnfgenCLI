@@ -1,17 +1,20 @@
 using Microsoft.Extensions.Logging;
-using Slnfgen.Application.Domain.Filters;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
-using Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
-using Slnfgen.CLI.Application.Services.SolutionFilter;
-using Slnfgen.CLI.Domain.Solution.File.Loader;
+using Slnfgen.CLI.Application.Common.Requests;
+using Slnfgen.CLI.Application.Requests.GenerateAll;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Repository;
+using Slnfgen.CLI.Domain.Solution.File.Repository;
+using Slnfgen.CLI.Domain.Solution.Filter.Repository;
+using Slnfgen.CLI.Domain.Solution.Filter.Services;
 
-namespace Slnfgen.CLI.Application.Requests.GenerateOne;
+namespace Slnfgen.CLI.Application.Requests.GenerateTarget;
 
 /// <summary>
-///
+///     Request handler for generating a Solution Filter file for a specific target defined in the manifest file.
+///     This handler processes the request to generate a solution filter based on the provided target,
+///     solution file, and filters configuration.
 /// </summary>
-public class GenerateSolutionFilterRequestHandler
-    : IRequestHandler<GenerateSolutionFilterRequest, GenerateSolutionFilterResponse>
+public class GenerateTargetSolutionFilterRequestHandler
+    : IRequestHandler<GenerateTargetSolutionFilterRequest, GenerateTargetSolutionFilterResponse>
 {
     private readonly ILogger<GenerateSolutionFiltersRequestHandler> _logger;
     private readonly SolutionFilterGenerator _solutionFilterGenerator;
@@ -20,7 +23,7 @@ public class GenerateSolutionFilterRequestHandler
     private readonly ISolutionFiltersManifestLoader _solutionManifestLoader;
 
     /// <inheritdoc cref="GenerateSolutionFiltersRequestHandler" />
-    public GenerateSolutionFilterRequestHandler(
+    public GenerateTargetSolutionFilterRequestHandler(
         SolutionFilterGenerator solutionFilterGenerator,
         ISolutionFilterWriter solutionFilterWriter,
         ISolutionFiltersManifestLoader solutionManifestLoader,
@@ -36,19 +39,20 @@ public class GenerateSolutionFilterRequestHandler
     }
 
     /// <summary>
+    ///     Handles the request to generate a solution filter for a specific target.
     /// </summary>
     /// <param name="request"></param>
-    public GenerateSolutionFilterResponse Handle(GenerateSolutionFilterRequest request)
+    public GenerateTargetSolutionFilterResponse Handle(GenerateTargetSolutionFilterRequest request)
     {
-        var filtersDefinition = _solutionManifestLoader.Load(request.FiltersConfigFilePath);
+        var filtersDefinition = _solutionManifestLoader.Load(request.ManifestFilePath);
         _logger.LogInformation(
             "Loaded filters file '{Path}' for Solution file '{SolutionFile}'",
-            request.FiltersConfigFilePath,
+            request.ManifestFilePath,
             filtersDefinition.SolutionFile
         );
 
         var solutionFilePath = Path.Combine(
-            Directory.GetParent(request.FiltersConfigFilePath)!.FullName,
+            Directory.GetParent(request.ManifestFilePath)!.FullName,
             filtersDefinition.SolutionFile
         );
         var solutionFile = _solutionLoader.Load(solutionFilePath);
@@ -64,8 +68,8 @@ public class GenerateSolutionFilterRequestHandler
         _logger.LogInformation("Generated solution filter: {Target}", solutionFilter.GetFileName());
 
         if (request.DryRun)
-            return new GenerateSolutionFilterResponse(solutionFilter.GetFileName());
+            return new GenerateTargetSolutionFilterResponse(solutionFilter.GetFileName());
         var generatedFilters = _solutionFilterWriter.Write(solutionFilter, request.OutputDirectory);
-        return new GenerateSolutionFilterResponse(generatedFilters);
+        return new GenerateTargetSolutionFilterResponse(generatedFilters);
     }
 }

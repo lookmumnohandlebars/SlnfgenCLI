@@ -1,7 +1,9 @@
-using Slnfgen.Application.Domain.Filters;
-using Slnfgen.Application.Module.Common.Files.Exceptions;
+using Slnfgen.CLI.Application.Common.Files.Exceptions;
+using Slnfgen.CLI.Application.Common.Requests.Validation;
+using Slnfgen.CLI.Application.Repositories.Manifest.SolutionFiltersManifest;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
 
-namespace Slnfgen.CLI.UnitTests.Domain.Filters;
+namespace Slnfgen.CLI.UnitTests.Application.Repositories.Manifest;
 
 public class SolutionFiltersManifestFileLoaderTests
 {

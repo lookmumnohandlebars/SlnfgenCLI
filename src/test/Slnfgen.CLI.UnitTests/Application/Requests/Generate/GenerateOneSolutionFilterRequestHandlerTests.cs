@@ -1,23 +1,23 @@
 using Microsoft.Extensions.Logging.Testing;
-using Slnfgen.Application.Domain.Filters;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
-using Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
-using Slnfgen.CLI.Application.Repository.Solution.Project;
-using Slnfgen.CLI.Application.Requests.GenerateOne;
-using Slnfgen.CLI.Application.Services.SolutionFilter;
-using Slnfgen.CLI.Domain.Solution.File.Loader;
-using Slnfgen.CLI.TestImplementations.Application.Repository;
+using Slnfgen.CLI.Application.Common.Requests.Validation;
+using Slnfgen.CLI.Application.Repositories.Manifest.SolutionFiltersManifest;
+using Slnfgen.CLI.Application.Repositories.Solution.File;
+using Slnfgen.CLI.Application.Repositories.Solution.Project;
+using Slnfgen.CLI.Application.Requests.GenerateAll;
+using Slnfgen.CLI.Application.Requests.GenerateTarget;
+using Slnfgen.CLI.Domain.Solution.Filter.Services;
+using Slnfgen.CLI.UnitTests.Application.TestImplementations;
 
-namespace Slnfgen.CLI.UnitTests.Application.Requests.SolutionFilter.Generate;
+namespace Slnfgen.CLI.UnitTests.Application.Requests.Generate;
 
 public class GenerateOneSolutionFilterRequestHandlerTests
 {
-    private GenerateSolutionFilterRequestHandler _sut;
+    private GenerateTargetSolutionFilterRequestHandler _sut;
     private FakeSolutionFilterWriter _fakeSolutionFilterWriter = new();
 
     public GenerateOneSolutionFilterRequestHandlerTests()
     {
-        _sut = new GenerateSolutionFilterRequestHandler(
+        _sut = new GenerateTargetSolutionFilterRequestHandler(
             new SolutionFilterGenerator(new ProjectFileLoader()),
             _fakeSolutionFilterWriter,
             new SolutionFiltersManifestFileLoader(),
@@ -30,7 +30,7 @@ public class GenerateOneSolutionFilterRequestHandlerTests
     public void Handle_ShouldThrowValidationErrorIfFilterDoesntMatch()
     {
         // Arrange
-        var request = new GenerateSolutionFilterRequest(
+        var request = new GenerateTargetSolutionFilterRequest(
             Path.Combine("TestSolution", "monorepo.yml"),
             "NotAFilter",
             "."
@@ -45,7 +45,11 @@ public class GenerateOneSolutionFilterRequestHandlerTests
     public void Handle_ShouldGenerateSolutionFilters()
     {
         // Arrange
-        var request = new GenerateSolutionFilterRequest(Path.Combine("TestSolution", "monorepo.yml"), "FilterOne", ".");
+        var request = new GenerateTargetSolutionFilterRequest(
+            Path.Combine("TestSolution", "monorepo.yml"),
+            "FilterOne",
+            "."
+        );
 
         // Act
         var response = _sut.Handle(request);
@@ -72,7 +76,11 @@ public class GenerateOneSolutionFilterRequestHandlerTests
     public void Handle_ShouldNotGenerateSolutionFiltersForNonTargetFilterDefinitions()
     {
         // Arrange
-        var request = new GenerateSolutionFilterRequest(Path.Combine("TestSolution", "monorepo.yml"), "FilterOne", ".");
+        var request = new GenerateTargetSolutionFilterRequest(
+            Path.Combine("TestSolution", "monorepo.yml"),
+            "FilterOne",
+            "."
+        );
 
         // Act
         var response = _sut.Handle(request);
@@ -85,7 +93,7 @@ public class GenerateOneSolutionFilterRequestHandlerTests
     public void Handle_ShouldGenerateSolutionFilters_ForLegacySolutionFormat()
     {
         // Arrange
-        var request = new GenerateSolutionFilterRequest(
+        var request = new GenerateTargetSolutionFilterRequest(
             Path.Combine("TestSolution", "monorepoLegacy.yml"),
             "FilterTwo",
             "."

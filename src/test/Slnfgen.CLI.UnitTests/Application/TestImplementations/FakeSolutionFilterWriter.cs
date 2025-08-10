@@ -1,7 +1,7 @@
-using Slnfgen.Application.Features.SolutionFilter;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
+using Slnfgen.CLI.Domain.Solution.Filter.Models;
+using Slnfgen.CLI.Domain.Solution.Filter.Repository;
 
-namespace Slnfgen.CLI.TestImplementations.Application.Repository;
+namespace Slnfgen.CLI.UnitTests.Application.TestImplementations;
 
 public class FakeSolutionFilterWriter : ISolutionFilterWriter
 {

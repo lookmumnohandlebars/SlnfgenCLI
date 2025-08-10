@@ -1,4 +1,4 @@
-namespace Slnfgen.Application.Features.Solution;
+namespace Slnfgen.CLI.Domain.Solution.File;
 
 /// <summary>
 ///     Constants for solution file operations.

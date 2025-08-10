@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
+using Slnfgen.CLI.Domain.Solution.Filter.Services;
 
 namespace Slnfgen.CLI.Domain.Solution;
 

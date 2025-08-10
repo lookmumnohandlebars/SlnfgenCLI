@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Throw;
 
-namespace Slnfgen.Application.Features.SolutionFilter;
+namespace Slnfgen.CLI.Domain.Solution.Filter.Models;
 
 /// <summary>
 ///     The `.slnf` file as required by .NET
@@ -15,8 +15,8 @@ public class SolutionFilter
     public static readonly string FileExtension = "slnf";
 
     /// <inheritdoc cref="SolutionFilter" />
-    /// <param name="name"></param>
-    /// <param name="solution"></param>
+    /// <param name="name">Name of the solution filter (file name without extension)</param>
+    /// <param name="solution">The full solution filter json definition</param>
     public SolutionFilter(string? name, SolutionFiltersSolutionDefinition solution)
     {
         Name = name?.Throw("Name must not be empty").IfEmpty();

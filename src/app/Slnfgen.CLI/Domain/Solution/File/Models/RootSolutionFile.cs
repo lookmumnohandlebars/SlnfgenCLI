@@ -1,7 +1,7 @@
 using Microsoft.Build.Construction;
-using Slnfgen.Application.Domain.Project;
+using Slnfgen.CLI.Domain.Solution.Project.Models;
 
-namespace Slnfgen.Application.Features.Solution;
+namespace Slnfgen.CLI.Domain.Solution.File.Models;
 
 /// <summary>
 ///     Wrapper around the MSBuild Solution File

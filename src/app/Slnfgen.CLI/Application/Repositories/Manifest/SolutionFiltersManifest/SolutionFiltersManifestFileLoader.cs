@@ -1,22 +1,26 @@
 using System.Text.Json;
-using FluentValidation;
-using Slnfgen.Application.Module.Common.Files.Exceptions;
-using Slnfgen.CLI;
+using Slnfgen.CLI.Application.Common.Files.Exceptions;
+using Slnfgen.CLI.Application.Common.Requests.Validation;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Repository;
 using YamlDotNet.Serialization;
 
-namespace Slnfgen.Application.Domain.Filters;
+namespace Slnfgen.CLI.Application.Repositories.Manifest.SolutionFiltersManifest;
 
 /// <summary>
+///     Loads a manifest file for generating solution filters
 /// </summary>
 public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
 {
     /// <summary>
+    ///     Loads a JSON or YAML manifest file for generating solution filters.
     /// </summary>
-    /// <param name="filterFilePath"></param>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    /// <exception cref="NotSupportedException"></exception>
-    public SolutionFiltersManifest Load(string filterFilePath)
+    /// <param name="filterFilePath">The relative path to the manifest file</param>
+    /// <returns>The loaded manifest file</returns>
+    /// <exception cref="BadRequestException">Thrown when the file does not exist</exception>
+    /// <exception cref="NotSupportedException">Thrown when the file type is not supported</exception>
+    /// <exception cref="InvalidFileException">Thrown when the file cannot be deserialized</exception>
+    /// <exception cref="Exception">Thrown when the file cannot be deserialized due to formatting issues</exception>
+    public Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest Load(string filterFilePath)
     {
         var normalizedPath = Path.GetFullPath(filterFilePath);
         if (!File.Exists(normalizedPath))
@@ -28,11 +32,17 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
         {
             var opts = new JsonSerializerOptions(JsonSerializerOptions.Default) { PropertyNameCaseInsensitive = true };
             var manifestFromJson =
-                JsonSerializer.Deserialize<SolutionFiltersManifest>(File.ReadAllBytes(normalizedPath), opts)
+                JsonSerializer.Deserialize<Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest>(
+                    File.ReadAllBytes(normalizedPath),
+                    opts
+                )
                 ?? throw new Exception(
                     $"Failed to deserialize {filterFilePath}. Please check the formatting and path of the file"
                 );
-            return new SolutionFiltersManifest(manifestFromJson.SolutionFile, manifestFromJson.FilterDefinitions);
+            return new Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest(
+                manifestFromJson.SolutionFile,
+                manifestFromJson.FilterDefinitions
+            );
         }
 
         if (
@@ -52,12 +62,17 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
         try
         {
             var manifestFromYaml =
-                deserializer.Deserialize<SolutionFiltersManifest>(File.ReadAllText(filterFilePath))
+                deserializer.Deserialize<Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest>(
+                    File.ReadAllText(filterFilePath)
+                )
                 ?? throw new Exception(
                     $"Failed to deserialize {filterFilePath}. Please check the formatting and path of the file"
                 );
             // Hack to ensure the constructor is called with the correct parameters
-            return new SolutionFiltersManifest(manifestFromYaml.SolutionFile, manifestFromYaml.FilterDefinitions);
+            return new Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest(
+                manifestFromYaml.SolutionFile,
+                manifestFromYaml.FilterDefinitions
+            );
         }
         catch (YamlDotNet.Core.YamlException e)
         {

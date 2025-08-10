@@ -1,6 +1,7 @@
 using FluentAssertions;
+using Slnfgen.CLI.IntegrationTests.SetUp.Utilities;
 
-namespace Slnfgen.CLI.IntegrationTests.Presentation.Commands;
+namespace Slnfgen.CLI.IntegrationTests.Commands.Root;
 
 public class RootHelpCommandTests
 {

@@ -1,8 +1,7 @@
 using Microsoft.Extensions.Logging.Abstractions;
-using Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
-using Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
+using Slnfgen.CLI.Application.Requests.GenerateAll;
 using Slnfgen.CLI.Presentation.Commands;
-using Slnfgen.CLI.TestImplementations.Application.Common;
+using Slnfgen.CLI.UnitTests.Application.TestImplementations;
 
 namespace Slnfgen.CLI.UnitTests.Presentation.Commands;
 

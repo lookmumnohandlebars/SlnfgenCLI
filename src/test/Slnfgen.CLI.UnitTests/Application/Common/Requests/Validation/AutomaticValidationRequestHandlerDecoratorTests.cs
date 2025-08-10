@@ -1,4 +1,6 @@
 using FluentValidation;
+using Slnfgen.CLI.Application.Common.Requests;
+using Slnfgen.CLI.Application.Common.Requests.Validation;
 
 namespace Slnfgen.CLI.UnitTests.Application.Common.Requests.Validation;
 

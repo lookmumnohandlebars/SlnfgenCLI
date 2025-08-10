@@ -1,7 +1,7 @@
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Slnfgen.CLI;
+namespace Slnfgen.CLI.Application.Common.Requests.Validation;
 
 internal class RequestValidationException : ValidationException
 {

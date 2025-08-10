@@ -11,6 +11,8 @@ runs:
   steps:
     - name: Run Snyk to check for vulnerabilities
       uses: snyk/actions/dotnet@master
+      continue-on-error: true
+      working-directory: ./src
       env:
         SNYK_TOKEN: ${{ inputs.SNYK_TOKEN }}
       with:

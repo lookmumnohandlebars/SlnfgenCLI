@@ -1,6 +1,7 @@
-using Slnfgen.Application.Domain.Filters;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
+using Slnfgen.CLI.IntegrationTests.SetUp.Utilities;
 
-namespace Slnfgen.CLI.IntegrationTests.Utilities.Fixtures;
+namespace Slnfgen.CLI.IntegrationTests.SetUp.Fixtures;
 
 /// <summary>
 ///     Fixture for setting up a test solution with multiple projects and dependencies required for solution filtering

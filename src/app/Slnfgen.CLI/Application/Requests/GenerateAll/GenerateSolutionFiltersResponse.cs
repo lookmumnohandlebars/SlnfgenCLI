@@ -1,11 +1,13 @@
-namespace Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
+namespace Slnfgen.CLI.Application.Requests.GenerateAll;
 
 /// <summary>
+///     Response for the generating solution filters request.
+///     Contains the list of generated solution filter file names.
+///     This response is used to return the results of the filter generation process.
 /// </summary>
 public class GenerateSolutionFiltersResponse : IEquatable<GenerateSolutionFiltersResponse>
 {
-    /// <summary>
-    /// </summary>
+    /// <inheritdoc cref="GenerateSolutionFiltersResponse"/>
     /// <param name="generatedFilters"></param>
     public GenerateSolutionFiltersResponse(IEnumerable<string> generatedFilters)
     {

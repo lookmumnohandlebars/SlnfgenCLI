@@ -1,6 +1,6 @@
-using Slnfgen.CLI.Domain.Solution.File.Loader;
+using Slnfgen.CLI.Application.Repositories.Solution.File;
 
-namespace Slnfgen.CLI.UnitTests.Domain.Solution;
+namespace Slnfgen.CLI.UnitTests.Application.Repositories.Solution.File;
 
 public class SolutionFileLoaderTests
 {

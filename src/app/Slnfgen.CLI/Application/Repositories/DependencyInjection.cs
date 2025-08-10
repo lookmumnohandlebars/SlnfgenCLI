@@ -1,11 +1,14 @@
 using Microsoft.Extensions.DependencyInjection;
-using Slnfgen.Application.Domain.Filters;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
-using Slnfgen.CLI.Application.Repository.Solution.Project;
-using Slnfgen.CLI.Domain.Solution.File.Loader;
+using Slnfgen.CLI.Application.Repositories.Manifest.SolutionFiltersManifest;
+using Slnfgen.CLI.Application.Repositories.Solution.File;
+using Slnfgen.CLI.Application.Repositories.Solution.Filter;
+using Slnfgen.CLI.Application.Repositories.Solution.Project;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Repository;
+using Slnfgen.CLI.Domain.Solution.File.Repository;
+using Slnfgen.CLI.Domain.Solution.Filter.Repository;
 using Slnfgen.CLI.Domain.Solution.Project.Repositories;
 
-namespace Slnfgen.CLI.Application.Repository;
+namespace Slnfgen.CLI.Application.Repositories;
 
 internal static class DependencyInjection
 {

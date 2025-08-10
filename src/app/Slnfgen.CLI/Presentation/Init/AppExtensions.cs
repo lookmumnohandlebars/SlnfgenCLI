@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Slnfgen.CLI.Presentation.Commands;
 using Slnfgen.CLI.Presentation.Filters;
 
-namespace Slnfgen.CLI.Presentation.StartUp;
+namespace Slnfgen.CLI.Presentation.Init;
 
 internal static class AppExtensions
 {

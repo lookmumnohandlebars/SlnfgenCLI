@@ -1,30 +1,35 @@
-namespace Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
+namespace Slnfgen.CLI.Application.Requests.GenerateAll;
 
 /// <summary>
+///     Request to generate solution filters based on a manifest file.
 /// </summary>
 public class GenerateSolutionFiltersRequest : IEquatable<GenerateSolutionFiltersRequest>
 {
-    /// <summary>
-    /// </summary>
-    /// <param name="filtersConfigFilePath"></param>
+    /// <inheritdoc cref="GenerateSolutionFiltersRequest"/>
+    /// <param name="manifestFilePath"></param>
     /// <param name="outputDirectory"></param>
     /// <param name="dryRun"></param>
-    public GenerateSolutionFiltersRequest(string filtersConfigFilePath, string outputDirectory, bool dryRun = false)
+    public GenerateSolutionFiltersRequest(string manifestFilePath, string outputDirectory, bool dryRun = false)
     {
-        FiltersConfigFilePath = filtersConfigFilePath;
+        ManifestFilePath = manifestFilePath;
         OutputDirectory = outputDirectory;
         DryRun = dryRun;
     }
 
     /// <summary>
+    ///     Indicates whether the request is a dry run. If true, the operation will not write any files,
     /// </summary>
     public bool DryRun { get; }
 
     /// <summary>
+    ///     File path to the solution filters manifest file.
+    ///     This file defines the solution filters to be generated.
     /// </summary>
-    public string FiltersConfigFilePath { get; }
+    public string ManifestFilePath { get; }
 
     /// <summary>
+    ///     The directory where the generated solution filters will be saved.
+    ///     If not specified, defaults to the current directory.
     /// </summary>
     public string OutputDirectory { get; }
 
@@ -33,7 +38,7 @@ public class GenerateSolutionFiltersRequest : IEquatable<GenerateSolutionFilters
     {
         if (other is null)
             return false;
-        return FiltersConfigFilePath == other.FiltersConfigFilePath && OutputDirectory == other.OutputDirectory;
+        return ManifestFilePath == other.ManifestFilePath && OutputDirectory == other.OutputDirectory;
     }
 
     /// <inheritdoc />
@@ -47,8 +52,5 @@ public class GenerateSolutionFiltersRequest : IEquatable<GenerateSolutionFilters
     }
 
     /// <inheritdoc />
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(FiltersConfigFilePath, OutputDirectory);
-    }
+    public override int GetHashCode() => HashCode.Combine(ManifestFilePath, OutputDirectory);
 }

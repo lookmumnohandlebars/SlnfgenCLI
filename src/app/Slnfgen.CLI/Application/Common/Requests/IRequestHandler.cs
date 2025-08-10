@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
-using Slnfgen.Application.Module.Common.Types;
+using Slnfgen.CLI.Application.Common.Types;
 
-namespace Slnfgen.CLI;
+namespace Slnfgen.CLI.Application.Common.Requests;
 
 /// <summary>
 /// </summary>
