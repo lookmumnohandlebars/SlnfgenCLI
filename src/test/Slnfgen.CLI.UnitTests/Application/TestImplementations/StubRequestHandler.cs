@@ -1,4 +1,6 @@
-namespace Slnfgen.CLI.TestImplementations.Application.Common;
+using Slnfgen.CLI.Application.Common.Requests;
+
+namespace Slnfgen.CLI.UnitTests.Application.TestImplementations;
 
 public class StubRequestHandler<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
     where TRequest : IEquatable<TRequest>

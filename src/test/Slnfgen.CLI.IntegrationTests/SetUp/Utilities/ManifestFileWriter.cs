@@ -1,8 +1,8 @@
-using Slnfgen.Application.Domain.Filters;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace Slnfgen.CLI.IntegrationTests.Utilities;
+namespace Slnfgen.CLI.IntegrationTests.SetUp.Utilities;
 
 public class ManifestFileWriter
 {

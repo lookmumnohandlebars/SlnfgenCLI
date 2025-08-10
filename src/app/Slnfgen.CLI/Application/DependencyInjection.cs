@@ -1,12 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
-using Slnfgen.CLI;
-using Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
-using Slnfgen.CLI.Application.Repository;
-using Slnfgen.CLI.Application.Requests.GenerateOne;
-using Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
-using Slnfgen.CLI.Application.Services.SolutionFilter;
+using Slnfgen.CLI.Application.Common.Requests;
+using Slnfgen.CLI.Application.Repositories;
+using Slnfgen.CLI.Application.Requests.GenerateAll;
+using Slnfgen.CLI.Application.Requests.GenerateTarget;
 
-namespace Slnfgen.Application.Module;
+namespace Slnfgen.CLI.Application;
 
 internal static class DependencyInjection
 {
@@ -24,8 +22,8 @@ internal static class DependencyInjection
             GenerateSolutionFiltersRequestHandler
         >();
         services.AddScoped<
-            IRequestHandler<GenerateSolutionFilterRequest, GenerateSolutionFilterResponse>,
-            GenerateSolutionFilterRequestHandler
+            IRequestHandler<GenerateTargetSolutionFilterRequest, GenerateTargetSolutionFilterResponse>,
+            GenerateTargetSolutionFilterRequestHandler
         >();
     }
 }

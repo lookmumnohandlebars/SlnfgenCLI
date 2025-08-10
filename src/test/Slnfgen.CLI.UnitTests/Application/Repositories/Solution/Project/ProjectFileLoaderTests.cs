@@ -1,7 +1,7 @@
 using Microsoft.Build.Exceptions;
-using Slnfgen.CLI.Application.Repository.Solution.Project;
+using Slnfgen.CLI.Application.Repositories.Solution.Project;
 
-namespace Slnfgen.CLI.UnitTests.Domain.Solution.Project;
+namespace Slnfgen.CLI.UnitTests.Application.Repositories.Solution.Project;
 
 public class ProjectFileLoaderTests
 {

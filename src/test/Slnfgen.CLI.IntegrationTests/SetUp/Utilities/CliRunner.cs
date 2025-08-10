@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Slnfgen.CLI.IntegrationTests;
+namespace Slnfgen.CLI.IntegrationTests.SetUp.Utilities;
 
 public class CliRunner
 {

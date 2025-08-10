@@ -2,6 +2,7 @@ using Cocona.Filters;
 using FluentValidation.Results;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Testing;
+using Slnfgen.CLI.Application.Common.Requests.Validation;
 using Slnfgen.CLI.Presentation.Filters;
 
 namespace Slnfgen.CLI.UnitTests.Presentation.Filters;

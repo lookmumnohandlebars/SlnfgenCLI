@@ -1,9 +1,10 @@
 using System.Text.Json;
 using FluentAssertions;
-using Slnfgen.Application.Features.SolutionFilter;
-using Slnfgen.CLI.IntegrationTests.Utilities.Fixtures;
+using Slnfgen.CLI.Domain.Solution.Filter.Models;
+using Slnfgen.CLI.IntegrationTests.SetUp.Fixtures;
+using Slnfgen.CLI.IntegrationTests.SetUp.Utilities;
 
-namespace Slnfgen.CLI.IntegrationTests.Presentation.Commands;
+namespace Slnfgen.CLI.IntegrationTests.Commands.Gen;
 
 [Collection(nameof(GenerateSolutionFiltersTestCollection))]
 public class GenerateTargetSolutionFiltersCommandTests : IClassFixture<SolutionFilterFixture>

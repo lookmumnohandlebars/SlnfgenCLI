@@ -1,16 +1,15 @@
 using Microsoft.Extensions.Logging;
-using Slnfgen.Application.Domain.Filters;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
-using Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
-using Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
-using Slnfgen.CLI.Domain.Solution.File.Loader;
+using Slnfgen.CLI.Application.Common.Requests;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Repository;
+using Slnfgen.CLI.Domain.Solution.File.Repository;
+using Slnfgen.CLI.Domain.Solution.Filter.Repository;
+using Slnfgen.CLI.Domain.Solution.Filter.Services;
 
-namespace Slnfgen.CLI.Application.Services.SolutionFilter;
+namespace Slnfgen.CLI.Application.Requests.GenerateAll;
 
 /// <summary>
 ///     Generate a Solution Filter file
 /// </summary>
-// csharpier-ignore
 public class GenerateSolutionFiltersRequestHandler
     : IRequestHandler<GenerateSolutionFiltersRequest, GenerateSolutionFiltersResponse>
 {
@@ -41,15 +40,15 @@ public class GenerateSolutionFiltersRequestHandler
     /// <param name="request"></param>
     public GenerateSolutionFiltersResponse Handle(GenerateSolutionFiltersRequest request)
     {
-        var filtersDefinition = _solutionManifestLoader.Load(request.FiltersConfigFilePath);
+        var filtersDefinition = _solutionManifestLoader.Load(request.ManifestFilePath);
         _logger.LogInformation(
             "Loaded filters file '{Path}' for Solution file '{SolutionFile}'",
-            request.FiltersConfigFilePath,
+            request.ManifestFilePath,
             filtersDefinition.SolutionFile
         );
 
         var solutionFilePath = Path.Combine(
-            Directory.GetParent(request.FiltersConfigFilePath)!.FullName,
+            Directory.GetParent(request.ManifestFilePath)!.FullName,
             filtersDefinition.SolutionFile
         );
         var solutionFile = _solutionLoader.Load(solutionFilePath);

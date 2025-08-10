@@ -1,16 +1,16 @@
 using System.ComponentModel.DataAnnotations;
 using Throw;
 
-namespace Slnfgen.Application.Features.SolutionFilter;
+namespace Slnfgen.CLI.Domain.Solution.Filter.Models;
 
 /// <summary>
+///     Solution definition for the solution filter file.
 /// </summary>
 public class SolutionFiltersSolutionDefinition
 {
-    /// <summary>
-    /// </summary>
-    /// <param name="path"></param>
-    /// <param name="projects"></param>
+    /// <inheritdoc cref="SolutionFiltersSolutionDefinition"/>
+    /// <param name="path">Path to the solution file from this filter</param>
+    /// <param name="projects">Projects included in the solution filter</param>
     public SolutionFiltersSolutionDefinition(string path, string[] projects)
     {
         Path = FormatPathForJson(path.Throw().IfEmpty());

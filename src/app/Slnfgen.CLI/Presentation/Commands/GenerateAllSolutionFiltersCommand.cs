@@ -1,13 +1,14 @@
 using Cocona;
 using Microsoft.Extensions.Logging;
-using Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
-using Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
+using Slnfgen.CLI.Application.Common.Requests;
+using Slnfgen.CLI.Application.Requests.GenerateAll;
 using Spectre.Console;
 
 namespace Slnfgen.CLI.Presentation.Commands;
 
 /// <summary>
-///     The command to generate solution filters from a filters manifest file
+///     The command to generate solution filters from a filters manifest file.
+///     All solution filters defined in the manifest will be generated
 /// </summary>
 public class GenerateAllSolutionFiltersCommand
 {
@@ -16,8 +17,8 @@ public class GenerateAllSolutionFiltersCommand
     private readonly ILogger<GenerateAllSolutionFiltersCommand> _logger;
 
     /// <inheritdoc cref="GenerateAllSolutionFiltersCommand" />
-    /// <param name="handler">The request Handler</param>
-    /// <param name="logger">Logger for </param>
+    /// <param name="handler">The request handler</param>
+    /// <param name="logger">Logger</param>
     public GenerateAllSolutionFiltersCommand(
         IRequestHandler<GenerateSolutionFiltersRequest, GenerateSolutionFiltersResponse> handler,
         ILogger<GenerateAllSolutionFiltersCommand> logger

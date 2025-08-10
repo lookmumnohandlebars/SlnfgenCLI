@@ -1,6 +1,6 @@
 using Microsoft.Build.Construction;
 
-namespace Slnfgen.Application.Domain.Project;
+namespace Slnfgen.CLI.Domain.Solution.Project.Models;
 
 /// <summary>
 ///     Wrapper for a project in a solution file.
@@ -9,8 +9,7 @@ public class SolutionProject : IEquatable<SolutionProject>
 {
     private readonly ProjectInSolution _projectInSolution;
 
-    /// <summary>
-    /// </summary>
+    /// <inheritdoc cref="SolutionProject"/>
     /// <param name="projectInSolution"></param>
     public SolutionProject(ProjectInSolution projectInSolution)
     {
@@ -18,10 +17,12 @@ public class SolutionProject : IEquatable<SolutionProject>
     }
 
     /// <summary>
+    ///     Project file name, which is the name of the project file without the extension.
     /// </summary>
     public string Name => _projectInSolution.ProjectName;
 
     /// <summary>
+    ///     Path to the project file, relative to the solution file.
     /// </summary>
     public string Path => NormalizedPath(_projectInSolution.RelativePath);
 

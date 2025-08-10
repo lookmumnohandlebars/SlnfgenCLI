@@ -1,4 +1,4 @@
-namespace Slnfgen.Application.Module.Common.Types;
+namespace Slnfgen.CLI.Application.Common.Types;
 
 /// <summary>
 ///     Unit type, used to represent a void return type in a more explicit way.

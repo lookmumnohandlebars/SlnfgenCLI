@@ -1,6 +1,7 @@
 using Cocona.Filters;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
+using Slnfgen.CLI.Application.Common.Requests.Validation;
 
 namespace Slnfgen.CLI.Presentation.Filters;
 

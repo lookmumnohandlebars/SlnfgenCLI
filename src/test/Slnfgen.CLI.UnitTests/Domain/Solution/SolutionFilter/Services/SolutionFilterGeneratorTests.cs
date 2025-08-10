@@ -1,10 +1,11 @@
-using Slnfgen.Application.Domain.Filters;
-using Slnfgen.Application.Features.Solution;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
-using Slnfgen.CLI.Application.Repository.Solution.Project;
-using Slnfgen.CLI.Domain.Solution.File.Loader;
+using Slnfgen.CLI.Application.Repositories.Manifest.SolutionFiltersManifest;
+using Slnfgen.CLI.Application.Repositories.Solution.File;
+using Slnfgen.CLI.Application.Repositories.Solution.Project;
+using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
+using Slnfgen.CLI.Domain.Solution.File.Models;
+using Slnfgen.CLI.Domain.Solution.Filter.Services;
 
-namespace Slnfgen.CLI.UnitTests.Domain.Filters;
+namespace Slnfgen.CLI.UnitTests.Domain.Solution.SolutionFilter.Services;
 
 public partial class SolutionFilterGeneratorTests
 {

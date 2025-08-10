@@ -1,9 +1,10 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
-using Slnfgen.CLI.Presentation.StartUp;
+using Slnfgen.CLI.Application.Common.Requests;
+using Slnfgen.CLI.Application.Requests.GenerateAll;
+using Slnfgen.CLI.Presentation.Init;
 
-namespace Slnfgen.CLI.UnitTests.Presentation.Startup;
+namespace Slnfgen.CLI.UnitTests.Presentation.Init;
 
 public class DependencyInjectionTests
 {

@@ -30,9 +30,3 @@ pipeline:
 
 release:
   - base-branch: "^release"
-
-bug:
-  - "bug"
-
-feature:
-  - "feature"

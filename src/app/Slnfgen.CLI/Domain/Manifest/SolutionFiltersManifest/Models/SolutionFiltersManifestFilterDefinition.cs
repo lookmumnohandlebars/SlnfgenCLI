@@ -1,24 +1,23 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Slnfgen.Application.Domain.Filters;
+namespace Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
 
 /// <summary>
+///     The manifest definition for a single solution filter
 /// </summary>
 [Serializable]
 public class SolutionFiltersManifestFilterDefinition
 {
-    /// <summary>
-    /// </summary>
+    /// <inheritdoc cref="SolutionFiltersManifestFilterDefinition" />
     public SolutionFiltersManifestFilterDefinition()
     {
         Name = string.Empty;
         Entrypoints = [];
     }
 
-    /// <summary>
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="entrypoints"></param>
+    /// <inheritdoc cref="SolutionFiltersManifestFilterDefinition" />
+    /// <param name="name">Solution filter name</param>
+    /// <param name="entrypoints">Paths to entrypoint projects</param>
     public SolutionFiltersManifestFilterDefinition(string name, string[] entrypoints)
     {
         Name = name;
@@ -26,21 +25,27 @@ public class SolutionFiltersManifestFilterDefinition
     }
 
     /// <summary>
+    ///     Name of the solution filter, used for the file name
+    ///     and for the filter definition in the solution file.
+    ///     Must be unique within the solution.
     /// </summary>
     [Required]
     [MinLength(1)]
     public string Name { get; set; }
 
-    private string[] _entryPointsRaw { get; set; } = [];
+    private string[] EntryPointsRaw { get; set; } = [];
 
     /// <summary>
+    ///     Entry point projects for the solution filter.
+    ///     These are the projects that will be included in the solution filter
+    ///     and searched for underlying references.
     /// </summary>
     [Required]
     [MinLength(1)]
     public string[] Entrypoints
     {
-        get => _entryPointsRaw;
-        set { _entryPointsRaw = value.Select(x => NormalizePath(x)).ToArray(); }
+        get => EntryPointsRaw;
+        set { EntryPointsRaw = value.Select(x => NormalizePath(x)).ToArray(); }
     }
 
     private string NormalizePath(string entrypoint)

@@ -1,13 +1,12 @@
 using Microsoft.Extensions.Logging.Testing;
-using Slnfgen.Application.Domain.Filters;
-using Slnfgen.Application.Features.SolutionFilterGeneration;
-using Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
-using Slnfgen.CLI.Application.Repository.Solution.Project;
-using Slnfgen.CLI.Application.Services.SolutionFilter;
-using Slnfgen.CLI.Domain.Solution.File.Loader;
-using Slnfgen.CLI.TestImplementations.Application.Repository;
+using Slnfgen.CLI.Application.Repositories.Manifest.SolutionFiltersManifest;
+using Slnfgen.CLI.Application.Repositories.Solution.File;
+using Slnfgen.CLI.Application.Repositories.Solution.Project;
+using Slnfgen.CLI.Application.Requests.GenerateAll;
+using Slnfgen.CLI.Domain.Solution.Filter.Services;
+using Slnfgen.CLI.UnitTests.Application.TestImplementations;
 
-namespace Slnfgen.CLI.UnitTests.Application.Requests.SolutionFilter.Generate;
+namespace Slnfgen.CLI.UnitTests.Application.Requests.Generate;
 
 public class GenerateSolutionFiltersRequestHandlerTests
 {

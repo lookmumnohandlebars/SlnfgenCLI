@@ -1,7 +1,6 @@
 using FluentValidation;
-using Slnfgen.CLI.Application.Features.SolutionFilter.Requests;
 
-namespace Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
+namespace Slnfgen.CLI.Application.Requests.GenerateAll;
 
 internal class GenerateSolutionFiltersRequestValidator : AbstractValidator<GenerateSolutionFiltersRequest>
 {
@@ -15,7 +14,7 @@ internal class GenerateSolutionFiltersRequestValidator : AbstractValidator<Gener
             .Must(dir => !dir.Any(c => Path.GetInvalidPathChars().Contains(c)))
             .WithMessage("Output directory must be specified as a valid directory");
 
-        RuleFor(req => req.FiltersConfigFilePath)
+        RuleFor(req => req.ManifestFilePath)
             .NotNull()
             .WithMessage("Manifest File must be provided")
             .NotEmpty()

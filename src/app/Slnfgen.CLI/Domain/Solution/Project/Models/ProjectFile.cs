@@ -1,6 +1,6 @@
 using Microsoft.Build.Construction;
 
-namespace Slnfgen.CLI.Domain.Solution.Project;
+namespace Slnfgen.CLI.Domain.Solution.Project.Models;
 
 /// <summary>
 ///     A wrapper for a project file (.csproj) that provides access to its properties and project references.

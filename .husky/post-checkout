@@ -2,4 +2,3 @@
 . "$(dirname "$0")/_/husky.sh"
 
 dotnet husky run --group post-checkout
-git add -u && !! # git add -u && git add . && git commit --amend --no-edit

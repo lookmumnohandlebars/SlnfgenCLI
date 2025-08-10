@@ -1,23 +1,25 @@
-namespace Slnfgen.CLI.Application.Requests.SolutionFilter.Generate;
+namespace Slnfgen.CLI.Application.Requests.GenerateTarget;
 
 /// <summary>
+///     Response for the GenerateTargetSolutionFilterRequest.
+///     Contains the generated solution filter file name.
 /// </summary>
-public class GenerateSolutionFilterResponse : IEquatable<GenerateSolutionFilterResponse>
+public class GenerateTargetSolutionFilterResponse : IEquatable<GenerateTargetSolutionFilterResponse>
 {
-    /// <summary>
-    /// </summary>
+    /// <inheritdoc cref="GenerateTargetSolutionFilterResponse"/>
     /// <param name="generatedFilter"></param>
-    public GenerateSolutionFilterResponse(string generatedFilter)
+    public GenerateTargetSolutionFilterResponse(string generatedFilter)
     {
         GeneratedFilter = generatedFilter;
     }
 
     /// <summary>
+    ///   The generated solution filter file name
     /// </summary>
     public string GeneratedFilter { get; }
 
     /// <inheritdoc />
-    public bool Equals(GenerateSolutionFilterResponse? other)
+    public bool Equals(GenerateTargetSolutionFilterResponse? other)
     {
         if (other is null)
             return false;
@@ -31,7 +33,7 @@ public class GenerateSolutionFilterResponse : IEquatable<GenerateSolutionFilterR
             return false;
         if (obj.GetType() != GetType())
             return false;
-        return Equals((GenerateSolutionFilterResponse)obj);
+        return Equals((GenerateTargetSolutionFilterResponse)obj);
     }
 
     /// <inheritdoc />

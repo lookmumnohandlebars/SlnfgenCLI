@@ -1,4 +1,4 @@
-namespace Slnfgen.CLI.UnitTests.Domain.Filters;
+namespace Slnfgen.CLI.UnitTests.Domain.Solution.SolutionFilter.Services;
 
 public partial class SolutionFilterGeneratorTests
 {
