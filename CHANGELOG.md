@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/lookmumnohandlebars/SlnfgenCLI/compare/slnfgen-v1.1.0...slnfgen-v1.1.1) (2025-09-07)
+
+
+### Bug Fixes
+
+* format up the files ([#15](https://github.com/lookmumnohandlebars/SlnfgenCLI/issues/15)) ([536c4b2](https://github.com/lookmumnohandlebars/SlnfgenCLI/commit/536c4b2cda69816f1a5e22c105f26c2724797c37))
+
 ## [1.1.0](https://github.com/lookmumnohandlebars/SlnfgenCLI/compare/slnfgen-v1.0.0...slnfgen-v1.1.0) (2025-09-07)
 
 ### Features
