@@ -19,7 +19,8 @@ public class ProjectFileLoaderTests
     {
         var path = Path.Combine(
             useAbsolute ? Directory.GetCurrentDirectory() : String.Empty,
-            "TestSolution",
+            "TestSolutions",
+            "BasicSolution",
             "ProjA",
             "ProjA.csproj"
         );
@@ -34,7 +35,8 @@ public class ProjectFileLoaderTests
     {
         var path = Path.Combine(
             useAbsolute ? Directory.GetCurrentDirectory() : String.Empty,
-            "TestSolution",
+            "TestSolutions",
+            "BasicSolution",
             "ProjA",
             "ProjA.csproj"
         );
@@ -58,23 +60,27 @@ public class ProjectFileLoaderTests
     [Fact]
     public void LoadOne_should_throw_InvalidProjectFileException_if_csproj_doesnt_exist()
     {
-        var act = () => _sut.LoadOne(Path.Combine("TestSolution", "ProjA", "ProjZ.csproj"));
+        var act = () => _sut.LoadOne(Path.Combine("TestSolutions", "BasicSolution", "ProjA", "ProjZ.csproj"));
         act.Should().Throw<InvalidProjectFileException>();
     }
 
     [Fact]
     public void LoadFromDirectory_should_load_all_project_files_in_test_solution()
     {
-        var projectFiles = _sut.LoadFromDirectory("TestSolution").ToList();
+        var projectFiles = _sut.LoadFromDirectory(Path.Combine("TestSolutions", "BasicSolution")).ToList();
         projectFiles.Should().HaveCount(7);
 
         var projCFile = projectFiles.Single(file => file.FullPath.Contains("ProjC.csproj"));
         projCFile
             .FullPath.Should()
-            .Be(Path.Combine(Directory.GetCurrentDirectory(), "TestSolution", "ProjC", "ProjC.csproj"));
+            .Be(
+                Path.Combine(Directory.GetCurrentDirectory(), "TestSolutions", "BasicSolution", "ProjC", "ProjC.csproj")
+            );
 
         projCFile
             .FullPath.Should()
-            .Be(Path.Combine(Directory.GetCurrentDirectory(), "TestSolution", "ProjC", "ProjC.csproj"));
+            .Be(
+                Path.Combine(Directory.GetCurrentDirectory(), "TestSolutions", "BasicSolution", "ProjC", "ProjC.csproj")
+            );
     }
 }

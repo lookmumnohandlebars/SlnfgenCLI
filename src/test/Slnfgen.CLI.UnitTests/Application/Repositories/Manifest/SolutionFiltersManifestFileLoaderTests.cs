@@ -26,7 +26,29 @@ public class SolutionFiltersManifestFileLoaderTests
             ]
         );
 
-        var filterFilePath = Path.Combine("TestSolution", "monorepo.yml");
+        var filterFilePath = Path.Combine("TestSolutions", "BasicSolution", "monorepo.yml");
+        var filtersDefinition = _sut.Load(filterFilePath);
+
+        filtersDefinition.Should().BeEquivalentTo(expected);
+    }
+
+    [Fact]
+    public void Load_should_parse_test_filters_file_with_testpatterns_in_yaml_format_with_slnx()
+    {
+        var expected = new SolutionFiltersManifest(
+            "SolutionWithTests.slnx",
+            [
+                new SolutionFiltersManifestFilterDefinition(
+                    "FilterOne",
+                    [@"ProjA\ProjA.csproj"],
+                    [@"Unit.Tests", "Integration.Tests"]
+                ),
+                new SolutionFiltersManifestFilterDefinition("FilterTwo", [@"ProjB\ProjB.csproj"], [@"Contract.Tests"]),
+            ],
+            [@"Unit.Tests"]
+        );
+
+        var filterFilePath = Path.Combine("TestSolutions", "SolutionWithTests", "monorepo.yml");
         var filtersDefinition = _sut.Load(filterFilePath);
 
         filtersDefinition.Should().BeEquivalentTo(expected);
@@ -49,7 +71,12 @@ public class SolutionFiltersManifestFileLoaderTests
             ]
         );
 
-        var filterFilePath = Path.Combine(Directory.GetCurrentDirectory(), "TestSolution", "monorepo.json");
+        var filterFilePath = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "TestSolutions",
+            "BasicSolution",
+            "monorepo.json"
+        );
         var filtersDefinition = _sut.Load(filterFilePath);
 
         filtersDefinition.Should().BeEquivalentTo(expected);
@@ -72,7 +99,7 @@ public class SolutionFiltersManifestFileLoaderTests
             ]
         );
 
-        var filterFilePath = Path.Combine("TestSolution", "monorepoLegacy.yml");
+        var filterFilePath = Path.Combine("TestSolutions", "BasicSolution", "monorepoLegacy.yml");
         var filtersDefinition = _sut.Load(filterFilePath);
 
         filtersDefinition.Should().BeEquivalentTo(expected);
@@ -98,7 +125,7 @@ public class SolutionFiltersManifestFileLoaderTests
     public void FromFile_should_throw_file_not_found_exception_if_invalid()
     {
         var filterFilePath = "invalidMonorepo.yml";
-        var act = () => _sut.Load(Path.Combine("TestSolution", filterFilePath));
+        var act = () => _sut.Load(Path.Combine("TestSolutions", "BasicSolution", filterFilePath));
         act.Should().Throw<InvalidFileException>();
     }
 }

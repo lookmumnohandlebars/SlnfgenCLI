@@ -13,15 +13,22 @@ public class SolutionFiltersManifestFilterDefinition
     {
         Name = string.Empty;
         Entrypoints = [];
+        TestProjectPatterns = [];
     }
 
     /// <inheritdoc cref="SolutionFiltersManifestFilterDefinition" />
     /// <param name="name">Solution filter name</param>
     /// <param name="entrypoints">Paths to entrypoint projects</param>
-    public SolutionFiltersManifestFilterDefinition(string name, string[] entrypoints)
+    /// <param name="testProjectPatterns">Test project patterns to include in the filter</param>
+    public SolutionFiltersManifestFilterDefinition(
+        string name,
+        string[] entrypoints,
+        string[]? testProjectPatterns = null
+    )
     {
         Name = name;
         Entrypoints = entrypoints.Select(NormalizePath).ToArray();
+        TestProjectPatterns = testProjectPatterns ?? [];
     }
 
     /// <summary>
@@ -47,6 +54,11 @@ public class SolutionFiltersManifestFilterDefinition
         get => EntryPointsRaw;
         set { EntryPointsRaw = value.Select(x => NormalizePath(x)).ToArray(); }
     }
+
+    /// <summary>
+    ///     Test project patterns to include in the solution filter.
+    /// </summary>
+    public string[] TestProjectPatterns { get; set; }
 
     private string NormalizePath(string entrypoint)
     {

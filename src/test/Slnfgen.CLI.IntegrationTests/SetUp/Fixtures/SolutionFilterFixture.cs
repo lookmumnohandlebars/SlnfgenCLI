@@ -19,6 +19,7 @@ public class SolutionFilterFixture : IDisposable
 
         var projectNames = CreateTestSolutionWithProjects().ToList();
         AddProjectDependencies(projectNames);
+        _ = CreateTestProjects(projectNames).ToList();
         WriteManifestFile(DirectoryOfWork);
     }
 
@@ -53,7 +54,8 @@ public class SolutionFilterFixture : IDisposable
                     ["Project1/Project1.csproj", "Project4/Project4.csproj"]
                 ),
                 new SolutionFiltersManifestFilterDefinition("FilterTwo", ["Project7/Project7.csproj"]),
-            ]
+            ],
+            ["Tests"]
         );
         manifestWriter.Write("monorepo.yml", filters);
     }
@@ -94,6 +96,22 @@ public class SolutionFilterFixture : IDisposable
         {
             var projectName = $"Project{i}";
             _dotnetRunner.CreateProjectAndAddToSolution(projectName);
+            yield return projectName;
+        }
+    }
+
+    private IEnumerable<string> CreateTestProjects(IReadOnlyList<string> projectNames)
+    {
+        // Create test projects for each odd number from 1 to 10
+        foreach (var projectName in projectNames)
+        {
+            var testProjectName = $"{projectName}.Unit.Tests";
+            _dotnetRunner.CreateTestProjectAndAddToSolution(testProjectName);
+
+            _dotnetRunner.AddProjectReference(
+                Path.Combine(testProjectName, $"{testProjectName}.csproj"),
+                Path.Combine(projectName, $"{projectName}.csproj")
+            );
             yield return projectName;
         }
     }

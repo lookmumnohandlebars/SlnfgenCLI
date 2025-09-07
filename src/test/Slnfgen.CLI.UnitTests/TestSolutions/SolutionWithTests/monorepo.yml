@@ -1,0 +1,17 @@
+solutionFile: SolutionWithTests.slnx
+testProjectPatterns:
+  - Unit.Tests
+
+filterDefinitions:
+  - name: FilterOne
+    entrypoints:
+      - ProjA/ProjA.csproj
+    testProjectPatterns:
+      - Unit.Tests
+      - Integration.Tests
+
+  - name: FilterTwo
+    entrypoints:
+      - ProjB/ProjB.csproj
+    testProjectPatterns:
+      - Contract.Tests

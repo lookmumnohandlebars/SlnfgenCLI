@@ -43,11 +43,17 @@ public class GenerateTargetSolutionFiltersCommandTests : IClassFixture<SolutionF
             .BeEquivalentTo(
                 [
                     @"Project1\\Project1.csproj",
+                    @"Project1.Unit.Tests\\Project1.Unit.Tests.csproj",
                     @"Project2\\Project2.csproj",
+                    @"Project2.Unit.Tests\\Project2.Unit.Tests.csproj",
                     @"Project3\\Project3.csproj",
+                    @"Project3.Unit.Tests\\Project3.Unit.Tests.csproj",
                     @"Project4\\Project4.csproj",
+                    @"Project4.Unit.Tests\\Project4.Unit.Tests.csproj",
                     @"Project5\\Project5.csproj",
+                    @"Project5.Unit.Tests\\Project5.Unit.Tests.csproj",
                     @"Project6\\Project6.csproj",
+                    @"Project6.Unit.Tests\\Project6.Unit.Tests.csproj",
                 ],
                 "Solution filter should contain the correct projects"
             );
@@ -66,12 +72,18 @@ public class GenerateTargetSolutionFiltersCommandTests : IClassFixture<SolutionF
             .Solution.Projects.Should()
             .BeEquivalentTo(
                 [
-                    @"Project1\\Project1.csproj", // because it's relative to the solution
+                    @"Project1\\Project1.csproj",
+                    @"Project1.Unit.Tests\\Project1.Unit.Tests.csproj",
                     @"Project2\\Project2.csproj",
+                    @"Project2.Unit.Tests\\Project2.Unit.Tests.csproj",
                     @"Project3\\Project3.csproj",
+                    @"Project3.Unit.Tests\\Project3.Unit.Tests.csproj",
                     @"Project4\\Project4.csproj",
+                    @"Project4.Unit.Tests\\Project4.Unit.Tests.csproj",
                     @"Project5\\Project5.csproj",
+                    @"Project5.Unit.Tests\\Project5.Unit.Tests.csproj",
                     @"Project6\\Project6.csproj",
+                    @"Project6.Unit.Tests\\Project6.Unit.Tests.csproj",
                 ],
                 "Solution filter should contain the correct projects"
             );

@@ -26,49 +26,8 @@
     <Folder Include="Domain\Manifest\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestSolution\InvalidSolution.sln" />
-    <Content Include="TestSolution\ProjA\ProjA.csproj">
+    <Content Include="TestSolutions\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestSolution\Projb\Nested\Projb.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestSolution\ProjC\ProjC.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestSolution\ProjD\ProjD.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestSolution\ProjE\ProjE.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestSolution\ProjF\ProjF.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestSolution\ProjG\ProjG.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestSolution\TestSolutionLegacy.sln">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Remove="TestSolution\TestSolution.slnx" />
-    <Content Include="TestSolution\TestSolution.slnx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Remove="TestSolution\monorepo.json" />
-    <Content Include="TestSolution\monorepo.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Remove="TestSolution\monorepo.yml" />
-    <Content Include="TestSolution\monorepo.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Remove="TestSolution\monorepoLegacy.yml" />
-    <Content Include="TestSolution\monorepoLegacy.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Update="TestSolution\invalidMonorepo.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

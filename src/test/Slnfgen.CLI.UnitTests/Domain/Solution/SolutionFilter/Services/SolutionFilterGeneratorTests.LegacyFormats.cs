@@ -6,8 +6,8 @@ public partial class SolutionFilterGeneratorTests
     public void GenerateMany_should_generate_filters_for_all_declared_filters_with_legacy_formats()
     {
         var outputDirectory = "TestSolution";
-        var solutionFile = LoadSolutionFileFromTestSolution("TestSolutionLegacy.sln");
-        var filtersDefinition = LoadManifestFileFromTestSolution("monorepoLegacy.yml");
+        var solutionFile = LoadSolutionFileFromBasicSolution("TestSolutionLegacy.sln");
+        var filtersDefinition = LoadManifestFileFromBasicSolution("monorepoLegacy.yml");
         var res = _sut.GenerateMany(solutionFile, filtersDefinition, outputDirectory);
 
         res.Count().Should().Be(2);
@@ -16,9 +16,9 @@ public partial class SolutionFilterGeneratorTests
     [Fact]
     public void GenerateMany_should_generate_filters_that_include_dependant_projects_with_legacy_formats()
     {
-        var outputDirectory = "TestSolution";
-        var solutionFile = LoadSolutionFileFromTestSolution("TestSolutionLegacy.sln");
-        var filtersDefinition = LoadManifestFileFromTestSolution("monorepoLegacy.yml");
+        var outputDirectory = Path.Combine("TestSolutions", "BasicSolution");
+        var solutionFile = LoadSolutionFileFromBasicSolution("TestSolutionLegacy.sln");
+        var filtersDefinition = LoadManifestFileFromBasicSolution("monorepoLegacy.yml");
         var res = _sut.GenerateMany(solutionFile, filtersDefinition, outputDirectory).ToList();
         var filterOne = res.First(filter => filter.Name == "FilterOne");
         filterOne.Solution.Path.Should().Be("TestSolutionLegacy.sln");
