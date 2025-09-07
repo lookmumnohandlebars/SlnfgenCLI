@@ -31,7 +31,7 @@ public class ProjectSuffixFinder
         {
             var matchingProjects = solutionFile
                 .ProjectsInSolution.Where(proj =>
-                    proj.Name.Contains(
+                    proj.Name.StartsWith(
                         $"{project.Name}.", // to ensure we match projects like ProjA.UnitTests but not ProjAB.UnitTests
                         StringComparison.InvariantCultureIgnoreCase
                     )
