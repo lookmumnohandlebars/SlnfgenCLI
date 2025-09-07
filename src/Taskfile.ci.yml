@@ -42,4 +42,4 @@ tasks:
       GITHUB_TOKEN: '{{.GITHUB_TOKEN| default "GITHUB_TOKEN Key not set"}}'
     cmds:
       - dotnet nuget push ./artifacts/*.nupkg --api-key {{ .NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-      - dotnet nuget push ./artifacts/*.nupkg --api-key ${{ .GITHUB_TOKEN }} -s https://nuget.pkg.github.com/lookmumnohandlebars/index.json --skip-duplicate
+      - dotnet nuget push ./artifacts/*.nupkg --api-key ${{ .GITHUB_TOKEN }} --source https://nuget.pkg.github.com/lookmumnohandlebars/index.json --skip-duplicate
