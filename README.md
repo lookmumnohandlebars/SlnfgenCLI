@@ -83,7 +83,7 @@ filterDefinitions:
 
 - `solutionFile`: The path to the "Parent" solution file
 - `filterDefinitions`: Each filter is defined by a `name` (the name of the Solution Filter), and `entryPoints` which are projects at the top of the dependency tree (usually these will be the deployed projects and test projects)
-- `autoIncludeSuffixPatterns`: These are the suffix patterns to automatically include in the solution filter. Primarily
+- `autoIncludeSuffixPatterns`: These are the suffix patterns to automatically include in the solution filter. Primarily, they are used to automatically add projects whose names end with these suffixes (such as "Tests" or "Benchmarks") to the solution filter, ensuring that related test or benchmark projects are included without manual specification.
 
 ### Generating Filters
 
