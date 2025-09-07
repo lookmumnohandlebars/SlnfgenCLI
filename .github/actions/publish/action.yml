@@ -27,4 +27,4 @@ runs:
       if: steps.release.outputs.releases_created == 'true'
       shell: bash
       run: |
-        task ci:publish API_KEY=${{ inputs.NUGET_API_KEY }} GITHUB_TOKEN=${{ inputs.GITHUB_TOKEN }}
+        task ci:publish NUGET_API_KEY=${{ inputs.NUGET_API_KEY }} GITHUB_TOKEN=${{ inputs.GITHUB_TOKEN }}

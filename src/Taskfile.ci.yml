@@ -6,7 +6,7 @@ tasks:
   build:
     desc: Build the source code (.NET) with packages cached
     vars:
-      CONFIGURATION: "Release" # Debug or Release
+      CONFIGURATION: '{{.CONFIGURATION| default "Release"}}' # Debug or Release
     cmds:
       - dotnet restore src/Slnfgen.slnx --locked-mode
       - dotnet build src/Slnfgen.slnx --no-restore -c {{ .CONFIGURATION }}
@@ -19,14 +19,14 @@ tasks:
   test:
     desc: Run all tests associated with the source code using the TRX logger and coverage collection
     vars:
-      CONFIGURATION: "Release" # Debug or Release
+      CONFIGURATION: '{{.CONFIGURATION| default "Release"}}' # Debug or Release
     cmds:
       - dotnet test src/Slnfgen.slnx --no-restore --verbosity normal -c {{ .CONFIGURATION }} --logger "trx;LogFileName=test-results.trx" --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
 
   pack:
     desc: Pack the source code into a NuGet package
     vars:
-      CONFIGURATION: "Release" # Debug or Release
+      CONFIGURATION: '{{.CONFIGURATION| default "Release"}}' # Debug or Release
     deps:
       - build
     cmds:
@@ -37,11 +37,9 @@ tasks:
 
   publish:
     desc: Publish the NuGet package to the NuGet repository
-    deps:
-      - pack
     vars:
-      API_KEY: "Please provide your API key (API_KEY=abcd)"
-      GITHUB_TOKEN: "Please provide your GitHub token (GITHUB_TOKEN=ghp_1234)"
+      NUGET_API_KEY: '{{.NUGET_API_KEY| default "NUGET_API_KEY Key not set"}}'
+      GITHUB_TOKEN: '{{.GITHUB_TOKEN| default "GITHUB_TOKEN Key not set"}}'
     cmds:
-      - dotnet nuget push ./artifacts/*.nupkg --api-key {{ .API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - dotnet nuget push ./artifacts/*.nupkg --api-key {{ .NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
       - dotnet nuget push ./artifacts/*.nupkg --api-key ${{ .GITHUB_TOKEN }} -s https://nuget.pkg.github.com/lookmumnohandlebars/index.json --skip-duplicate
