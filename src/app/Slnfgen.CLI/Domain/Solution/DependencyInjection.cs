@@ -14,7 +14,7 @@ public static class DependencyInjection
     public static IServiceCollection AddDomainSolutionDependencies(this IServiceCollection services)
     {
         services.AddTransient<SolutionFilterGenerator>();
-        services.AddTransient<TestProjectFinder>();
+        services.AddTransient<ProjectSuffixFinder>();
         return services;
     }
 }

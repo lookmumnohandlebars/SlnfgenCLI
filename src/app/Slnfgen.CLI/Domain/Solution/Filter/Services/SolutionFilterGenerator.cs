@@ -13,13 +13,13 @@ namespace Slnfgen.CLI.Domain.Solution.Filter.Services;
 public class SolutionFilterGenerator
 {
     private readonly IProjectFileLoader _projectFileLoader;
-    private readonly TestProjectFinder _testProjectFinder;
+    private readonly ProjectSuffixFinder _projectSuffixFinder;
 
     /// <inheritdoc cref="SolutionFilterGenerator"/>
-    public SolutionFilterGenerator(IProjectFileLoader projectFileLoader, TestProjectFinder testProjectFinder)
+    public SolutionFilterGenerator(IProjectFileLoader projectFileLoader, ProjectSuffixFinder projectSuffixFinder)
     {
         _projectFileLoader = projectFileLoader;
-        _testProjectFinder = testProjectFinder;
+        _projectSuffixFinder = projectSuffixFinder;
     }
 
     /// <summary>
@@ -176,10 +176,10 @@ public class SolutionFilterGenerator
     )
     {
         var combinedTestProjectPatterns = manifestFilterDefinition
-            .TestProjectPatterns.ToHashSet()
-            .Union(manifest.TestProjectPatterns.ToHashSet())
+            .AutoIncludeSuffixPatterns.ToHashSet()
+            .Union(manifest.AutoIncludeSuffixPatterns.ToHashSet())
             .ToHashSet();
-        return _testProjectFinder.FindTestProjects(solutionFile, projects, combinedTestProjectPatterns).ToHashSet();
+        return _projectSuffixFinder.FindProjects(solutionFile, projects, combinedTestProjectPatterns).ToHashSet();
     }
 
     private static string NormalizePath(string path)

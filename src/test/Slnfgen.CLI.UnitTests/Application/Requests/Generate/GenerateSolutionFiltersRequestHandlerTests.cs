@@ -16,7 +16,7 @@ public class GenerateSolutionFiltersRequestHandlerTests
     public GenerateSolutionFiltersRequestHandlerTests()
     {
         _sut = new GenerateSolutionFiltersRequestHandler(
-            new SolutionFilterGenerator(new ProjectFileLoader(), new TestProjectFinder()),
+            new SolutionFilterGenerator(new ProjectFileLoader(), new ProjectSuffixFinder()),
             _fakeSolutionFilterWriter,
             new SolutionFiltersManifestFileLoader(),
             new SolutionFileLoader(),

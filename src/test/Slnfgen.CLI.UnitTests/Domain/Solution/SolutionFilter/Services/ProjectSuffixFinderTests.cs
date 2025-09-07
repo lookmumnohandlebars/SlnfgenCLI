@@ -1,17 +1,15 @@
-using FluentAssertions.Collections;
 using Slnfgen.CLI.Application.Repositories.Solution.File;
 using Slnfgen.CLI.Domain.Solution.Filter.Services;
-using Slnfgen.CLI.Domain.Solution.Project.Models;
 
 namespace Slnfgen.CLI.UnitTests.Domain.Solution.SolutionFilter.Services;
 
-public class TestProjectFinderTests
+public class ProjectSuffixFinderTests
 {
-    private readonly TestProjectFinder _testProjectFinder;
+    private readonly ProjectSuffixFinder _projectSuffixFinder;
 
-    public TestProjectFinderTests()
+    public ProjectSuffixFinderTests()
     {
-        _testProjectFinder = new TestProjectFinder();
+        _projectSuffixFinder = new ProjectSuffixFinder();
     }
 
     [Fact]
@@ -21,7 +19,7 @@ public class TestProjectFinderTests
         var slnfile = new SolutionFileLoader().Load(
             Path.Combine("TestSolutions", "SolutionWithTests", "SolutionWithTests.slnx")
         );
-        var result = _testProjectFinder.FindTestProjects(slnfile, slnfile.ProjectsInSolution, testProjectPatterns);
+        var result = _projectSuffixFinder.FindProjects(slnfile, slnfile.ProjectsInSolution, testProjectPatterns);
         result.ToList().Should().BeEmpty();
     }
 
@@ -32,8 +30,8 @@ public class TestProjectFinderTests
         var slnfile = new SolutionFileLoader().Load(
             Path.Combine("TestSolutions", "SolutionWithTests", "SolutionWithTests.slnx")
         );
-        var result = _testProjectFinder
-            .FindTestProjects(slnfile, slnfile.ProjectsInSolution, testProjectPatterns)
+        var result = _projectSuffixFinder
+            .FindProjects(slnfile, slnfile.ProjectsInSolution, testProjectPatterns)
             .ToList();
         result.Should().BeEmpty();
     }
@@ -45,7 +43,7 @@ public class TestProjectFinderTests
         var slnfile = new SolutionFileLoader().Load(
             Path.Combine("TestSolutions", "SolutionWithTests", "SolutionWithTests.slnx")
         );
-        var result = _testProjectFinder.FindTestProjects(
+        var result = _projectSuffixFinder.FindProjects(
             slnfile,
             slnfile.ProjectsInSolution.Where(proj => proj.Name == "ProjA"),
             testProjectPatterns
@@ -60,7 +58,7 @@ public class TestProjectFinderTests
         var slnfile = new SolutionFileLoader().Load(
             Path.Combine("TestSolutions", "SolutionWithTests", "SolutionWithTests.slnx")
         );
-        var result = _testProjectFinder.FindTestProjects(
+        var result = _projectSuffixFinder.FindProjects(
             slnfile,
             slnfile.ProjectsInSolution.Where(proj => proj.Name == "ProjA"),
             testProjectPatterns
@@ -78,7 +76,7 @@ public class TestProjectFinderTests
         var slnfile = new SolutionFileLoader().Load(
             Path.Combine("TestSolutions", "SolutionWithTests", "SolutionWithTests.slnx")
         );
-        var result = _testProjectFinder.FindTestProjects(slnfile, slnfile.ProjectsInSolution, testProjectPatterns);
+        var result = _projectSuffixFinder.FindProjects(slnfile, slnfile.ProjectsInSolution, testProjectPatterns);
         result
             .Select(r => r.Name)
             .Should()

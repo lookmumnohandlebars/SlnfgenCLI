@@ -9,7 +9,7 @@ namespace Slnfgen.CLI.UnitTests.Domain.Solution.SolutionFilter.Services;
 
 public partial class SolutionFilterGeneratorTests
 {
-    private readonly SolutionFilterGenerator _sut = new(new ProjectFileLoader(), new TestProjectFinder()); // An actual file loader is required here
+    private readonly SolutionFilterGenerator _sut = new(new ProjectFileLoader(), new ProjectSuffixFinder()); // An actual file loader is required here
 
     [Fact]
     public void GenerateMany_should_generate_filters_for_all_declared_filters()

@@ -13,22 +13,22 @@ public class SolutionFiltersManifestFilterDefinition
     {
         Name = string.Empty;
         Entrypoints = [];
-        TestProjectPatterns = [];
+        AutoIncludeSuffixPatterns = [];
     }
 
     /// <inheritdoc cref="SolutionFiltersManifestFilterDefinition" />
     /// <param name="name">Solution filter name</param>
     /// <param name="entrypoints">Paths to entrypoint projects</param>
-    /// <param name="testProjectPatterns">Test project patterns to include in the filter</param>
+    /// <param name="autoIncludeSuffixPatterns">project suffix patterns to automatically include in the filter</param>
     public SolutionFiltersManifestFilterDefinition(
         string name,
         string[] entrypoints,
-        string[]? testProjectPatterns = null
+        string[]? autoIncludeSuffixPatterns = null
     )
     {
         Name = name;
         Entrypoints = entrypoints.Select(NormalizePath).ToArray();
-        TestProjectPatterns = testProjectPatterns ?? [];
+        AutoIncludeSuffixPatterns = autoIncludeSuffixPatterns ?? [];
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public class SolutionFiltersManifestFilterDefinition
     /// <summary>
     ///     Test project patterns to include in the solution filter.
     /// </summary>
-    public string[] TestProjectPatterns { get; set; }
+    public string[] AutoIncludeSuffixPatterns { get; set; }
 
     private string NormalizePath(string entrypoint)
     {

@@ -42,7 +42,7 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
             return new Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest(
                 manifestFromJson.SolutionFile,
                 manifestFromJson.FilterDefinitions,
-                manifestFromJson.TestProjectPatterns
+                manifestFromJson.AutoIncludeSuffixPatterns
             );
         }
 
@@ -73,7 +73,7 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
             return new Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest(
                 manifestFromYaml.SolutionFile,
                 manifestFromYaml.FilterDefinitions,
-                manifestFromYaml.TestProjectPatterns
+                manifestFromYaml.AutoIncludeSuffixPatterns
             );
         }
         catch (YamlDotNet.Core.YamlException e)

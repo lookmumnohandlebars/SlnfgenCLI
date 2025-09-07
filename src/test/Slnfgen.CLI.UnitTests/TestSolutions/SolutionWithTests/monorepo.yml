@@ -1,17 +1,17 @@
 solutionFile: SolutionWithTests.slnx
-testProjectPatterns:
+autoIncludeSuffixPatterns:
   - Unit.Tests
 
 filterDefinitions:
   - name: FilterOne
     entrypoints:
       - ProjA/ProjA.csproj
-    testProjectPatterns:
+    autoIncludeSuffixPatterns:
       - Unit.Tests
       - Integration.Tests
 
   - name: FilterTwo
     entrypoints:
       - ProjB/ProjB.csproj
-    testProjectPatterns:
+    autoIncludeSuffixPatterns:
       - Contract.Tests

@@ -66,11 +66,14 @@ Here is an example Manifest File:
 
 ```yml
 solutionFile: Contoso.slnx # sln & slnx supported
+autoIncludeSuffixPatterns:
+  - Tests
 filterDefinitions:
   - name: ContosoProducts # becomes FilterOne.slnf
     entrypoints:
       - Contoso.Products/Contoso.Products.csproj
       - Contoso.Products.Tests/Contoso.Products.Tests.csproj
+    autoIncludeSuffixPatterns: Benchmarks
 
   - name: ContosoPayments
     entrypoints:
@@ -80,6 +83,7 @@ filterDefinitions:
 
 - `solutionFile`: The path to the "Parent" solution file
 - `filterDefinitions`: Each filter is defined by a `name` (the name of the Solution Filter), and `entryPoints` which are projects at the top of the dependency tree (usually these will be the deployed projects and test projects)
+- `autoIncludeSuffixPatterns`: These are the suffix patterns to automatically include in the solution filter. Primarily
 
 ### Generating Filters
 
