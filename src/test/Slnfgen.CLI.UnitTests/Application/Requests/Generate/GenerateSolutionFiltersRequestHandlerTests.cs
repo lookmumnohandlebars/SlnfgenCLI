@@ -16,7 +16,7 @@ public class GenerateSolutionFiltersRequestHandlerTests
     public GenerateSolutionFiltersRequestHandlerTests()
     {
         _sut = new GenerateSolutionFiltersRequestHandler(
-            new SolutionFilterGenerator(new ProjectFileLoader()),
+            new SolutionFilterGenerator(new ProjectFileLoader(), new ProjectSuffixFinder()),
             _fakeSolutionFilterWriter,
             new SolutionFiltersManifestFileLoader(),
             new SolutionFileLoader(),
@@ -28,7 +28,10 @@ public class GenerateSolutionFiltersRequestHandlerTests
     public void Handle_ShouldGenerateSolutionFilters()
     {
         // Arrange
-        var request = new GenerateSolutionFiltersRequest(Path.Combine("TestSolution", "monorepo.yml"), ".");
+        var request = new GenerateSolutionFiltersRequest(
+            Path.Combine("TestSolutions", "BasicSolution", "monorepo.yml"),
+            "."
+        );
 
         // Act
         var response = _sut.Handle(request);
@@ -39,7 +42,7 @@ public class GenerateSolutionFiltersRequestHandlerTests
 
         var filterOne = _fakeSolutionFilterWriter.Store[Path.Combine(".", "FilterOne")];
         filterOne.Should().NotBeNull();
-        filterOne.Solution.Path.Should().Be(@"TestSolution\\TestSolution.slnx");
+        filterOne.Solution.Path.Should().Be(@"TestSolutions\\BasicSolution\\TestSolution.slnx");
         filterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(
@@ -52,7 +55,7 @@ public class GenerateSolutionFiltersRequestHandlerTests
 
         var filterTwo = _fakeSolutionFilterWriter.Store[Path.Combine(".", "FilterTwo")];
         filterOne.Should().NotBeNull();
-        filterOne.Solution.Path.Should().Be(@"TestSolution\\TestSolution.slnx");
+        filterOne.Solution.Path.Should().Be(@"TestSolutions\\BasicSolution\\TestSolution.slnx");
         filterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(
@@ -68,7 +71,10 @@ public class GenerateSolutionFiltersRequestHandlerTests
     public void Handle_ShouldGenerateSolutionFilters_ForLegacySolutionFormat()
     {
         // Arrange
-        var request = new GenerateSolutionFiltersRequest(Path.Combine("TestSolution", "monorepoLegacy.yml"), ".");
+        var request = new GenerateSolutionFiltersRequest(
+            Path.Combine("TestSolutions", "BasicSolution", "monorepoLegacy.yml"),
+            "."
+        );
 
         // Act
         var response = _sut.Handle(request);
@@ -78,7 +84,7 @@ public class GenerateSolutionFiltersRequestHandlerTests
         response.GeneratedFilters.Should().HaveCount(2);
         var filterOne = _fakeSolutionFilterWriter.Store[Path.Combine(".", "FilterOne")];
         filterOne.Should().NotBeNull();
-        filterOne.Solution.Path.Should().Be(@"TestSolution\\TestSolutionLegacy.sln");
+        filterOne.Solution.Path.Should().Be(@"TestSolutions\\BasicSolution\\TestSolutionLegacy.sln");
         filterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(

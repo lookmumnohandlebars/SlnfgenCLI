@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="ProjA.Integration.Tests/ProjA.Integration.Tests.csproj" />
+  <Project Path="ProjA.Unit.Tests/ProjA.Unit.Tests.csproj" />
+  <Project Path="ProjA/ProjA.csproj" />
+  <Project Path="ProjB.Contract.Tests/ProjB.Contract.Tests.csproj" />
+  <Project Path="ProjB.Unit.Tests/ProjB.Unit.Tests.csproj" />
+  <Project Path="ProjB/ProjB.csproj" />
+  <Project Path="TestUtils/TestUtils.csproj" />
+</Solution>

@@ -4,8 +4,7 @@
 
 [![NuGet](https://img.shields.io/nuget/v/Slnfgen.CLI.svg)](https://www.nuget.org/packages/Slnfgen.CLI) [![NuGet Downloads](https://img.shields.io/nuget/dt/slnfgen.cli)](https://www.nuget.org/packages/Slnfgen.CLI)
 [![Build](https://github.com/lookmumnohandlebars/slnfgencli/actions/workflows/main.merge.yml/badge.svg)](https://github.com/lookmumnohandlebars/slnfgencli/actions/workflows/main.merge.yml)
-[![GitHub Stars](https://img.shields.io/github/stars/lookmumnohandlebars/slnfgencli.svg)](https://github.com/lookmumnohandlebars/slnfgencli/stargazers) [![GitHub license](https://img.shields.io/github/license/lookmumnohandlebars/slnfgencli)](https://img.shields.io/github/license/lookmumnohandlebars/slnfgencli
-) ![Dependabot](https://img.shields.io/badge/dependabot-enabled-025E8C?logo=dependabot&logoColor=white) ![CodeQL](https://github.com/lookmumnohandlebars/slnfgencli/actions/workflows/github-code-scanning/codeql/badge.svg)
+[![GitHub Stars](https://img.shields.io/github/stars/lookmumnohandlebars/slnfgencli.svg)](https://github.com/lookmumnohandlebars/slnfgencli/stargazers) [![GitHub license](https://img.shields.io/github/license/lookmumnohandlebars/slnfgencli)](https://img.shields.io/github/license/lookmumnohandlebars/slnfgencli) ![Dependabot](https://img.shields.io/badge/dependabot-enabled-025E8C?logo=dependabot&logoColor=white) ![CodeQL](https://github.com/lookmumnohandlebars/slnfgencli/actions/workflows/github-code-scanning/codeql/badge.svg)
 
 ### 🎉 A tool for managing monorepos with automated solution filter generation 🎉
 
@@ -67,11 +66,14 @@ Here is an example Manifest File:
 
 ```yml
 solutionFile: Contoso.slnx # sln & slnx supported
+autoIncludeSuffixPatterns:
+  - Tests
 filterDefinitions:
   - name: ContosoProducts # becomes FilterOne.slnf
     entrypoints:
       - Contoso.Products/Contoso.Products.csproj
       - Contoso.Products.Tests/Contoso.Products.Tests.csproj
+    autoIncludeSuffixPatterns: Benchmarks
 
   - name: ContosoPayments
     entrypoints:
@@ -81,6 +83,7 @@ filterDefinitions:
 
 - `solutionFile`: The path to the "Parent" solution file
 - `filterDefinitions`: Each filter is defined by a `name` (the name of the Solution Filter), and `entryPoints` which are projects at the top of the dependency tree (usually these will be the deployed projects and test projects)
+- `autoIncludeSuffixPatterns`: These are the suffix patterns to automatically include in the solution filter. Primarily, they are used to automatically add projects whose names end with these suffixes (such as "Tests" or "Benchmarks") to the solution filter, ensuring that related test or benchmark projects are included without manual specification.
 
 ### Generating Filters
 

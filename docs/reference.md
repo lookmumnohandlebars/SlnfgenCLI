@@ -11,11 +11,17 @@ The manifest file, required for defining solution filters, is a yaml or json fil
 
 ```yml
 solutionFile: Contoso.sln # Path to target solution file (from this file)
+autoIncludeSuffixPatterns:
+  - Tests
+
 filterDefinitions:
   - name: Products # Solution Filter Name
     entrypoints:
       - Products.WebApi/Products.WebApi.csproj
       - tests/Products.UnitTests/Products.UnitTests.csproj
+    autoIncludeSuffixPatterns:
+      - Contracts
+      - Benchmarks
 
   - name: Orders
     entrypoints:
@@ -72,11 +78,15 @@ The manifest file, given in the argument, is a yaml or json file, which defines
 
 ```yml
 solutionFile: Contoso.sln # Path to target solution file (from this file)
+autoIncludeSuffixPatterns:
+  - Tests
 filterDefinitions:
   - name: Products # Solution Filter Name
     entrypoints:
       - Products.WebApi/Products.WebApi.csproj
       - tests/Products.UnitTests/Products.UnitTests.csproj
+    autoIncludeSuffixPatterns:
+      - Benchmarks
 
   - name: Orders
     entrypoints:

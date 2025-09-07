@@ -41,7 +41,8 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
                 );
             return new Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest(
                 manifestFromJson.SolutionFile,
-                manifestFromJson.FilterDefinitions
+                manifestFromJson.FilterDefinitions,
+                manifestFromJson.AutoIncludeSuffixPatterns
             );
         }
 
@@ -71,7 +72,8 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
             // Hack to ensure the constructor is called with the correct parameters
             return new Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest(
                 manifestFromYaml.SolutionFile,
-                manifestFromYaml.FilterDefinitions
+                manifestFromYaml.FilterDefinitions,
+                manifestFromYaml.AutoIncludeSuffixPatterns
             );
         }
         catch (YamlDotNet.Core.YamlException e)

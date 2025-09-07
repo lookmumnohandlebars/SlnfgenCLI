@@ -30,6 +30,20 @@ public class DotnetCommandRunner
         RunCommand("sln", "add", projectName);
     }
 
+    public void CreateTestProjectAndAddToSolution(string projectName)
+    {
+        var projectPath = Path.Combine(_workingDirectory, projectName);
+
+        // Create the project
+        RunCommand("new", "xunit", "-o", projectName);
+
+        if (!Directory.Exists(projectPath))
+            throw new DirectoryNotFoundException($"Project directory was not created at: {projectPath}");
+
+        // Add it to the solution
+        RunCommand("sln", "add", projectName);
+    }
+
     public void AddProjectReference(string projectToAdd, string projectToAddTo)
     {
         RunCommand("add", projectToAdd, "reference", projectToAddTo);

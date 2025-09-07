@@ -13,11 +13,13 @@ namespace Slnfgen.CLI.Domain.Solution.Filter.Services;
 public class SolutionFilterGenerator
 {
     private readonly IProjectFileLoader _projectFileLoader;
+    private readonly ProjectSuffixFinder _projectSuffixFinder;
 
     /// <inheritdoc cref="SolutionFilterGenerator"/>
-    public SolutionFilterGenerator(IProjectFileLoader projectFileLoader)
+    public SolutionFilterGenerator(IProjectFileLoader projectFileLoader, ProjectSuffixFinder projectSuffixFinder)
     {
         _projectFileLoader = projectFileLoader;
+        _projectSuffixFinder = projectSuffixFinder;
     }
 
     /// <summary>
@@ -32,7 +34,7 @@ public class SolutionFilterGenerator
         string targetDirectory
     ) =>
         filters.FilterDefinitions.Select(filterDefinition =>
-            GenerateFromFilterDefinition(solutionFile, filterDefinition, targetDirectory)
+            GenerateFromFilterDefinition(solutionFile, filters, filterDefinition, targetDirectory)
         );
 
     /// <summary>
@@ -59,20 +61,31 @@ public class SolutionFilterGenerator
             throw new BadRequestException("Filter definition in manifest file: " + targetSolutionFilterName);
         }
 
-        return GenerateFromFilterDefinition(solutionFile, targetFilter, targetDirectory);
+        return GenerateFromFilterDefinition(solutionFile, filters, targetFilter, targetDirectory);
     }
 
     #region Internal
 
     private SolutionFilter GenerateFromFilterDefinition(
         RootSolutionFile solutionFile,
+        SolutionFiltersManifest manifest,
         SolutionFiltersManifestFilterDefinition filterDefinition,
         string targetDirectory
     )
     {
-        var entryPointProjects = GetEntryPointSolutionProjects(solutionFile, filterDefinition).ToList();
+        var entryPointProjectsWithDependencies = GetDependantProjectsFromEntryPoints(solutionFile, filterDefinition);
+        var testProjectsWithDependencies = GetDependantProjectsFromTests(
+            solutionFile,
+            manifest,
+            filterDefinition,
+            entryPointProjectsWithDependencies
+        );
 
-        var entryPointProjectsWithDependencies = AggregateProjectDependencies(entryPointProjects, solutionFile);
+        var allIncludedProjectFileNames = entryPointProjectsWithDependencies
+            .Union(testProjectsWithDependencies)
+            .Select(proj => proj.Path)
+            .Distinct()
+            .ToList();
 
         var relativePathToSolutionFile = Path.GetRelativePath(
             Path.Combine(Directory.GetCurrentDirectory(), targetDirectory),
@@ -83,9 +96,35 @@ public class SolutionFilterGenerator
             filterDefinition.Name,
             new SolutionFiltersSolutionDefinition(
                 relativePathToSolutionFile,
-                entryPointProjectsWithDependencies.ToArray()
+                allIncludedProjectFileNames.OrderBy(path => path).ToArray()
             )
         );
+    }
+
+    private ISet<SolutionProject> GetDependantProjectsFromEntryPoints(
+        RootSolutionFile solutionFile,
+        SolutionFiltersManifestFilterDefinition filterDefinition
+    ) =>
+        AggregateProjectDependencies(
+            GetEntryPointSolutionProjects(solutionFile, filterDefinition).ToList(),
+            solutionFile
+        );
+
+    private ISet<SolutionProject> GetDependantProjectsFromTests(
+        RootSolutionFile solutionFile,
+        SolutionFiltersManifest manifest,
+        SolutionFiltersManifestFilterDefinition filterDefinition,
+        IEnumerable<SolutionProject> entryPointProjectsWithDependencies
+    )
+    {
+        var autoIncludedTestProjects = GetTestProjects(
+            solutionFile,
+            manifest,
+            filterDefinition,
+            entryPointProjectsWithDependencies
+        );
+
+        return AggregateProjectDependencies(autoIncludedTestProjects, solutionFile);
     }
 
     private IEnumerable<SolutionProject> GetEntryPointSolutionProjects(
@@ -96,16 +135,16 @@ public class SolutionFilterGenerator
             filterDefinition.Entrypoints.Contains(proj.Name) || filterDefinition.Entrypoints.Contains(proj.Path)
         );
 
-    private IEnumerable<string> AggregateProjectDependencies(
+    private ISet<SolutionProject> AggregateProjectDependencies(
         IEnumerable<SolutionProject> projects,
         RootSolutionFile solutionFile
     )
     {
         var stack = new Stack<SolutionProject>(projects);
-        var includedProjectPaths = new HashSet<string>();
+        var includedProjects = new HashSet<SolutionProject>();
         while (stack.TryPop(out var currentProject))
         {
-            includedProjectPaths.Add(currentProject.Path);
+            includedProjects.Add(currentProject);
             var dependenciesInProjectFile = _projectFileLoader
                 .LoadOne(Path.Combine(solutionFile.AbsolutePath, "..", currentProject.Path))
                 .ProjectDependencies.Select(NormalizePath)
@@ -118,7 +157,7 @@ public class SolutionFilterGenerator
                 .ToList();
             foreach (
                 var dependantProjectInSolution in dependantProjectsInSolution.Where(proj =>
-                    !includedProjectPaths.Contains(NormalizePath(proj.Path))
+                    !includedProjects.Select(includedProject => includedProject.Path).Contains(NormalizePath(proj.Path))
                 )
             )
             {
@@ -126,7 +165,21 @@ public class SolutionFilterGenerator
             }
         }
 
-        return includedProjectPaths.OrderBy(path => path);
+        return includedProjects;
+    }
+
+    private ISet<SolutionProject> GetTestProjects(
+        RootSolutionFile solutionFile,
+        SolutionFiltersManifest manifest,
+        SolutionFiltersManifestFilterDefinition manifestFilterDefinition,
+        IEnumerable<SolutionProject> projects
+    )
+    {
+        var combinedTestProjectPatterns = manifestFilterDefinition
+            .AutoIncludeSuffixPatterns.ToHashSet()
+            .Union(manifest.AutoIncludeSuffixPatterns.ToHashSet())
+            .ToHashSet();
+        return _projectSuffixFinder.FindProjects(solutionFile, projects, combinedTestProjectPatterns).ToHashSet();
     }
 
     private static string NormalizePath(string path)
