@@ -23,14 +23,14 @@
     {
       "name": "Task | Refactor C#",
       "command": "task",
-      "args": ["fmt:refactor", "FILES=${staged}"],
+      "args": ["fmt:refactor", "FILES=."],
       "include": ["**/*.cs", "**/*.csx"],
       "group": "pre-commit"
     },
     {
       "name": "Task | Format w/ Prettier",
       "command": "task",
-      "args": ["fmt:prettier", "--", "${staged}"],
+      "args": ["fmt:prettier", "--", "."],
       "include": [
         "**/*.js",
         "**/*.jsx",
@@ -46,7 +46,7 @@
     {
       "name": "Task | Format C#",
       "command": "task",
-      "args": ["fmt:csharp", "FILES=${staged}"],
+      "args": ["fmt:csharp", "FILES=."],
       "include": ["**/*.cs", "**/*.csx"],
       "group": "pre-commit"
     },

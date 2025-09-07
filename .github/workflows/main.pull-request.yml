@@ -4,6 +4,9 @@ env:
   HUSKY: 0
 
 on:
+  pull_request:
+    branches:
+      - release*
   push:
     branches-ignore:
       - main
