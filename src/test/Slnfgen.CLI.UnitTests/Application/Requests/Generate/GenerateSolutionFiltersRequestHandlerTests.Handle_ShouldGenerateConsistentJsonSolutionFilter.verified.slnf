@@ -1,0 +1,12 @@
+﻿{
+  "solution": {
+    "path": "TestSolutions\\BasicSolution\\TestSolution.slnx",
+    "projects": [
+      "ProjA\\ProjA.csproj",
+      "ProjC\\ProjC.csproj",
+      "ProjE\\ProjE.csproj",
+      "ProjF\\ProjF.csproj",
+      "ProjG\\ProjG.csproj"
+    ]
+  }
+}

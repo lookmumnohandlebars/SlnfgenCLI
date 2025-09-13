@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Slnfgen.CLI.Common.Paths;
 using Throw;
 
 namespace Slnfgen.CLI.Domain.Solution.Filter.Models;
@@ -13,8 +14,12 @@ public class SolutionFiltersSolutionDefinition
     /// <param name="projects">Projects included in the solution filter</param>
     public SolutionFiltersSolutionDefinition(string path, string[] projects)
     {
-        Path = FormatPathForJson(path.Throw().IfEmpty());
-        Projects = projects.Throw().IfContains(string.Empty).Value.Select(FormatPathForJson).ToArray();
+        Path = PathUtilities.NormalizePathToBackslashes(path.ThrowIfNull().IfEmpty());
+        Projects = projects
+            .Throw()
+            .IfContains(string.Empty)
+            .Value.Select(PathUtilities.NormalizePathToBackslashes)
+            .ToArray();
     }
 
     /// <summary>
@@ -28,37 +33,4 @@ public class SolutionFiltersSolutionDefinition
     /// </summary>
     [Required]
     public string[] Projects { get; }
-
-    private string FormatPathForJson(string path)
-    {
-        var outputPath = string.Empty;
-        for (var i = 0; i < path.Length; i++)
-        {
-            if (path[i] == '/')
-            {
-                // swap for backslash
-                outputPath += "\\\\";
-                continue;
-            }
-
-            if (path[i] == '\\') // escape backslash if not already escaped
-            {
-                var nextChar = i + 1 <= path.Length ? path[i + 1] : '\0';
-                var prevChar = i - 1 >= 0 ? path[i - 1] : '\0';
-                if (nextChar == '\\' || prevChar == '\\')
-                {
-                    // already escaped
-                    outputPath += '\\';
-                    continue;
-                }
-
-                outputPath += "\\\\";
-                continue;
-            }
-
-            outputPath += path[i];
-        }
-
-        return outputPath;
-    }
 }

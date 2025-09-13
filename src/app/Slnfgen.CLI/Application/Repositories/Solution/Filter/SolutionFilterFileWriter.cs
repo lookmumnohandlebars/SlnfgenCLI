@@ -21,8 +21,7 @@ public class SolutionFilterFileWriter : ISolutionFilterWriter
     /// <param name="outDirectory">The directory to write to</param>
     public string Write(SolutionFilter solutionFilter, string outDirectory)
     {
-        var json = JsonSerializer.Serialize(solutionFilter, new JsonSerializerOptions());
-        // Todo: Assert string paths don't have forward slashes or single backslashes
+        var json = JsonSerializer.Serialize(solutionFilter, JsonOptions());
         var filePath = Path.Combine(outDirectory, solutionFilter.GetFileName());
         if (!Directory.Exists(outDirectory))
             Directory.CreateDirectory(outDirectory);
@@ -42,4 +41,10 @@ public class SolutionFilterFileWriter : ISolutionFilterWriter
             filePaths.Add(Write(solutionFilter, outDirectory));
         return filePaths;
     }
+
+    /// <summary>
+    ///     JSON serialization options for writing solution filter files.
+    /// </summary>
+    public static JsonSerializerOptions JsonOptions() =>
+        new(JsonSerializerDefaults.General) { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 }

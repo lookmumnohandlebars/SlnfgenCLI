@@ -34,11 +34,11 @@ public partial class SolutionFilterGeneratorTests
         filterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                @"ProjA\\ProjA.csproj",
-                @"ProjC\\ProjC.csproj",
-                @"ProjE\\ProjE.csproj",
-                @"ProjF\\ProjF.csproj",
-                @"ProjG\\ProjG.csproj"
+                @"ProjA\ProjA.csproj",
+                @"ProjC\ProjC.csproj",
+                @"ProjE\ProjE.csproj",
+                @"ProjF\ProjF.csproj",
+                @"ProjG\ProjG.csproj"
             );
 
         var filterTwo = res.First(filter => filter.Name == "FilterTwo");
@@ -46,10 +46,10 @@ public partial class SolutionFilterGeneratorTests
         filterTwo
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                @"Projb\\Nested\\Projb.csproj",
-                @"ProjD\\ProjD.csproj",
-                @"ProjF\\ProjF.csproj",
-                @"ProjG\\ProjG.csproj"
+                @"Projb\Nested\Projb.csproj",
+                @"ProjD\ProjD.csproj",
+                @"ProjF\ProjF.csproj",
+                @"ProjG\ProjG.csproj"
             );
     }
 
@@ -61,26 +61,26 @@ public partial class SolutionFilterGeneratorTests
         var filtersDefinition = LoadManifestFileFromBasicSolution("monorepo.yml");
         var res = _sut.GenerateMany(solutionFile, filtersDefinition, outputDirectory).ToList();
         var filterOne = res.First(filter => filter.Name == "FilterOne");
-        filterOne.Solution.Path.Should().Be("..\\\\TestSolution.slnx");
+        filterOne.Solution.Path.Should().Be(@"..\TestSolution.slnx");
         filterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                "ProjA\\\\ProjA.csproj",
-                "ProjC\\\\ProjC.csproj",
-                "ProjE\\\\ProjE.csproj",
-                "ProjF\\\\ProjF.csproj",
-                "ProjG\\\\ProjG.csproj"
+                @"ProjA\ProjA.csproj",
+                @"ProjC\ProjC.csproj",
+                @"ProjE\ProjE.csproj",
+                @"ProjF\ProjF.csproj",
+                @"ProjG\ProjG.csproj"
             );
 
         var filterTwo = res.First(filter => filter.Name == "FilterTwo");
-        filterTwo.Solution.Path.Should().Be("..\\\\TestSolution.slnx");
+        filterTwo.Solution.Path.Should().Be(@"..\TestSolution.slnx");
         filterTwo
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                "Projb\\\\Nested\\\\Projb.csproj",
-                "ProjD\\\\ProjD.csproj",
-                "ProjF\\\\ProjF.csproj",
-                "ProjG\\\\ProjG.csproj"
+                @"Projb\Nested\Projb.csproj",
+                @"ProjD\ProjD.csproj",
+                @"ProjF\ProjF.csproj",
+                @"ProjG\ProjG.csproj"
             );
     }
 
@@ -96,12 +96,12 @@ public partial class SolutionFilterGeneratorTests
         filterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                @"ProjA\\ProjA.csproj",
-                @"ProjA.Unit.Tests\\ProjA.Unit.Tests.csproj",
-                @"ProjA.Integration.Tests\\ProjA.Integration.Tests.csproj",
-                @"ProjB\\ProjB.csproj",
-                @"ProjB.Unit.Tests\\ProjB.Unit.Tests.csproj",
-                @"TestUtils\\TestUtils.csproj"
+                @"ProjA\ProjA.csproj",
+                @"ProjA.Unit.Tests\ProjA.Unit.Tests.csproj",
+                @"ProjA.Integration.Tests\ProjA.Integration.Tests.csproj",
+                @"ProjB\ProjB.csproj",
+                @"ProjB.Unit.Tests\ProjB.Unit.Tests.csproj",
+                @"TestUtils\TestUtils.csproj"
             );
 
         var filterTwo = res.First(filter => filter.Name == "FilterTwo");
@@ -109,10 +109,10 @@ public partial class SolutionFilterGeneratorTests
         filterTwo
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                @"ProjB\\ProjB.csproj",
-                @"ProjB.Unit.Tests\\ProjB.Unit.Tests.csproj",
-                @"ProjB.Contract.Tests\\ProjB.Contract.Tests.csproj",
-                @"TestUtils\\TestUtils.csproj"
+                @"ProjB\ProjB.csproj",
+                @"ProjB.Unit.Tests\ProjB.Unit.Tests.csproj",
+                @"ProjB.Contract.Tests\ProjB.Contract.Tests.csproj",
+                @"TestUtils\TestUtils.csproj"
             );
     }
 

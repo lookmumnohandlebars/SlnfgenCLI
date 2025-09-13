@@ -66,6 +66,6 @@ public class SolutionFiltersManifestFilterDefinition
             throw new ArgumentException("Entrypoint must not be empty", nameof(entrypoint));
 
         // Normalize path for JSON serialization
-        return entrypoint.Replace('/', '\\').Replace("\\\\", "\\");
+        return entrypoint.Replace('/', '\\');
     }
 }

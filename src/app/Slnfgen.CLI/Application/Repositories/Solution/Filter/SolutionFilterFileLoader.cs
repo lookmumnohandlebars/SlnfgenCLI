@@ -23,7 +23,7 @@ public class SolutionFilterFileLoader
     {
         using var fileStream = System.IO.File.OpenRead(filePath);
         var solutionFilter =
-            JsonSerializer.Deserialize<SolutionFilter>(fileStream)
+            JsonSerializer.Deserialize<SolutionFilter>(fileStream, SolutionFilterFileWriter.JsonOptions())
             ?? throw new InvalidOperationException($"Failed to deserialize solution filter from file: {filePath}");
         solutionFilter.Name = Path.GetFileName(filePath)
             .Replace(".slnf", string.Empty, StringComparison.OrdinalIgnoreCase);
