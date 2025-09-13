@@ -24,20 +24,15 @@ public partial class SolutionFilterGeneratorTests
         filterOne.Solution.Path.Should().Be("TestSolutionLegacy.sln");
         filterOne
             .Solution.Projects.Should()
-            .BeEquivalentTo(
-                @"ProjA\\ProjA.csproj",
-                @"ProjC\\ProjC.csproj",
-                @"ProjE\\ProjE.csproj",
-                @"ProjF\\ProjF.csproj"
-            );
+            .BeEquivalentTo(@"ProjA\ProjA.csproj", @"ProjC\ProjC.csproj", @"ProjE\ProjE.csproj", @"ProjF\ProjF.csproj");
 
         res.Where(filter => filter.Name == "FilterTwo")
             .SelectMany(filter => filter.Solution.Projects)
             .Should()
             .BeEquivalentTo(
-                @"Projb\\Nested\\Projb.csproj",
-                @"ProjD\\ProjD.csproj",
-                @"ProjF\\ProjF.csproj"
+                @"Projb\Nested\Projb.csproj",
+                @"ProjD\ProjD.csproj",
+                @"ProjF\ProjF.csproj"
             // ProjG not in Legacy manifest, so not included
             );
     }

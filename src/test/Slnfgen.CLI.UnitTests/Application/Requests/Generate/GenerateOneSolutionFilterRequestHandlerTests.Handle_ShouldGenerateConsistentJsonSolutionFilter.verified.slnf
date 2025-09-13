@@ -1,0 +1,10 @@
+﻿{
+  "solution": {
+    "path": "TestSolutions\\BasicSolution\\TestSolutionLegacy.sln",
+    "projects": [
+      "Projb\\Nested\\Projb.csproj",
+      "ProjD\\ProjD.csproj",
+      "ProjF\\ProjF.csproj"
+    ]
+  }
+}

@@ -1,7 +1,9 @@
+using System.Text.Json;
 using Microsoft.Extensions.Logging.Testing;
 using Slnfgen.CLI.Application.Common.Requests.Validation;
 using Slnfgen.CLI.Application.Repositories.Manifest.SolutionFiltersManifest;
 using Slnfgen.CLI.Application.Repositories.Solution.File;
+using Slnfgen.CLI.Application.Repositories.Solution.Filter;
 using Slnfgen.CLI.Application.Repositories.Solution.Project;
 using Slnfgen.CLI.Application.Requests.GenerateAll;
 using Slnfgen.CLI.Application.Requests.GenerateTarget;
@@ -60,15 +62,15 @@ public class GenerateOneSolutionFilterRequestHandlerTests
         response.GeneratedFilter.Should().Be(generatedFilterPath);
         var filterOne = _fakeSolutionFilterWriter.Store[generatedFilterPath];
         filterOne.Should().NotBeNull();
-        filterOne.Solution.Path.Should().Be(@"TestSolutions\\BasicSolution\\TestSolution.slnx");
+        filterOne.Solution.Path.Should().Be(@"TestSolutions\BasicSolution\TestSolution.slnx");
         filterOne
             .Solution.Projects.Should()
             .BeEquivalentTo(
-                @"ProjA\\ProjA.csproj",
-                @"ProjC\\ProjC.csproj",
-                @"ProjE\\ProjE.csproj",
-                @"ProjF\\ProjF.csproj",
-                @"ProjG\\ProjG.csproj"
+                @"ProjA\ProjA.csproj",
+                @"ProjC\ProjC.csproj",
+                @"ProjE\ProjE.csproj",
+                @"ProjF\ProjF.csproj",
+                @"ProjG\ProjG.csproj"
             );
     }
 
@@ -108,9 +110,29 @@ public class GenerateOneSolutionFilterRequestHandlerTests
         response.GeneratedFilter.Should().Be(generatedFilterPath);
         var filterOne = _fakeSolutionFilterWriter.Store[generatedFilterPath];
         filterOne.Should().NotBeNull();
-        filterOne.Solution.Path.Should().Be(@"TestSolutions\\BasicSolution\\TestSolutionLegacy.sln");
+        filterOne.Solution.Path.Should().Be(@"TestSolutions\BasicSolution\TestSolutionLegacy.sln");
         filterOne
             .Solution.Projects.Should()
-            .BeEquivalentTo(@"Projb\\Nested\\Projb.csproj", @"ProjD\\ProjD.csproj", @"ProjF\\ProjF.csproj");
+            .BeEquivalentTo(@"Projb\Nested\Projb.csproj", @"ProjD\ProjD.csproj", @"ProjF\ProjF.csproj");
+    }
+
+    [Fact]
+    public async Task Handle_ShouldGenerateConsistentJsonSolutionFilter()
+    {
+        // Arrange
+        var request = new GenerateTargetSolutionFilterRequest(
+            Path.Combine("TestSolutions", "BasicSolution", "monorepoLegacy.yml"),
+            "FilterTwo",
+            "."
+        );
+
+        // Act
+        var response = _sut.Handle(request);
+
+        // Assert
+        response.Should().NotBeNull();
+
+        var filterOne = _fakeSolutionFilterWriter.Store[Path.Combine(".", "FilterTwo")];
+        await Verify(JsonSerializer.Serialize(filterOne, SolutionFilterFileWriter.JsonOptions()), "slnf");
     }
 }
