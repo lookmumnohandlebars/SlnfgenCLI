@@ -5,56 +5,46 @@
     <ToolCommandName>slnfgen</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>slnfgen-icon.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cocona" />
-    <PackageReference Include="FluentValidation" />
-    <PackageReference Include="JetBrains.Annotations" />
-    <PackageReference Include="Microsoft.Build" />
+    <PackageReference Include="Cocona"/>
+    <PackageReference Include="FluentValidation"/>
+    <PackageReference Include="JetBrains.Annotations"/>
+    <PackageReference Include="Microsoft.Build"/>
     <PackageReference Include="Microsoft.SourceLink.GitHub">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Scrutor" />
-    <PackageReference Include="Spectre.Console" />
-    <PackageReference Include="Throw" />
-    <PackageReference Include="YamlDotNet" />
+    <PackageReference Include="Scrutor"/>
+    <PackageReference Include="Spectre.Console"/>
+    <PackageReference Include="Throw"/>
+    <PackageReference Include="YamlDotNet"/>
   </ItemGroup>
   <ItemGroup>
-    <None Remove="nupkg\**" />
+    <None Remove="nupkg\**"/>
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="nupkg\**" />
+    <Compile Remove="nupkg\**"/>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Remove="nupkg\**" />
+    <EmbeddedResource Remove="nupkg\**"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\docs\assets\slnfgen-icon.png" Pack="true" Visible="false" PackagePath="" />
+    <None Include="..\..\..\docs\assets\slnfgen-icon.png" Pack="true" Visible="false" PackagePath=""/>
     <Content Include="..\..\..\README.md" Pack="true" PackagePath="\">
       <Link>README.md</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\Solution\Project\Services\" />
+    <Folder Include="Domain\Solution\Project\Services\"/>
   </ItemGroup>
   <Target Name="Husky" BeforeTargets="Restore;CollectPackageReferences" Condition="'$(HUSKY)' != 0">
-    <Exec
-      Command="dotnet tool restore"
-      StandardOutputImportance="Low"
-      StandardErrorImportance="High"
-      WorkingDirectory="../../.."
-    />
-    <Exec
-      Command="dotnet husky install"
-      StandardOutputImportance="Low"
-      StandardErrorImportance="High"
-      WorkingDirectory="../../.."
-    />
+    <Exec Command="dotnet tool restore" StandardOutputImportance="Low" StandardErrorImportance="High" WorkingDirectory="../../.."/>
+    <Exec Command="dotnet husky install" StandardOutputImportance="Low" StandardErrorImportance="High" WorkingDirectory="../../.."/>
   </Target>
 </Project>
