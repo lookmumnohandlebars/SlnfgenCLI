@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Slnfgen.CLI.Common.Paths;
 
 namespace Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
 
@@ -27,7 +28,7 @@ public class SolutionFiltersManifestFilterDefinition
     )
     {
         Name = name;
-        Entrypoints = entrypoints.Select(NormalizePath).ToArray();
+        Entrypoints = entrypoints;
         AutoIncludeSuffixPatterns = autoIncludeSuffixPatterns ?? [];
     }
 
@@ -52,7 +53,13 @@ public class SolutionFiltersManifestFilterDefinition
     public string[] Entrypoints
     {
         get => EntryPointsRaw;
-        set { EntryPointsRaw = value.Select(x => NormalizePath(x)).ToArray(); }
+        set
+        {
+            EntryPointsRaw = value
+                .Select(PathUtilities.NormalizePathToBackslashes)
+                .Select(TryAddProjectFileIfNotIncluded)
+                .ToArray();
+        }
     }
 
     /// <summary>
@@ -60,12 +67,18 @@ public class SolutionFiltersManifestFilterDefinition
     /// </summary>
     public string[] AutoIncludeSuffixPatterns { get; set; }
 
-    private string NormalizePath(string entrypoint)
+    /// <summary>
+    ///     Utility to add a project file if a project directory is provided
+    /// </summary>
+    /// <param name="projectFilePath"></param>
+    /// <returns></returns>
+    public static string TryAddProjectFileIfNotIncluded(string projectFilePath)
     {
-        if (string.IsNullOrEmpty(entrypoint))
-            throw new ArgumentException("Entrypoint must not be empty", nameof(entrypoint));
-
-        // Normalize path for JSON serialization
-        return entrypoint.Replace('/', '\\');
+        if (projectFilePath.EndsWith(".csproj", StringComparison.OrdinalIgnoreCase))
+            return projectFilePath;
+        var suspectedProject = projectFilePath.Split('\\').LastOrDefault();
+        if (suspectedProject != null)
+            return $@"{projectFilePath}\{suspectedProject}.csproj";
+        return projectFilePath;
     }
 }

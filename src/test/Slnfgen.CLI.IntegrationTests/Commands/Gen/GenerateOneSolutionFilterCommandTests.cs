@@ -1,4 +1,3 @@
-using System.Text.Json;
 using FluentAssertions;
 using Slnfgen.CLI.Application.Repositories.Solution.Filter;
 using Slnfgen.CLI.Domain.Solution.Filter.Models;

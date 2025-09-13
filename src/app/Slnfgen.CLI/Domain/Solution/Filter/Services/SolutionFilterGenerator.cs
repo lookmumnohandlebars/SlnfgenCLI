@@ -1,4 +1,5 @@
 using Slnfgen.CLI.Application.Common.Requests.Validation;
+using Slnfgen.CLI.Common.Paths;
 using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
 using Slnfgen.CLI.Domain.Solution.File.Models;
 using Slnfgen.CLI.Domain.Solution.Filter.Models;
@@ -184,7 +185,7 @@ public class SolutionFilterGenerator
 
     private static string NormalizePath(string path)
     {
-        return path.Replace("..\\", string.Empty).Replace("/", "\\"); //TODO: this is a temporary fix, should be handled by the loader
+        return PathUtilities.NormalizePathToBackslashes(path.Replace("..\\", string.Empty)); //TODO: this is a temporary fix, should be handled by the loader
     }
 
     #endregion
