@@ -17,6 +17,7 @@ internal static class DependencyInjection
         services.AddScoped<ISolutionFiltersManifestLoader, SolutionFiltersManifestFileLoader>();
         services.AddScoped<ISolutionLoader, SolutionFileLoader>();
         services.AddScoped<ISolutionFilterWriter, SolutionFilterFileWriter>();
+        services.AddScoped<IXmlSolutionFileWriter, XmlSolutionFileWriter>();
         services.AddScoped<IProjectFileLoader, ProjectFileLoader>();
         return services;
     }

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Slnfgen.CLI.Domain.Solution.File.Services;
 using Slnfgen.CLI.Domain.Solution.Filter.Services;
 
 namespace Slnfgen.CLI.Domain.Solution;
@@ -14,6 +15,7 @@ public static class DependencyInjection
     public static IServiceCollection AddDomainSolutionDependencies(this IServiceCollection services)
     {
         services.AddTransient<SolutionFilterGenerator>();
+        services.AddTransient<SolutionGenerator>();
         services.AddTransient<ProjectSuffixFinder>();
         return services;
     }

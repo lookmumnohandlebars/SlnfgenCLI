@@ -55,6 +55,7 @@ public class SolutionFilterFixture : IDisposable
                 ),
                 new SolutionFiltersManifestFilterDefinition("FilterTwo", ["Project7/Project7.csproj"]),
             ],
+            [new ManifestSolutionDefinition("SolutionOne", ["Project1/Project1.csproj"])],
             ["Tests"]
         );
         manifestWriter.Write("monorepo.yml", filters);

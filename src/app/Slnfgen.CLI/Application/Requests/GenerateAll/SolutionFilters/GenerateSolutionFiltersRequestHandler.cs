@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Slnfgen.CLI.Application.Common.Requests;
 using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Repository;
 using Slnfgen.CLI.Domain.Solution.File.Repository;
+using Slnfgen.CLI.Domain.Solution.File.Services;
 using Slnfgen.CLI.Domain.Solution.Filter.Repository;
 using Slnfgen.CLI.Domain.Solution.Filter.Services;
 
@@ -23,9 +24,11 @@ public class GenerateSolutionFiltersRequestHandler
     public GenerateSolutionFiltersRequestHandler(
         SolutionFilterGenerator solutionFilterGenerator,
         ISolutionFilterWriter solutionFilterWriter,
+        IXmlSolutionFileWriter solutionFileWriter,
         ISolutionFiltersManifestLoader solutionManifestLoader,
         ISolutionLoader solutionLoader,
-        ILogger<GenerateSolutionFiltersRequestHandler> logger
+        ILogger<GenerateSolutionFiltersRequestHandler> logger,
+        SolutionGenerator solutionGenerator
     )
     {
         _solutionFilterGenerator = solutionFilterGenerator;
@@ -62,8 +65,9 @@ public class GenerateSolutionFiltersRequestHandler
 
         if (request.DryRun)
             return new GenerateSolutionFiltersResponse(solutionFilters.Select(slnf => slnf.GetFileName()));
-        var generatedFilters = _solutionFilterWriter.WriteMany(solutionFilters, request.OutputDirectory);
+
+        var storedFilters = _solutionFilterWriter.WriteMany(solutionFilters, request.OutputDirectory);
         _logger.LogInformation("Solution filters written to: {OutputDirectory}", request.OutputDirectory);
-        return new GenerateSolutionFiltersResponse(generatedFilters);
+        return new GenerateSolutionFiltersResponse(storedFilters);
     }
 }

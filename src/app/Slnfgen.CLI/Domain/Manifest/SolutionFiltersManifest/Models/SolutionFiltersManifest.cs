@@ -14,18 +14,21 @@ public class SolutionFiltersManifest
         FilterDefinitions = new List<SolutionFiltersManifestFilterDefinition>();
         SolutionFile = string.Empty;
         AutoIncludeSuffixPatterns = new List<string>();
+        SolutionDefinitions = new List<ManifestSolutionDefinition>();
     }
 
     /// <inheritdoc cref="SolutionFiltersManifest" />
     public SolutionFiltersManifest(
         string solutionFile,
         List<SolutionFiltersManifestFilterDefinition> filterDefinitions,
+        List<ManifestSolutionDefinition> solutionDefinitions,
         List<string>? autoIncludeSuffixPatterns = null
     )
     {
         SolutionFile = solutionFile;
         FilterDefinitions = filterDefinitions;
         AutoIncludeSuffixPatterns = autoIncludeSuffixPatterns ?? new List<string>();
+        SolutionDefinitions = solutionDefinitions;
     }
 
     /// <summary>
@@ -37,8 +40,12 @@ public class SolutionFiltersManifest
     /// <summary>
     ///     The list of solution filters with entrypoints
     /// </summary>
-    [Required]
     public List<SolutionFiltersManifestFilterDefinition> FilterDefinitions { get; set; }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public List<ManifestSolutionDefinition> SolutionDefinitions { get; set; }
 
     /// <summary>
     ///     project patterns to include in the solution filter.

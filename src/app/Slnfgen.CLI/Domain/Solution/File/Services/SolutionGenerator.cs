@@ -1,23 +1,23 @@
 using Slnfgen.CLI.Application.Common.Requests.Validation;
 using Slnfgen.CLI.Domain.Manifest.SolutionFiltersManifest.Models;
 using Slnfgen.CLI.Domain.Solution.File.Models;
-using Slnfgen.CLI.Domain.Solution.Filter.Models;
+using Slnfgen.CLI.Domain.Solution.Filter.Services;
 using Slnfgen.CLI.Domain.Solution.Project.Models;
 using Slnfgen.CLI.Domain.Solution.Project.Repositories;
 using Slnfgen.CLI.Domain.Solution.Project.Services;
 
-namespace Slnfgen.CLI.Domain.Solution.Filter.Services;
+namespace Slnfgen.CLI.Domain.Solution.File.Services;
 
 /// <summary>
 ///
 /// </summary>
-public class SolutionFilterGenerator
+public class SolutionGenerator
 {
     private readonly IProjectFileLoader _projectFileLoader;
     private readonly ProjectSuffixFinder _projectSuffixFinder;
 
     /// <inheritdoc cref="SolutionFilterGenerator"/>
-    public SolutionFilterGenerator(IProjectFileLoader projectFileLoader, ProjectSuffixFinder projectSuffixFinder)
+    public SolutionGenerator(IProjectFileLoader projectFileLoader, ProjectSuffixFinder projectSuffixFinder)
     {
         _projectFileLoader = projectFileLoader;
         _projectSuffixFinder = projectSuffixFinder;
@@ -27,15 +27,10 @@ public class SolutionFilterGenerator
     /// </summary>
     /// <param name="solutionFile"></param>
     /// <param name="filters"></param>
-    /// <param name="targetDirectory"></param>
     /// <returns></returns>
-    public IEnumerable<SolutionFilter> GenerateMany(
-        RootSolutionFile solutionFile,
-        SolutionFiltersManifest filters,
-        string targetDirectory
-    ) =>
-        filters.FilterDefinitions.Select(filterDefinition =>
-            GenerateFromFilterDefinition(solutionFile, filters, filterDefinition, targetDirectory)
+    public IEnumerable<XmlSolutionFile> GenerateMany(RootSolutionFile solutionFile, SolutionFiltersManifest filters) =>
+        filters.SolutionDefinitions.Select(filterDefinition =>
+            GenerateFromFilterDefinition(solutionFile, filters, filterDefinition)
         );
 
     /// <summary>
@@ -44,17 +39,15 @@ public class SolutionFilterGenerator
     /// <param name="targetSolutionFilterName"></param>
     /// <param name="solutionFile"></param>
     /// <param name="filters"></param>
-    /// <param name="targetDirectory"></param>
     /// <returns></returns>
     /// <exception cref="BadRequestException"></exception>
-    public SolutionFilter GenerateForTarget(
+    public XmlSolutionFile GenerateForTarget(
         string targetSolutionFilterName,
         RootSolutionFile solutionFile,
-        SolutionFiltersManifest filters,
-        string targetDirectory
+        SolutionFiltersManifest filters
     )
     {
-        var targetFilter = filters.FilterDefinitions.SingleOrDefault(filterDefinition =>
+        var targetFilter = filters.SolutionDefinitions.SingleOrDefault(filterDefinition =>
             filterDefinition.Name.Equals(targetSolutionFilterName, StringComparison.OrdinalIgnoreCase)
         );
         if (targetFilter == null)
@@ -62,16 +55,15 @@ public class SolutionFilterGenerator
             throw new BadRequestException("Filter definition in manifest file: " + targetSolutionFilterName);
         }
 
-        return GenerateFromFilterDefinition(solutionFile, filters, targetFilter, targetDirectory);
+        return GenerateFromFilterDefinition(solutionFile, filters, targetFilter);
     }
 
     #region Internal
 
-    private SolutionFilter GenerateFromFilterDefinition(
+    private XmlSolutionFile GenerateFromFilterDefinition(
         RootSolutionFile solutionFile,
         SolutionFiltersManifest manifest,
-        SolutionFiltersManifestFilterDefinition filterDefinition,
-        string targetDirectory
+        ManifestSolutionDefinition solutionDefinition
     )
     {
         var dependencyTreeMapper = new SolutionProjectDependencyTreeMapper(
@@ -79,13 +71,13 @@ public class SolutionFilterGenerator
             path => _projectFileLoader.LoadOne(path)
         );
         var entryPointProjectsWithDependencies = dependencyTreeMapper.FlatMap(
-            GetEntryPointSolutionProjects(solutionFile, filterDefinition)
+            GetEntryPointSolutionProjects(solutionFile, solutionDefinition)
         );
 
         var autoIncludedTestProjects = GetTestProjects(
             solutionFile,
             manifest,
-            filterDefinition,
+            solutionDefinition,
             entryPointProjectsWithDependencies
         );
 
@@ -97,36 +89,28 @@ public class SolutionFilterGenerator
             .Distinct()
             .ToList();
 
-        var relativePathToSolutionFile = Path.GetRelativePath(
-            Path.Combine(Directory.GetCurrentDirectory(), targetDirectory),
-            solutionFile.AbsolutePath
-        );
-
-        return new SolutionFilter(
-            filterDefinition.Name,
-            new SolutionFiltersSolutionDefinition(
-                relativePathToSolutionFile,
-                allIncludedProjectFileNames.OrderBy(path => path).ToArray()
-            )
+        return new XmlSolutionFile(
+            solutionDefinition.Name,
+            allIncludedProjectFileNames.OrderBy(path => path).ToArray()
         );
     }
 
     private IEnumerable<SolutionProject> GetEntryPointSolutionProjects(
         RootSolutionFile solutionFile,
-        SolutionFiltersManifestFilterDefinition filterDefinition
+        ManifestSolutionDefinition solutionDefinition
     ) =>
         solutionFile.ProjectsInSolution.Where(proj =>
-            filterDefinition.Entrypoints.Contains(proj.Name) || filterDefinition.Entrypoints.Contains(proj.Path)
+            solutionDefinition.Entrypoints.Contains(proj.Name) || solutionDefinition.Entrypoints.Contains(proj.Path)
         );
 
     private ISet<SolutionProject> GetTestProjects(
         RootSolutionFile solutionFile,
         SolutionFiltersManifest manifest,
-        SolutionFiltersManifestFilterDefinition manifestFilterDefinition,
+        ManifestSolutionDefinition solutionDefinition,
         IEnumerable<SolutionProject> projects
     )
     {
-        var combinedTestProjectPatterns = manifestFilterDefinition
+        var combinedTestProjectPatterns = solutionDefinition
             .AutoIncludeSuffixPatterns.ToHashSet()
             .Union(manifest.AutoIncludeSuffixPatterns.ToHashSet())
             .ToHashSet();

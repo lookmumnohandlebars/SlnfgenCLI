@@ -23,7 +23,8 @@ public class SolutionFiltersManifestFileLoaderTests
                     "FilterTwo",
                     [@"Projb\Nested\Projb.csproj", @"ProjD\ProjD.csproj"]
                 ),
-            ]
+            ],
+            new List<ManifestSolutionDefinition>() { new("SolutionOne", [@"ProjA\ProjA.csproj"]) }
         );
 
         var filterFilePath = Path.Combine("TestSolutions", "BasicSolution", "monorepo.yml");
@@ -45,7 +46,8 @@ public class SolutionFiltersManifestFileLoaderTests
                 ),
                 new SolutionFiltersManifestFilterDefinition("FilterTwo", [@"ProjB\ProjB.csproj"], [@"Contract.Tests"]),
             ],
-            [@"Unit.Tests"]
+            [],
+            autoIncludeSuffixPatterns: [@"Unit.Tests"]
         );
 
         var filterFilePath = Path.Combine("TestSolutions", "SolutionWithTests", "monorepo.yml");
@@ -68,7 +70,8 @@ public class SolutionFiltersManifestFileLoaderTests
                     "FilterTwo",
                     [@"Projb/Projb.csproj", @"ProjD/ProjD.csproj"]
                 ),
-            ]
+            ],
+            []
         );
 
         var filterFilePath = Path.Combine(
@@ -96,7 +99,8 @@ public class SolutionFiltersManifestFileLoaderTests
                     "FilterTwo",
                     [@"Projb/Nested/Projb.csproj", @"ProjD/ProjD.csproj"]
                 ),
-            ]
+            ],
+            []
         );
 
         var filterFilePath = Path.Combine("TestSolutions", "BasicSolution", "monorepoLegacy.yml");
