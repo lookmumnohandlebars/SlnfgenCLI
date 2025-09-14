@@ -42,6 +42,7 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
             return new Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest(
                 manifestFromJson.SolutionFile,
                 manifestFromJson.FilterDefinitions,
+                manifestFromJson.SolutionDefinitions,
                 manifestFromJson.AutoIncludeSuffixPatterns
             );
         }
@@ -73,6 +74,7 @@ public class SolutionFiltersManifestFileLoader : ISolutionFiltersManifestLoader
             return new Domain.Manifest.SolutionFiltersManifest.Models.SolutionFiltersManifest(
                 manifestFromYaml.SolutionFile,
                 manifestFromYaml.FilterDefinitions,
+                manifestFromYaml.SolutionDefinitions,
                 manifestFromYaml.AutoIncludeSuffixPatterns
             );
         }

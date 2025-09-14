@@ -2,6 +2,7 @@ using Cocona;
 using Microsoft.Extensions.Logging;
 using Slnfgen.CLI.Application.Common.Requests;
 using Slnfgen.CLI.Application.Requests.GenerateAll;
+using Slnfgen.CLI.Application.Requests.GenerateAll.Solutions;
 using Spectre.Console;
 
 namespace Slnfgen.CLI.Presentation.Commands;
@@ -12,20 +13,29 @@ namespace Slnfgen.CLI.Presentation.Commands;
 /// </summary>
 public class GenerateAllSolutionFiltersCommand
 {
-    private readonly IRequestHandler<GenerateSolutionFiltersRequest, GenerateSolutionFiltersResponse> _handler;
+    private readonly IRequestHandler<
+        GenerateSolutionFiltersRequest,
+        GenerateSolutionFiltersResponse
+    > _solutionFiltersRequestHandler;
+
+    private readonly IRequestHandler<GenerateSolutionsRequest, GenerateSolutionsResponse> _solutionsRequestHandler;
 
     private readonly ILogger<GenerateAllSolutionFiltersCommand> _logger;
 
     /// <inheritdoc cref="GenerateAllSolutionFiltersCommand" />
-    /// <param name="handler">The request handler</param>
+    /// <param name="solutionFiltersRequestHandler">The request handler</param>
+    /// <param name="solutionsRequestHandler"></param>
     /// <param name="logger">Logger</param>
     public GenerateAllSolutionFiltersCommand(
-        IRequestHandler<GenerateSolutionFiltersRequest, GenerateSolutionFiltersResponse> handler,
+        IRequestHandler<GenerateSolutionFiltersRequest, GenerateSolutionFiltersResponse> solutionFiltersRequestHandler,
+        IRequestHandler<GenerateSolutionsRequest, GenerateSolutionsResponse> solutionsRequestHandler,
         ILogger<GenerateAllSolutionFiltersCommand> logger
     )
     {
-        _handler = handler;
+        _solutionFiltersRequestHandler = solutionFiltersRequestHandler;
+
         _logger = logger;
+        _solutionsRequestHandler = solutionsRequestHandler;
     }
 
     /// <summary>
@@ -56,12 +66,13 @@ public class GenerateAllSolutionFiltersCommand
                     ctx.Spinner(Spinner.Known.Dots8Bit);
                     ctx.SpinnerStyle(Style.Parse("blue"));
 
-                    _logger.LogDebug(
-                        "Generating solution filters from {FiltersFile} to {OutDirectory}",
-                        filtersFile,
-                        outDirectory
+                    _solutionFiltersRequestHandler.Handle(
+                        new GenerateSolutionFiltersRequest(filtersFile, outDirectory, dryRun)
                     );
-                    return _handler.Handle(new GenerateSolutionFiltersRequest(filtersFile, outDirectory, dryRun));
+
+                    ctx.Status = "Generating solutions...";
+                    _solutionsRequestHandler.Handle(new GenerateSolutionsRequest(filtersFile, outDirectory, dryRun));
+                    ctx.Status = "Done!";
                 }
             );
         AnsiConsole.MarkupLine("[green]Solution filters generated successfully![/]");

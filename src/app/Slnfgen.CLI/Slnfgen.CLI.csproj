@@ -41,7 +41,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\Solution\Project\Services\" />
+    <Folder Include="Application\Requests\GenerateTarget\Solutions\" />
   </ItemGroup>
   <Target Name="Husky" BeforeTargets="Restore;CollectPackageReferences" Condition="'$(HUSKY)' != 0">
     <Exec

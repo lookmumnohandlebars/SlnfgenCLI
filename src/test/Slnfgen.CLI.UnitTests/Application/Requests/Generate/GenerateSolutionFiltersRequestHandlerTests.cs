@@ -5,6 +5,7 @@ using Slnfgen.CLI.Application.Repositories.Solution.File;
 using Slnfgen.CLI.Application.Repositories.Solution.Filter;
 using Slnfgen.CLI.Application.Repositories.Solution.Project;
 using Slnfgen.CLI.Application.Requests.GenerateAll;
+using Slnfgen.CLI.Domain.Solution.File.Services;
 using Slnfgen.CLI.Domain.Solution.Filter.Services;
 using Slnfgen.CLI.UnitTests.Application.TestImplementations;
 
@@ -20,9 +21,11 @@ public class GenerateSolutionFiltersRequestHandlerTests
         _sut = new GenerateSolutionFiltersRequestHandler(
             new SolutionFilterGenerator(new ProjectFileLoader(), new ProjectSuffixFinder()),
             _fakeSolutionFilterWriter,
+            new XmlSolutionFileWriter(),
             new SolutionFiltersManifestFileLoader(),
             new SolutionFileLoader(),
-            new FakeLogger<GenerateSolutionFiltersRequestHandler>()
+            new FakeLogger<GenerateSolutionFiltersRequestHandler>(),
+            new SolutionGenerator(new ProjectFileLoader(), new ProjectSuffixFinder())
         );
     }
 

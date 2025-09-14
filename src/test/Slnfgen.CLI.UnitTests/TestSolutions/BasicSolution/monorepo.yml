@@ -9,3 +9,8 @@ filterDefinitions:
     entrypoints:
       - Projb/Nested/Projb.csproj
       - ProjD/ProjD.csproj
+
+solutionDefinitions:
+  - name: SolutionOne
+    entrypoints:
+      - ProjA/ProjA.csproj

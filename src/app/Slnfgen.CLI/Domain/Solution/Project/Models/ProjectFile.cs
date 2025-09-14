@@ -1,4 +1,5 @@
 using Microsoft.Build.Construction;
+using Slnfgen.CLI.Common.Paths;
 
 namespace Slnfgen.CLI.Domain.Solution.Project.Models;
 
